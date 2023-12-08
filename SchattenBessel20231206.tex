@@ -1,0 +1,1890 @@
+\documentclass[12pt]{amsart}
+\usepackage{ amsmath, amsthm, amsfonts, amssymb, color}
+ \usepackage{mathrsfs}
+\usepackage{amsfonts, amsmath}
+ \usepackage{amsmath,amstext,amsthm,amssymb,amsxtra}
+ \usepackage{txfonts} %also pxfonts
+ \usepackage[colorlinks, citecolor=blue,pagebackref,hypertexnames=false]{hyperref}
+ \allowdisplaybreaks
+ \usepackage{pgf,tikz}
+ \usepackage{multirow}%newtablepackage1 
+ \usepackage{diagbox} %newtablepackage2
+
+ \usepackage{tikz}
+
+\usetikzlibrary{decorations.pathreplacing}
+
+ %\usepackage{showkeys}
+ \textwidth =166mm
+ \textheight =232mm
+\marginparsep=0cm
+\oddsidemargin=2mm
+\evensidemargin=2mm
+\headheight=13pt
+\headsep=0.8cm
+\parskip=0pt
+\hfuzz=6pt
+\widowpenalty=10000
+ \setlength{\topmargin}{-0.2cm}
+
+\DeclareMathOperator*{\essinf}{ess\ inf}
+\DeclareMathOperator*{\esssup}{ess\ sup}
+\begin{document}
+
+ \baselineskip 16.6pt
+\hfuzz=6pt
+
+\widowpenalty=10000
+
+\newtheorem{cl}{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{coro}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+%\theoremstyle{definition}
+\newtheorem{assum}{Assumption}[section]
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\renewcommand{\theequation}
+{\thesection.\arabic{equation}}
+
+\def\SL{\sqrt H}
+
+\newcommand{\mar}[1]{{\marginpar{\sffamily{\scriptsize
+        #1}}}}
+
+\newcommand{\as}[1]{{\mar{AS:#1}}}
+
+\newcommand\R{\mathbb{R}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\CC{\mathbb{C}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\HH{\mathbb{H}}
+\newcommand\Z{\mathbb{Z}}
+\def\RN {\mathbb{R}^n}
+\renewcommand\Re{\operatorname{Re}}
+\renewcommand\Im{\operatorname{Im}}
+
+\newcommand{\mc}{\mathcal}
+\newcommand\D{\mathcal{D}}
+\def\hs{\hspace{0.33cm}}
+\newcommand{\la}{\alpha}
+\def \l {\alpha}
+\newcommand{\eps}{\tau}
+\newcommand{\pl}{\partial}
+\newcommand{\supp}{{\rm supp}{\hspace{.05cm}}}
+\newcommand{\x}{\times}
+\newcommand{\lag}{\langle}
+\newcommand{\rag}{\rangle}
+
+\newcommand\wrt{\,{\rm d}}
+
+\newcommand{\norm}[2]{|#1|_{#2}}
+\newcommand{\Norm}[2]{\|#1\|_{#2}}
+
+\title[]{Schatten-Lorentz characterization of Riesz transform commutator associated with Bessel operator}
+
+
+
+\author{Zhijie Fan}
+\address{School of Mathematics and Information Science,
+Guangzhou University, Guangzhou 510006, China}
+\email{fanzhj3@mail2.sysu.edu.cn}
+
+
+
+
+%
+\author{Michael Lacey}
+\address{Michael Lacey, Department of Mathematics, Georgia Institute of Technology
+Atlanta, GA 30332, USA}
+\email{lacey@math.gatech.edu}
+
+
+
+\author{Ji Li}
+\address{Ji Li, Department of Mathematics, Macquarie University, Sydney}
+\email{ji.li@mq.edu.au}
+
+\author{Xiao Xiong}
+%\address{Xiao Xiong, Department of Mathematics\\
+%         Washington University - St. Louis\\
+%         St. Louis, MO 63130-4899 USA
+%         }
+%\email{wick@math.wustl.edu}
+
+
+
+
+
+  \date{\today}
+
+ \subjclass[2010]{47B10, 42B20, 43A85}
+\keywords{Schatten class, Riesz transform commutator, Bessel operator, Besov space, Nearly weakly orthogonal}
+
+
+
+
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+
+
+\tableofcontents\newpage
+\section{Introduction}
+For $\lambda> 0$, we consider the Bessel operator $\Delta_\lambda^{(1)}$ on $\mathbb R_+$ (\cite{MS}) which is defined by
+\begin{align*}
+\Delta_{\lambda}^{(1)} = -{d^2\over dx^2} -{2\lambda\over x} {d\over dx}.
+\end{align*}
+It is a densely-defined non-negative self-adjoint operator in $L^2(\mathbb R_+, dm_\lambda)$, where $d m_\lambda^{(1)}(x)=x^{2\lambda}dx$. Let $\R^{n+1}_+=\R^n\times (0,\infty)$. In high dimension, we also consider the $(n+1)$-dimensional Bessel operator from a seminal work of Huber \cite{MR64284}, which, for $\lambda> 0$, is defined by
+\begin{align}\label{Dlambda}
+\Delta_\lambda^{(n+1)} = -{d^2\over dx_1^2}\cdots-{d^2\over dx_n^2} -{d^2\over dx_{n+1}^2} -{2\lambda\over x_{n+1}} {d\over dx_{n+1}}.
+\end{align}
+The operator $\Delta_\lambda^{(n+1)}$ is densely-defined non-negative self-adjoint operator $ L^2(\mathbb{R}_+^{n+1}, dm_\lambda)$,
+where
+$$dm_\lambda^{(n+1)}(x):=\prod_{j=1}^n dx_j x_{n+1}^{2\lambda}dx_{n+1}.$$
+For simplicity, we shall use the following notations in the sequel.
+$$\Delta_\lambda:=\left\{\begin{array}{ll}\Delta_\lambda^{(1)}, &n=0,\\ \Delta_\lambda^{(n+1)}, &n\geq 1,\end{array}\right.\ \ {\rm and}\ \ m_\lambda:=\left\{\begin{array}{ll}m_\lambda^{(1)}, &n=0,\\ m_\lambda^{(n+1)}, &n\geq 1.\end{array}\right.$$
+%
+%The Riesz transform associated with the 1-dimensional Bessel operator is defined as
+%$$ R_{\lambda} = {d\over dx} (\Delta_\lambda)^{-{1\over2}}. $$
+
+
+%We next recall the Bessel operator and the Bessel Riesz transform in high dimension from Huber \cite{MR64284}.
+%Consider $\R^{n+1}_+=\R^n\times (0,\infty)$. For $\lambda> 0$,
+
+For $\lambda>0$ and $n\geq 0$, the $j$-th Riesz transform associated with Bessel operator is defined by
+$$ R_{\lambda,j} = {d\over dx_j} \Delta_\lambda^{-{1\over2}},\quad j=1,\ldots,n+1. $$
+For simplicity, if $n=0$, then we write $R_\lambda=R_{\lambda,1}$.
+
+For an operator $T$, we consider the commutator with $T$ defined as follows.
+$$[b,T](f)(x):= b(x)T(f)(x) - T(bf)(x).  $$
+In \cite{MS}, Muckenhoupt-Stein introduced and obtained the $L^p(\mathbb{R}_{+},dm_\lambda)-$boundedness of $R_\lambda$ for $\lambda\in (0,\infty)$. Under this condition, the commutator theorem for $R_\lambda$
+was obtained in \cite{DLWY} via weak factorisation.
+
+%For any $x\in \mathbb{R}_+$ and $r>0$, let $I(x, r)=(x-r, x+r)\cap \mathbb{R}_+$.
+
+To continue, we recall the definitions of the Lebesgue-Lorentz sequence space $\ell^{p,q}$ and Schatten class $S^{p,q}(L^2(\mathbb{R}_{+}^{n+1},dm_\lambda))$. A sequence $\{a_k\}$ is in the $\ell^{p,q}$ for some $0<p<\infty$ and $0<q<\infty$ provided the non-increasing rearrangement of $\{a_k\}$, denoted by $\{a_k^*\}$, satisfies $\sum_{k}a_k^{*q}k^{q/p-1}<+\infty$. For the endpoint $q=\infty$, a sequence $\{a_k\}$ is in the $\ell^{p,\infty}$ for some $0<p<\infty$ provided $\sup_{k}\{k^{1/p}a_k^{*}\}<+\infty$. Furthermore, note that if $T$ is any compact operator on $L^{2}(\mathbb{R}_+^{n+1},dm_\lambda)$, then $T^{*}T$ is compact, positive and therefore diagonalizable. For $0<p<\infty$ and $0<q\leq \infty$, we say that $T\in S^{p,q}(L^2(\mathbb{R}_{+}^{n+1},dm_\lambda))$ if $\{\lambda_{k}\}\in \ell^{p,q}$, where $\{\lambda_{k}\}$ is the sequence of square roots of eigenvalues of $T^{*}T$ (counted according to multiplicity). In the sequel, for simplicity, we denote $S_\lambda^{p,q}:=S^{p,q}(L^2(\mathbb{R}_{+}^{n+1},dm_\lambda))$.
+
+For any locally integrable function $f$, we define its mean oscillation over a cube $Q$ by
+\begin{align*}
+MO_Q(f):=\fint_{Q}|f(x)-(f)_Q|dm_\lambda(x).
+\end{align*}
+{\color{red}Def of $\mathcal{D}^0$}
+\begin{definition}
+Suppose $0<p<\infty$, $0<q\leq \infty$, $\lambda>0$ and $n\geq 0$. Then we say that $f$ belongs to oscillation space ${\rm OSC}_{p,q}(\mathbb{R}_+^{n+1},dm_\lambda)$ if $$\|f\|_{{\rm OSC}_{p,q}(\mathbb{R}_+^{n+1},dm_\lambda)}:=\|\{MO_Q(f)\}_{Q\in\mathcal{D}^0}\|_{\ell^{p,q}}<+\infty.$$
+\end{definition}
+Our first main theorem can be stated as follows.
+\begin{theorem}
+Suppose {\color{red}$1<p<\infty$}, $0<q\leq \infty$, $\lambda>0$, $n\geq 0$ and $b\in L^1_{\rm loc}(\mathbb{R}^{n+1}_+)$. Then for any $\ell\in\{1,2,...,n+1\}$, one has
+\begin{align*}
+\|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p,q}}\approx\|b\|_{{\rm OSC}_{p,q}(\mathbb{R}_+^{n+1},dm_\lambda)}.
+\end{align*}
+\end{theorem}
+\begin{definition}
+Suppose $0\leq p,q< \infty$, $0<\alpha<1$, $\lambda>0$ and $n\geq 0$.  Then we say that a  function $f\in L^p_{{\rm loc}}(\mathbb{R}_+^{n+1},dm_\lambda)$ belongs to weighted Besov space $B_{p,q}^{\alpha}(\mathbb{R}_+^{n+1},dm_\lambda)$ if
+\begin{align*}
+\|f\|_{B_{p,q}^{\alpha}(\mathbb{R}_+^{n+1},dm_\lambda)}:=\left(\int_{\mathbb{R}_{+}^{n+1}}\left(\int_{\mathbb{R}_{+}^{n+1}}|f(x)-f(y)|^p\frac{dm_\lambda(x)}{{m_\lambda({\color{red}B_{\mathbb{R}_+^{n+1}}}(x,|x-y|))^{\color{red}\frac{p}{q}+\frac{\alpha p}{n+1}}}}\right)^{q/p}dm_\lambda(y)\right)^{1/q}<+\infty.
+\end{align*}
+\end{definition}
+
+Our main theorem about one-dimensional Bessel operator is the following.
+
+{\color{red} How to show the second statement of the following theorem is still unclear since Lemma \ref{step1} doesn't work for $p=1$.}
+\begin{theorem}\label{schatten}
+Suppose $0<p<\infty$, $\lambda>0$ and $b\in  L^1_{{\rm loc}}(\mathbb R_+)$. Then one has  $[b,R_{\lambda}]\in S_\lambda^p$
+if and only if
+
+%%  ENUMERATE
+\begin{enumerate}
+\item $b\in B_{p,p}^{\frac{1}{p}}(\mathbb R_+,dm_\lambda)$, if {\color{red}$p>1$}; in this case we have $ \|[b,R_{\lambda}]\|_{S_\lambda^p}\approx \|b\|_{B_{p,p}^{\frac{1}{p}}(\mathbb R_+,dm_\lambda)}$;
+
+\item {\color{red}$b$ is a constant, if\ $0<p\leq 1$}.
+
+\end{enumerate}
+%% ENUMERATE
+
+\end{theorem}
+
+
+Our main theorem about higher-dimensional $(n\geq 2)$ Bessel operator is the following. {\color{red}We need to impose an extra assumption $b\in C^2(\mathbb{R}_+^{n+1})$ in the second statement of the following theorem.}
+\begin{theorem}\label{schatten}
+Suppose $0<p<\infty$, $\lambda>0$ and $b\in  L^1_{{\rm loc}}(\mathbb R_+^{n+1})$. Then for any $\ell\in\{1,2,...,n+1\}$, one has  $[b,R_{\lambda,\ell}]\in S_\lambda^p$
+if and only if
+
+%%  ENUMERATE
+\begin{enumerate}
+\item $b\in B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)$, if {\color{red}$p>n+1$}; in this case we have $ \|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}\approx \|b\|_{B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)}$;
+
+\item {\color{red}$b$ is a constant, if\ $0<p\leq n+1$}.
+
+\end{enumerate}
+%% ENUMERATE
+
+\end{theorem}
+
+The paper is organized as follows.
+\section{Preliminaries}
+\setcounter{equation}{0}
+
+\subsection{Preliminaries on space of homogeneous type}
+\label{s2}
+\noindent
+
+In the proof of necessity (upper bound) for the case $p>n+1$, we will regard $\mathbb{R}_{+}^{n+1}$ as a space of homogeneous type, in the sense of Coifman and Weiss (\cite{CWbook}), with Euclidean metric and weighted measure $dm_\lambda$. Specifically, for any $x\in\mathbb{R}_+^{n+1}$ and $r>0$, a set $B_{\mathbb{R}_{+}^{n+1}}(x,r):=B(x,r)\cap \mathbb{R}_+^{n+1} $, where $B(x,r)$ is a Euclidean ball with centre $x$ and radius $r$, is considered as a ball in $\mathbb{R}_{+}^{n+1}$. It can be deduced from \cite{DLMWY} that for every $x=(x_1,\ldots,x_{n+1})\in\mathbb{R}_{+}^{n+1}$ and $r>0$,
+\begin{align}\label{measureeee}
+m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,r))\sim r^{n+1}x_{n+1}^{2\lambda}+r^{n+1+2\lambda}.
+\end{align}
+Therefore, $(\mathbb{R}_{+}^{n+1},dm_\lambda)$ satisfies the following doubling inequality:  for every $x\in\mathbb{R}_{+}^{n+1}$ and $r>0$,
+\begin{align}
+\label{doub}{\color{red}\min\{2^{n+1},2^{2\lambda+n+1}\}}m_\lambda(B_{\mathbb{R}_{+}^{n+1}}(x,r))\leq m_\lambda(B_{\mathbb{R}_{+}^{n+1}}(x,2r))\leq 2^{2\lambda+n+1}m_\lambda(B_{\mathbb{R}_{+}^{n+1}}(x,r)).
+\end{align}
+
+In the following subsections, for the convenience of the readers, we collect some properties about system of dyadic cubes on homogeneous space and adapt it to $\mathbb{R}_+^{n+1}$.
+\subsection{A System of Dyadic Cubes}\label{sec:dyadic_cubes}
+A
+countable family
+$
+    \mathcal{D}
+    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}, \
+    \mathcal{D}_{k}
+    :=\{Q^k_{\alpha}\colon \alpha\in \mathcal{A}_k\},
+$
+of Borel sets $Q^k_{\alpha}\subseteq \mathbb{R}_+^{n+1}$ is called \textit{a
+system of dyadic cubes with parameters} $\delta\in (0,1)$  if it has the following properties:
+ %\label{eq:cover}
+
+\smallskip
+(I) $    \mathbb{R}_+^{n+1}
+    = \bigcup_{\alpha\in \mathcal{A}_k} Q^k_{\alpha}
+    \quad\text{(disjoint union) for all}~k\in\Z$;
+
+
+\smallskip
+(II) $%\label{eq:nested}
+    \text{If }\ell\geq k\text{, then either }
+        Q^{\ell}_{\beta}\subseteq Q^k_{\alpha}\text{ or }
+        Q^k_{\alpha}\cap Q^{\ell}_{\beta}=\emptyset$;
+
+
+\smallskip
+(III) $\text{For each }(k,\alpha)\text{ and each } \ell\leq k,
+    \text{ there exists a unique } \beta
+    \text{ such that }Q^{k}_{\alpha}\subseteq Q^\ell_{\beta}$;
+
+
+\smallskip
+(IV)
+     \text{For each $(k,\alpha)$ there exists at most $M$
+        (a fixed geometric constant)  $\beta$ such that }
+     $$ Q^{k+1}_{\beta}\subseteq Q^k_{\alpha},\ {\rm and}\
+        Q^k_{\alpha} =\bigcup_{{\substack{Q\in\mathcal{D}_{k+1}\\ Q\subseteq Q^k_{\alpha}}}}Q;$$
+
+\smallskip
+(V) For each $(k,\alpha)$, one has
+\begin{equation}\label{eq:contain}
+B_{\mathbb{R}_{+}^{n+1}}(x^k_{\alpha},\frac{1}{12}\delta^k)
+    \subseteq Q^k_{\alpha}\subseteq B_{\mathbb{R}_{+}^{n+1}}(x^k_{\alpha},4\delta^k)
+    =: B_{\mathbb{R}_{+}^{n+1}}(Q^k_{\alpha});
+\end{equation}
+
+\smallskip
+(VI) \text{If }$\ell\geq k$\text{ and }
+   $Q^{\ell}_{\beta}\subseteq Q^k_{\alpha}$\text{, then }
+$$B_{\mathbb{R}_{+}^{n+1}}(Q^{\ell}_{\beta})\subseteq B_{\mathbb{R}_{+}^{n+1}}(Q^k_{\alpha}).$$
+The set $Q^k_{\alpha}$ is called a \textit{dyadic cube of
+generation} $k$ with centre point $x^k_{\alpha}\in Q^k_{\alpha}$
+and sidelength~$\delta^k$.
+
+%The interior and closure of
+%$Q^k_\alpha$ are denoted by $\widetilde{Q}^k_{\alpha}$ and
+%$\bar{Q}^k_{\alpha}$, respectively.
+
+
+It can be deduce from the properties of the dyadic system above that there exists a positive constant
+$C_{0}$, such that for any $Q^k_{\alpha}$ and $Q^{k+1}_{\beta}$  with $Q^{k+1}_{\beta}\subset Q^k_{\alpha}$,
+\begin{align}\label{Cmu0}
+m_\lambda(Q^{k+1}_{\beta})\leq m_\lambda(Q^k_{\alpha})\leq C_0\delta^{-(2\lambda+n+1)}m_\lambda(Q^{k+1}_{\beta}).
+\end{align}
+%
+%We recall from \cite{HK} the following construction, which is a
+%slight elaboration of seminal work by M.~Christ \cite{Chr}, as
+%well as Sawyer--Wheeden~\cite{SawW}.
+%
+%\begin{lemma}\label{theorem dyadic cubes}
+%On $\mathbb{R}_+^{n+1}$ with Euclidean metric and weighted measure $dm_\lambda$, there exists a system of dyadic intervals with parameter
+%$0<\delta\leq \frac{1}{12}$. The construction only depends on some fixed set of
+%countably many centre points $x^k_{\alpha}$, having the
+%properties that
+%   $ |x_{\alpha}^k-x_{\beta}^k|
+%        \geq \delta^k$ with $\alpha\neq\beta$,
+%    $\min_{\alpha}|x-x^k_{\alpha}|
+%        < \delta^k$ for all $x\in   \mathbb{R}_{+}^{n+1},$
+%   and a certain partial order ``$\leq$'' among their index pairs
+%$(k,\alpha)$. In fact, this system can be constructed in such a
+%way that
+%$$%\begin{equation}\label{eq:closedCube}
+%    \overline{I}^k_{\alpha}
+%    %\overline{{Q}^k_\alpha}
+%    =\overline{\{x^{\ell}_{\beta}:(\ell,\beta)\leq(k,\alpha)\}}, \quad\quad
+%%\end{equation}
+%%and
+%%\begin{equation}\label{eq:openCube}
+%    \widetilde{I}^k_{\alpha}:=\operatorname{int}\overline{I}^k_{\alpha}=
+%    \Big(\bigcup_{\gamma\neq\alpha}\overline{I}^k_{\gamma}\Big)^c,
+%%\end{equation}
+%%$$
+%%and
+%%\begin{equation}\label{eq:3cubes}
+%\quad \quad   \widetilde{I}^k_{\alpha}\subseteq I^k_{\alpha}\subseteq %\overline{{Q}^k_\alpha},%
+%    \overline{I}^k_{\alpha},
+%%\end{equation}
+%$$
+%where $I^k_{\alpha}$ are obtained from the closed sets
+%% $\overline{{Q}^k_\alpha}$
+%$\overline{I}^k_{\alpha}$ and the open sets $\widetilde{I}^k_{\alpha}$ by
+%finitely many set operations.
+%\end{lemma}
+%
+%We also recall the following remark from \cite[Section 2.3]{KLPW}.
+%The construction of dyadic intervals requires their centre points
+%and an associated partial order be fixed \textit{a priori}.
+%However, if either the centre points or the partial order is
+%not given, their existence already follows from the
+%assumptions; any given system of points and partial order can
+%be used as a starting point. Moreover, if we are allowed to
+%choose the centre points for the intervals, the collection can be
+%chosen to satisfy the additional property that a fixed point
+%becomes a centre point at \textit{all levels}:
+%\begin{equation}\label{eq:fixedpoint}
+%\begin{split}
+%    &\text{given a fixed point } x_{0}\in \mathbb{R}_+^{n+1}, \text{ for every } k\in \Z,
+%        \text{ there exists }\alpha \text{ such that } \\
+%    & x_{0}
+%        = x^k_{\alpha},\text{ the centre point of }
+%        I^k_{\alpha}\in\mathcal{D}_{k}.
+%\end{split}
+%\end{equation}
+{\color{red}A
+system of dyadic cubes on $\mathbb{R}_{+}^{n+1}$ can be constructed in a standard way illustrated as follows: let $\mathcal{D}^0:=\cup_{k\in\mathbb{Z}}\mathcal{D}_{k}^0$, where $\mathcal{D}_{k}^0$ is the standard dyadic partition of $\mathbb{R}_+^{n+1}$ into cubes with vertices at the sets $\{(2^{-k}m_1,\ldots,2^{-k}m_{n+1}):(m_1,\ldots,m_{n+1})\in\mathbb{Z}^{n}\times \mathbb{N}\}$.}
+
+The notion of \emph{nearly weakly orthogonal  (NWO)} sequences of functions proposed by Rochberg and Semmes \cite{RS} plays a crucial role in establishing the below inequality (see \cite[(1.10), \S3]{RS}): for any
+bounded compact operator $ A $ on $ L ^2 (\mathbb R_+^{n+1},dm_\lambda)$:
+\begin{equation}\label{e:NWO}
+\Bigl[
+\sum_{Q\in \mathcal{D} } |\langle A e_Q, f_Q \rangle | ^{p}
+\Bigr] ^{1/p} \lesssim \| A \| _{S_\lambda ^{p}},
+\end{equation}
+where $\{e_Q\}_Q$ and $\{f_Q\}_Q$ are function sequences satisfying $ \lvert  e_Q\rvert,  \lvert  f_Q\rvert  \leq m_\lambda(Q) ^{-1/2} \chi_{cQ} $ for some $c>0$.
+
+
+
+\subsection{Adjacent Systems of Dyadic Cubes}\label{s3ss}
+
+A
+finite collection $\{\mathcal{D}^\nu\colon \nu=1,2,\ldots ,\kappa\}$ of the dyadic
+families  is called a collection of
+adjacent systems of dyadic cubes over $\mathbb{R}_{+}^{n+1}$ with parameters $\delta\in
+(0,1) $ and $1\leq C_{\rm adj}<\infty$ if it satisfies the
+following properties:
+
+$\bullet$ Each $\mathcal{D}^\nu$ is a
+system of dyadic cubes with parameters $\delta\in (0,1)$;
+
+$\bullet$ For each ball
+$B_{\mathbb{R}_+^{n+1}}(x,r)\subseteq \mathbb{R}_+^{n+1}$ with $\delta^{k+3}<r\leq\delta^{k+2},
+k\in\Z$, there exist $\nu \in \{1, 2, \ldots, \kappa\}$ and
+$Q\in\mathcal{D}_{k}^\nu$ of generation $k$ and with centre point
+$^\nu x^k_{\alpha}$ such that $|x-{}^\nu x_{\alpha}^k| <
+2\delta^{k}$ and
+\begin{equation}\label{eq:ball;included}
+    B_{\mathbb{R}_+^{n+1}}(x,r)\subseteq Q\subseteq B_{\mathbb{R}_+^{n+1}}(x,C_{\rm adj}r).
+\end{equation}
+
+We adapt the construction in \cite{HK} to our setting, which can be stated as follows.
+\begin{lemma}\label{thm:existence2}
+On $\mathbb{R}_+^{n+1}$ with Euclidean metric and weighted measure $dm_\lambda$, there exists a collection $\{\mathcal{D}^\nu\colon
+    \nu = 1,2,\ldots ,\kappa\}$ of adjacent systems of dyadic intervals with
+    parameters $\delta\in (0, \frac{1}{96}) $ and $C_{\rm adj} := 8\delta^{-3}$ such that the centre points
+    $^\nu x^k_{\alpha}$ of the cubes $Q\in\mathcal{D}^\nu_{k}$ satisfy, for each
+    $\nu \in\{1,2,\ldots,\kappa\}$,
+    \begin{equation*}
+        |^\nu x_{\alpha}^k- {}^\nu x_{\beta}^k|
+        \geq \frac{1}{4}\delta^k\quad(\alpha\neq\beta),\qquad
+        \min_{\alpha}|x-{}^\nu x^k_{\alpha}|
+        < 2 \delta^k\quad \text{for all}~x\in \mathbb{R}_+^{n+1}.
+    \end{equation*}
+    Furthermore, these adjacent systems can be constructed in such a
+    way that each $\mathcal{D}^\nu$ satisfies the distinguished
+    centre point property: given a fixed point $x_{0}\in \mathbb{R}_{+}^{n+1}$, for every $k\in \Z$, there exists $\alpha\in\mathcal{A}_k$ such that
+    $x_{0}
+        = x^k_{\alpha},\text{ the centre point of }
+        I^k_{\alpha}\in\mathcal{D}_{k}^\nu.$
+\end{lemma}
+%
+%We recall from \cite[Remark 2.8]{KLPW}
+%that the number $\kappa$ of the adjacent systems of dyadic
+%    cubes as in the theorem above satisfies the estimate
+%    \begin{equation*}%\label{eq:upperbound}
+%        \kappa
+%        = \kappa(A_0,\widetilde A_1,\delta)
+%        \leq \widetilde A_1^6(A_0^4/\delta)^{\log_2\widetilde A_1},
+%    \end{equation*}
+%where $\widetilde A_1$ is the geometrically doubling constant, see \cite[Section 2]{KLPW}.
+
+%Further, we also recall the following result on the smallness of the
+%boundary.
+%\begin{prop}
+%    Suppose that $144A_0^8\delta\leq 1$. Let $\mu$ be a
+%    positive $\sigma$-finite measure on $X$. Then the
+%    collection $\{\mathscr{D}^t\colon t=1,2,\ldots ,T\}$ may be
+%    chosen to have the additional property that
+%    \[
+%        \mu(\partial Q) = 0
+%        \quad  \textup{ for all } \; Q\in\bigcup_{t=1}^{T}\mathscr{D}^t.
+%    \]
+%\end{prop}
+%
+
+
+
+
+
+
+\subsection{An Explicit Haar Basis}\label{haardef}
+
+
+We shall adapt the explicit construction in \cite{KLPW}  of a Haar basis associated to the dyadic intervals
+$Q\in\mathcal{D}$ to our Bessel setting. Denote $M_Q := \#\mathcal H(Q) = \# \{R\in
+\mathcal{D}_{k+1}\colon R\subseteq Q\}$ be the number of
+dyadic sub-cubes (``children''); namely $\mathcal{H}(Q)$ is the collection of dyadic children of $Q$. Then for any   $Q\in \mathcal{D}_{k}$, we let $h_{Q}^{1}$, $h_{Q}^{2},\ldots, h_{Q}^{M_Q-1}$ be a family of Haar functions which satisfy some properties collected in the following two lemmas.
+
+
+
+\begin{lemma}[\cite{KLPW}]\label{thm:convergence}
+For each $f\in
+    L^p(\mathbb{R}_+^{n+1},dm_\lambda)$, we have
+    \[
+        f(x)
+        =  \sum_{Q\in\mathcal{D}}\sum_{\epsilon=1}^{M_Q-1}
+            \langle f,h^{\epsilon}_{Q}\rangle h^{\epsilon}_{Q}(x), %\quad \text{if } \mu(X)=\infty,
+    \]
+    where the sum converges (unconditionally) both in the
+    $L^p(\mathbb{R}_+^{n+1},dm_\lambda)$-norm and pointwise almost everywhere.
+ \end{lemma}
+
+
+\begin{lemma}[\cite{KLPW}]\label{prop:HaarFuncProp}
+The Haar functions $h_{Q}^{\epsilon}$, where $Q\in\mathcal{D}$,
+    and $\epsilon\in\{1,2,\ldots,M_Q - 1\}$, have the following properties:
+    \begin{itemize}
+        \item[(i)] $h_{Q}^{\epsilon}$ is a simple Borel-measurable
+            real function on $\mathbb{R}_+^{n+1}$;
+        \item[(ii)] $h_{Q}^{\epsilon}$ is supported on $Q$;
+        \item[(iii)] $h_{Q}^{\epsilon}$ is constant on each
+            $R\in\mathcal{H}(Q)$;
+        \item[(iv)] $\int_{\mathbb{R}_+^{n+1}} h_{Q}^{\epsilon}(x)\, dm_\lambda(x)= 0$ (cancellation);
+        \item[(v)] $\langle h_{Q}^{\epsilon},h_{Q}^{\epsilon'}\rangle = 0$ for
+            $\epsilon \neq \epsilon'$, $\epsilon$, $\epsilon'\in\{1, \ldots, M_Q - 1\}$;
+        \item[(vi)] the collection
+            $
+                \big\{m_\lambda(Q)^{-1/2}\chi_Q\big\}
+                \cup \{h_{Q}^{\epsilon} : \epsilon = 1, \ldots, M_Q - 1\}
+            $
+            is an orthogonal basis for the vector
+            space~$V(Q)$ of all functions on $Q$ that are
+            constant on each sub-interval $R\in\mathcal{H}(Q)$;
+        \item[(vii)] %for $u = 1$, \ldots, $M_ - 1$,
+        if $h_{Q}^{\epsilon}\not\equiv 0$ then
+            $
+                \Norm{h_{Q}^{\epsilon}}{L^p(\mathbb{R}_+^{n+1},dm_\lambda)}
+                \approx m_\lambda(Q)^{\frac{1}{p} - \frac{1}{2}}
+                \quad \text{for}~1 \leq p \leq \infty;
+            $
+        \item[(viii)] %for $u = 1$, \ldots, $M_Q - 1$,
+                \hspace{4cm}
+                $\Norm{h_{Q}^{\epsilon}}{L^1(\mathbb{R}_+^{n+1},dm_\lambda)}\cdot
+                \Norm{h_{Q}^{\epsilon}}{L^\infty(\mathbb{R}_+^{n+1},dm_\lambda)} \approx 1$.
+    \end{itemize}
+\end{lemma}
+%As stated in \cite{KLPW}, we also have $h_Q^0:= |Q|^{-1/2}1_Q$ which is a non-cancellative Haar function.
+%Moreover, the martingale associated with the Haar functions are as follows: for $Q \in \mathcal{D}_k$,
+%$$ \mathbb{E}_Qf = \langle f,h_Q^0\rangle h_Q^0
+%%\quad \mathbb{D}_Qf = \sum_{\epsilon=1}^{M_Q-1} \langle f,h_{Q}^{\epsilon}\rangle h_{Q}^{\epsilon}
+%\quad {\rm and}\quad
+%\mathbb{D}_Qf =\sum_{\epsilon=1}^{M_Q-1} \mathbb{D}_{Q}^{\epsilon}f, $$
+%where $\mathbb{D}_{Q}^{\epsilon}=\langle f,h_{Q}^{\epsilon}\rangle h_{Q}^{\epsilon}$ is the martingale operator associated with the $\epsilon$-th subcube of $Q$. Also we have
+%$$
+%   \mathbb{E}_kf =\sum_{Q\in \mathcal{D}_k}\mathbb{E}_Qf \quad{\rm and} \quad \mathbb{D}_kf = \mathbb{E}_{k+1}f- \mathbb{E}_kf.
+%$$
+%Hence, based on the construction of Haar system $\{h_Q^{\epsilon}\}$ in \cite{KLPW} we obtain that for each $R\in\mathcal D$,
+%\begin{align*}%\label{e1}
+%\sum_{Q:\ R\subset Q} \sum_{\epsilon=1}^{M_{Q}-1} \langle f, h_Q^{\epsilon}\rangle h_Q^{\epsilon} h_R^\eta= \sum_{Q:\ R\subset Q} \mathbb{D}_Qf\cdot h_R^{\eta}
+%= \mathbb{E}_Rf\cdot h_R^{\eta} = \langle f,h_R^0\rangle h_R^0h_R^{\eta}.
+%\end{align*}
+\subsection{Basic estimates of the Bessel Riesz transform kernel}
+Denote by $K_{\lambda,\ell}(x,y)$ the kernel of the $\ell$-th Riesz transform $R_{\lambda,\ell}$.
+%The following Lemma says that the Riesz transform associated with the Bessel operator is a Calder\'{o}n-Zygmund operator.
+%\begin{lemma}\label{CZO}
+%For any $\ell\in\{1,2,\ldots,n+1\}$, the kernel $K_{\lambda,\ell}(x,y)$ satisfies the following size condition and smoothness condition:
+%\begin{align*}
+%|K_{\lambda,\ell}(x,y)|\leq \frac{C}{m_\lambda(B(x,|x-y|))},
+%\end{align*}
+%and
+%\begin{align*}
+%|K_{\lambda,\ell}(x,y)-K_{\lambda,\ell}(x^{\prime},y)|+|K_{\lambda,\ell}(y,x)-K_{\lambda,\ell}(y,x^{\prime})|\leq \frac{C}{m_\lambda(B(x,|x-y|))}\frac{|x-x^{\prime}|}{|x-y|}
+%\end{align*}
+%for $x$, $x^\prime$, $y\in\mathbb{R}_+^{n+1}$ satisfying $|x-x^{\prime}|\leq \frac{1}{2}|x-y|$.
+%\end{lemma}
+%\begin{proof}
+%%The proof was given in \cite[Theorem 2.2]{MR3176917}.
+%\end{proof}
+%\begin{lemma}\label{nondegenerate}
+%For any $\ell=1,2,\ldots,n$, the kernel $K_{\ell}(x,y)$ satisfies the following non-degenerate condition: for every $x\in\mathbb{R}_{+}^{n}$ (resp. $x\in\mathbb{R}_{-}^{n}$) and $r>0$, then there exists an element $y\in (B(x,3r)\backslash B(x,r))\cap \mathbb{R}_{+}^{n}$ (resp. $y\in (B(x,3r)\backslash B(x,r))\cap \mathbb{R}_{-}^{n}$) and a constant $C>0$ such that
+%\begin{align*}
+%|K_{\ell}(x,y)|\geq Cr^{-n}.
+%\end{align*}
+%\end{lemma}
+%\begin{proof}
+%For any $\ell=1,2,\ldots,n$ and $r>0$, if $x=(x_{1},\ldots,x_{n})\in\mathbb{R}_{+}^{n}$, then by choosing $y=x+2re_{\ell}\in\mathbb{R}_{+}^{n}$, we have
+%\begin{align*}
+%|K_{\ell}(x,y)|=C_{n}\left|(2r)^{-n}+\frac{2r}{((2r)^{2}+(2x_{n})^{2})^{\frac{n+1}{2}}}\right|\geq\frac{C_{n}}{2^{n}}r^{-n},\ {\rm for}\ \ell=1,\ldots,n-1
+%\end{align*}
+%and
+%\begin{align*}
+%|K_{n}(x,y)|=C_{n}\left|(2r)^{-n}+(2x_{n}+2r)^{-n}\right|\geq\frac{C_{n}}{2^n}r^{-n}.
+%\end{align*}
+%If $x=(x_{1},\ldots,x_{n})\in\mathbb{R}_{-}^{n}$, then by choosing $y=x-2re_{\ell}\in\mathbb{R}_{-}^{n}$ and following a similar calculation as above, we can finish the proof of Lemma \ref{nondegenerate}.
+%\end{proof}
+%\begin{lemma}\label{sign}
+%For any $\ell\in\{1,2,\ldots,n\}$, there exists a constant $A>0$ such that for any $Q\subset \mathbb{R}_{+}^{n}$ (resp. $Q\subset \mathbb{R}_{-}^{n}$) with center $x_{0}$ and side length $r$, there exists a cube $\hat{Q}\subset \mathbb{R}_{+}^{n}$ (resp. $\hat{Q}\subset \mathbb{R}_{-}^{n}$) with center $y_{0}$ and side length $r$ such that $|x_{0}-y_{0}|= Ar$, and for all $(x,y)\in Q\times\hat{Q}$, $K_{\ell}(x,y)$ does not change sign and satisfies
+%\begin{align*}
+%|K_{\ell}(x,y)|\geq CA^{-n}r^{-n},
+%\end{align*}
+%for some constant $C>0$.
+%\end{lemma}
+%\begin{proof}
+%Let $A$ be a sufficient large number and $Q\subset \mathbb{R}_{+}^{n}$ be any cube  with center $x_{0}=(x^{(1)},\ldots,x^{(n)})\in\mathbb{R}_{+}^{n}$ and side length $r$. For any $\ell=1,2,\ldots, n$, we denote $y_{0}=x_{0}+Are_{\ell}\in\mathbb{R}_{+}^{n}$, then
+%\begin{align*}
+%|K_{\ell}(x_{0},y_{0})|=C_{n}\left|(Ar)^{-n}+\frac{Ar}{((Ar)^{2}+(2x^{(n)})^{2})^{\frac{n+1}{2}}}\right|\geq C_{n}A^{-n}r^{-n},\ {\rm for}\ \ell=1,\ldots,n-1
+%\end{align*}
+%and
+%\begin{align*}
+%|K_{n}(x_{0},y_{0})|=C_{n}\left|(Ar)^{-n}+(2x^{(n)}+Ar)^{-n}\right|\geq A^{-n}r^{-n}.
+%\end{align*}
+%
+%%there exists a point $y_{0}\in (B(x_{0},3Ar)\backslash B(x_{0},Ar))\cap \mathbb{R}_{+}^{n}$ and a constant $c_{0}>0$ such that
+%%\begin{align*}
+%%|K(x_{0},y_{0})|\geq \frac{c_{0}}{A^{n}r^{n}}.
+%%\end{align*}
+%Let $\hat{Q}$ be a cube with center $y_{0}$ and side length $r$. Since $Q\subset \mathbb{R}_{+}^{n}$, we see that $\hat{Q}\subset \mathbb{R}_{+}^{n}$.
+%By Lemma \ref{CZO}, for any $x\in Q$ and $y\in \hat{Q}$, we have
+%\begin{align*}
+%|K_{\ell}(x,y)-K_{\ell}(x_{0},y_{0})|&\leq |K_{\ell}(x,y)-K_{\ell}(x,y_{0})|+|K_{\ell}(x,y_{0})-K_{\ell}(x_{0},y_{0})|\\
+%&\leq C\frac{|y-y_{0}|}{|x-y|^{n+1}}+C\frac{|x-x_{0}|}{|x_{0}-y_{0}|^{n+1}}\\
+%&\leq C\frac{\sqrt{n}r}{((2A-1)r)^{n+1}}+C\frac{\sqrt{n}r}{(2Ar)^{n+1}}\\
+%&\leq \frac{C_{n}}{2}A^{-n}r^{-n},
+%\end{align*}
+%where in the last inequality we used the fact that $A$ is a sufficient large constant.
+%
+%If $K_{\ell}(x_{0},y_{0})>0$, then
+%\begin{align*}
+%K_{\ell}(x,y)&=K_{\ell}(x_{0},y_{0})-(K_{\ell}(x_{0},y_{0})-K_{\ell}(x,y))\geq K_{\ell}(x_{0},y_{0})-|K_{\ell}(x,y)-K_{\ell}(x_{0},y_{0})|\\
+%&\geq C_{n}A^{-n}r^{-n}-\frac{C_{n}}{2^{n+1}}A^{-n}r^{-n}=\frac{C_{n}}{2}A^{-n}r^{-n}.
+%\end{align*}
+%
+%If $K_{\ell}(x_{0},y_{0})<0$, then
+%\begin{align*}
+%K_{\ell}(x,y)&=K_{\ell}(x_{0},y_{0})-(K_{\ell}(x_{0},y_{0})-K_{\ell}(x,y))\leq K_{\ell}(x_{0},y_{0})+|K_{\ell}(x,y)-K_{\ell}(x_{0},y_{0})|\\
+%&\leq -C_{n}A^{-n}r^{-n}+\frac{C_{n}}{2}A^{-n}r^{-n}=-\frac{C_{n}}{2}A^{-n}r^{-n}.
+%\end{align*}
+%
+%Similarly, if $Q\subset \mathbb{R}_{-}^{n}$ be any cube  with center $x_{0}=(x^{(1)},\ldots,x^{(n)})\in\mathbb{R}_{-}^{n}$ and side length $r$, then for any $\ell=1,2,\ldots, n$, by choosing $y_{0}=x_{0}-Are_{\ell}\in\mathbb{R}_{-}^{n}$ and following a similar calculation as above, we can also show that $K_{\ell}(x,y)$ does not change sign for all $(x,y)\in Q\times\hat{Q}$. This ends the proof of Lemma \ref{sign}.
+%\end{proof}
+The following Lemma establishes an non-degenerate lower bound of Riesz transform kernel associated with Bessel operator, which can be regarded as a suitable substitution of homogeneity in the case of classical Euclidean Riesz transform kernel.
+\begin{lemma}\label{sign}
+Given $\ell\in\{1,2,\ldots,n+1\}$ and a
+system of dyadic cubes $\mathcal{D}
+    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}$ on $\mathbb{R}_+^{n+1}$ with parameter $\delta\in (0,1)$. Then there exists a constant  $A>0$ such that for any $Q\in \ \mathcal{D}_{k}$ with center $x_{0}$ and satisfying $Q\subset \mathbb{R}_{+}^{n+1}$, one can find a ball $\hat{Q}:=B_{\mathbb{R}_{+}^{n+1}}(y_0,\frac{1}{12}\delta^k)\subset \mathbb{R}_{+}^{n+1}$ such that $|x_{0}-y_{0}|=A\delta^k$, and for all $(x,y)\in Q\times\hat{Q}$, $K_{\lambda,\ell}(x,y)$ does not change sign and satisfies
+\begin{align*}
+|K_{\lambda,\ell}(x,y)|\geq \frac{C}{m_\lambda(Q)}
+\end{align*}
+for some constant $C>0$.
+\begin{proof}
+
+\end{proof}
+%
+%There exists a constant $A>0$ such that for any $I\in \mathcal{D}_{k}$ with center $x_{0}$, there exists a {\color{blue}ball $\hat{I}:=I(y_0,\frac{1}{12}\delta^k)\subset \mathbb{R}_+^{n+1}$} such that $|x_{0}-y_{0}|= A\delta^k$, and for all $(x,y)\in I\times\hat{I}$, $K_{\lambda}(x,y)$ does not change sign and satisfies
+%\begin{align*}
+%|K_{\lambda}(x,y)|\geq \frac{C}{m_\lambda(I)}
+%\end{align*}
+%for some constant $C>0$.
+\end{lemma}
+%\begin{proof}
+%Let $A$ be a sufficient large number and $Q\in \mathcal{D}_{k}^{\nu}$ be any interval  with center $x_{0}=(x^{(1)},\ldots,x^{(n)})\in\mathbb{R}_{+}^{n}$ and side length $\delta^k$.
+%Recall from Section \ref{sec:dyadic_cubes} that $Q\subseteq B_{\mathbb{R}_{\pm}^n}(x_0,4\delta^k)$.
+%For any $\ell\in\{1,2,\ldots, n\}$, we choose $y_{0}=x_{0}+A\delta^{k}e_{\ell}\in\mathbb{R}_{+}^{n}$, then
+%\begin{align*}
+%|K_{\ell}(x_{0},y_{0})|=C_{n}\left|(A\delta^{k})^{-n}+\frac{A\delta^{k}}{((A\delta^{k})^{2}+(2x^{(n)})^{2})^{\frac{n+1}{2}}}\right|\geq C_{n}A^{-n}\delta^{-kn},\ {\rm for}\ \ell=1,\ldots,n-1
+%\end{align*}
+%and
+%\begin{align*}
+%|K_{n}(x_{0},y_{0})|=C_{n}\left|(A\delta^{k})^{-n}+(2x^{(n)}+A\delta^{k})^{-n}\right|\geq A^{-n}\delta^{-kn}.
+%\end{align*}
+%
+%%there exists a point $y_{0}\in (B(x_{0},3Ar)\backslash B(x_{0},Ar))\cap \mathbb{R}_{+}^{n}$ and a constant $c_{0}>0$ such that
+%%\begin{align*}
+%%|K(x_{0},y_{0})|\geq \frac{c_{0}}{A^{n}r^{n}}.
+%%\end{align*}
+%{\color{red}Let $\hat{Q}:=B_{\mathbb{R}_{\pm}^n}(y_0,\frac{1}{12}\delta^k)$}.
+%By Lemma \ref{CZO}, for any $x\in Q$ and $y\in \hat{Q}$, we have
+%\begin{align*}
+%|K_{\ell}(x,y)-K_{\ell}(x_{0},y_{0})|&\leq |K_{\ell}(x,y)-K_{\ell}(x,y_{0})|+|K_{\ell}(x,y_{0})-K_{\ell}(x_{0},y_{0})|\\
+%&\leq C\frac{|y-y_{0}|}{|x-y|^{n+1}}+C\frac{|x-x_{0}|}{|x_{0}-y_{0}|^{n+1}}\\
+%%&\leq C\frac{\delta^{k}}{((A-4-c)\delta^{k})^{n+1}}+4C\frac{\delta^{k}}{(A\delta^{k})^{n+1}}\\
+%&\leq \frac{C_{n}}{2}A^{-n}\delta^{-kn},
+%\end{align*}
+%where in the last inequality we used the fact that $A$ is a sufficiently large constant.
+%
+%If $K_{\ell}(x_{0},y_{0})>0$, then
+%\begin{align*}
+%K_{\ell}(x,y)&=K_{\ell}(x_{0},y_{0})-(K_{\ell}(x_{0},y_{0})-K_{\ell}(x,y))\geq K_{\ell}(x_{0},y_{0})-|K_{\ell}(x,y)-K_{\ell}(x_{0},y_{0})|\\
+%&\geq C_{n}A^{-n}\delta^{-kn}-\frac{C_{n}}{2}A^{-n}\delta^{-kn}=\frac{C_{n}}{2}A^{-n}\delta^{-kn}.
+%\end{align*}
+%
+%If $K_{\ell}(x_{0},y_{0})<0$, then
+%\begin{align*}
+%K_{\ell}(x,y)&=K_{\ell}(x_{0},y_{0})-(K_{\ell}(x_{0},y_{0})-K_{\ell}(x,y))\leq K_{\ell}(x_{0},y_{0})+|K_{\ell}(x,y)-K_{\ell}(x_{0},y_{0})|\\
+%&\leq -C_{n}A^{-n}\delta^{-kn}+\frac{C_{n}}{2}A^{-n}\delta^{-kn}=-\frac{C_{n}}{2}A^{-n}\delta^{-kn}.
+%\end{align*}
+%
+%This ends the proof of Lemma \ref{sign}.
+%\end{proof}
+%\begin{definition}
+%A sequence $\{f_{n}\}\subset L^{2}(\mathbb{R}^{n})$ is a called a frame for $L^{2}(\mathbb{R}^{n})$ if there exist positive constants $C_{1}$ and $C_{2}$ such that
+%\begin{align*}
+%C_{1}\|f\|_{2}^{2}\leq \sum_{n=1}^{\infty}|\langle f,f_{n}\rangle|^{2}\leq C_{2}\|f\|_{2}^{2}
+%\end{align*}
+%for all $f\in L^{2}(\mathbb{R}^{n})$.
+%\end{definition}
+%
+%\begin{lemma}\label{criterion1}
+%Suppose $T$ is a compact operator on $L^{2}(\mathbb{R}^{n})$ and $2\leq p<\infty$. Then the following conditions are equivalent:
+%
+%${\rm (1)}$ $T\in S^{p}$;
+%
+%${\rm (2)}$ $\{\|Te_{k}\|_{2}\}\in \ell^{p}$ for every orthonormal basis $\{e_{k}\}$ in $L^{2}(\mathbb{R}^{n})$;
+%
+%${\rm (3)}$ $\{\|Tf_{k}\|_{2}\}\in \ell^{p}$ for every frame $\{f_{k}\}$ in $L^{2}(\mathbb{R}^{n})$.
+%\end{lemma}
+%\begin{proof}
+%The proof is given in \cite{HKZ}.
+%\end{proof}
+%\begin{lemma}\label{criterion2}
+%Suppose $T$ is a compact operator on $L^{2}(\mathbb{R}^{n})$ and $1\leq p<\infty$. Then the following conditions are equivalent:
+%
+%${\rm (1)}$ $T\in S^{p}$;
+%
+%${\rm (2)}$ $\{|\langle Te_{k},f_{k} \rangle|\}\in \ell^{p}$ for all choices of orthonormal basis $\{e_{k}\}$ and $\{f_{k}\}$ in $L^{2}(\mathbb{R}^{n})$;
+%\end{lemma}
+%\begin{proof}
+%The statement is well-known (see for example \cite{Simon}).
+%\end{proof}
+%The Schatten norm is defined in a non-linear fashion. Estimating it above, and below, is not necessarily straight forward.
+%Operators with kernels, such as commutators, admit general upper bounds in terms of norms on the kernels.
+%These general facts are recalled, and used, in ???.
+%
+%Characterizations of Schatten norms for general operators are well known, and frequently expressed in terms of
+%supremums, or infimums, over all choices of orthonormal bases for the Hilbert space in question.
+
+
+%\begin{definition}
+%We say that $\alpha_{Q}(f)$ is a median value of a real-valued measurable function $f$ over $Q$ if $\alpha_{Q}(f)$ is a real number such that
+%\begin{align*}
+%|\{x\in Q:f(x)>\alpha_{Q}(f)\}|\leq\frac{1}{2}|Q|\ \ {\rm and}\ \ |\{x\in Q:f(x)<\alpha_{Q}(f)\}|\leq\frac{1}{2}|Q|.
+%\end{align*}
+%\end{definition}
+%It is known that for a given measurable function $f$ and cube $Q$, the median value $\alpha_{Q}(f)$ exists and may not be unique (see for example \cite{Journe}).
+
+\section{The proof of necessary condition when $p>n+1$}
+
+This section is devoted to showing that $b\in B_{p,p}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda)$ under the assumption $[b,R_{\lambda,\ell}]\in S_\lambda^{p}$ for some $p>n+1$ and $\ell\in\{1,2,...,n+1\}$.
+
+To begin with,
+%for any $\nu\in\mathbb{R}_{\pm}^{n}$, we let $\mathbb{R}_{\pm,\nu}^{n}$ be the translation of half-plane in the $\nu$ direction, that is,
+%$$\mathbb{R}_{\pm,\nu}^{n}:=\{x+\nu:x\in\mathbb{R}_{\pm}^{n}\}.$$
+%{\color{red}(remark)}Then we let $\mathcal{D}_{k,+}^{\nu}$ (resp. $\mathcal{D}_{k,-}^{\nu}$) be the dyadic partition of $\mathbb{R}_{+,\nu}^{n}$ (resp. $\mathbb{R}_{-,\nu}^{n}$) into standard dyadic cubes $Q$ of the form $[(a_{1}+\nu_{1})2^{k},(a_{1}+\nu_{1}+1)2^{k})\times [(a_{2}+\nu_{2})2^{k},(a_{2}+\nu_{2}+1)2^{k})\times\ldots\times [(a_{n}+\nu_{n})2^{k},(a_{n}+\nu_{n}+1)2^{k}) $, where each $a_{i}$ is a non-negative (resp. non-positive) integer, $i=1,2,\ldots,n$. Next, let $\mathcal{D}_{\pm}^{\nu}:=\bigcup_{k\in\mathbb{Z}}\mathcal{D}_{k,\pm}^{\nu}$ be a system of dyadic cubes such that for any $k\in\mathbb{Z}$,
+%$$\mathbb{R}_{\pm,\nu}^{n}=\bigcup_{Q\in\mathcal{D}_{k,\pm}^{\nu}}Q.$$
+given a
+system of dyadic cubes $\mathcal{D}
+    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}$ with parameter $\delta\in(0,1)$ over $\mathbb{R}_+^{n+1}$, we define the conditional expectation of locally integrable function $f$ by the expression: $$E_{k}(f)(x)=\sum_{\substack{Q\in \mathcal{D}_{k}\\Q\subseteq \mathbb{R}_+^{n+1}}}(f)_{Q}\chi_{Q}(x),\ x\in \mathbb{R}_+^{n+1},$$
+where we denote by $(f)_{Q}$ the average of $f$ over $Q$, that is, $$(f)_{Q}:=\fint_{Q}f(x)dm_\lambda(x):=\frac{1}{m_\lambda(Q)}\int_{Q}f(x)dm_\lambda(x).$$
+
+For any $Q\in \mathcal{D}_{k}$, we let $h_{Q}^{1}$, $h_{Q}^{2},\ldots, h_{Q}^{M_Q-1}$ be a family of Haar functions associated to $Q$ and then, we choose $h_{Q}$ among these Haar functions such that $\left|\int_{Q}b(x)h_{Q}^{\epsilon}(x)\,dm_\lambda(x)\right|$ is maximal with respect to $\epsilon\in\{1,2,\ldots,M_Q-1\}$. Observe that the function $(E_{k+1}(b)(x)-E_{k}(b)(x))\chi_Q(x)$ is a sum of $M_Q-1$ Haar functions, which implies the following inequality:
+\begin{align}\label{tttt1}
+\left(\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}\,dm_\lambda(x)\right)^{1/p}
+%&\leq C|T|^{-1/p}\left\|\sum_{\epsilon=1}^{M_n-1}\langle f,h_{T}^{\epsilon} \rangle h_{T}^{\epsilon}\right\|_{p}\nonumber\\
+%&\leq C|T|^{-1/p}\left\|\left(\sum_{k\in\mathbb{Z}}\left|\sum_{P\in\tile_{-k+1}}\sum_{\nu=1}^{M_{n}-1}\left\langle \sum_{\epsilon=1}^{M_n-1}\langle f,h_{T}^{\epsilon} \rangle h_{T}^{\epsilon},h_{P}^{\nu}\right\rangle h_{P}^{\nu}\right|^{2}\right)^{1/2}\right\|_{p}\nonumber\\
+%&\leq C|T|^{-1/p}\left\|\sum_{\epsilon=1}^{M_n-1}\langle f,h_T^{\epsilon} \rangle h_T^{\epsilon}\right\|_{p}\nonumber\\
+&\leq C  m_\lambda(Q)^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)\,dm_\lambda(x)\right|,
+\end{align}
+where $C$ is a constant only depending on $p$ and $n$.
+
+\begin{lemma}\label{step1}
+Given a
+system of dyadic cubes $\mathcal{D}
+    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}$ with parameters $\delta\in(0,1)$.  Let $1<p<\infty$ and suppose that $b\in L_{{\rm loc}}^1(\mathbb{R}_{+}^{n+1})$  satisfying $\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}<\infty$ for some $\ell\in\{1,2,...,n+1\}$, then there exists a constant $C=C(\delta,\lambda,p)>0$ such that
+    \begin{align} \label{e:step1}
+\sum_{k\in\mathbb{Z}}\sum_{\substack{Q\in\mathcal{D}_{k}\\Q\subseteq \mathbb{R}_+^{n+1}}}\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dm_\lambda(x) \leq C \|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}^p.
+\end{align}
+\end{lemma}
+
+\begin{proof}
+To begin with, we recall from \eqref{tttt1} that
+\begin{align}\label{comcom1}
+%\delta^{-nk}\int_{\mathbb{R}_{\pm}^n}|E_{k+1,\pm}(b)(x)-E_{k,\pm}(b)(x)|^{p}dx
+\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dm_\lambda(x)\leq Cm_\lambda(Q)^{-p/2}\left|\int_{Q}b(x)h_{Q}(x)dm_\lambda(x)\right|^{p}.
+\end{align}
+To continue, for any $Q\in\mathcal{D}_{k}$ with $Q\subseteq \mathbb{R}^{n+1}_+$, let $\hat{Q}$ be the ball chosen in Lemma \ref{sign}, then $K_{\lambda,\ell}(x,y)$ does not change sign and
+\begin{align}\label{lower}
+|K_{\lambda,\ell}(x,y)|\gtrsim\frac{1}{m_\lambda(Q)},
+\end{align}
+for all $(x,y)\in Q\times \hat{Q}$.
+Now we define $\alpha_{S}(f)$ be the median value of $f$ over a given set $S$, which means $\alpha_{S}(f)$ is a real number satisfying
+\begin{align*}
+m_\lambda(\left\{x\in S:f(x)>\alpha_{S}(f)\right\})\leq\frac{1}{2}m_\lambda(S)\ \ {\rm and}\ \ m_\lambda(\left\{x\in S:f(x)<\alpha_{S}(f)\right\})\leq\frac{1}{2}m_\lambda(S).
+\end{align*}
+Recall from \cite{Journe} that median value of a given function always exists, but  may not be unique. Next, we set
+\begin{align}\label{e:E1S}
+E_{1}^{Q}:=\left\{x\in Q:b(x)\leq\alpha_{\hat{Q}}(b)\right\}\ \ {\rm and}\ \
+E_{2}^{Q}:=\left\{x\in Q:b(x)>\alpha_{\hat{Q}}(b)\right\}.
+\end{align}
+%\begin{align} \label{e:E1S}
+%E_{1}^{S}:=\left\{x\in S:b(x) < \alpha_{S}(b)\right\}\ \ {\rm and}\ \
+%E_{2}^{S}:=\left\{x\in S:b(x)>\alpha_{S}(b)\right\},
+%\end{align}
+%we have, with $ S= \hat Q $,   the upper bound $  \lvert  E ^{\hat Q} _{j}\rvert \leq \tfrac{1}2 \lvert  \hat  Q\rvert  $ for $ j=1,2$.
+
+
+
+
+Next we decompose $Q$ into a union of disjoint sub-cubes by writing $Q=\bigcup_{i=1}^{M_Q}P_{i}$ with $P_{i}\in\mathcal{D}_{k+1}$ and $P_{i}\subseteq Q$.
+Applying the cancellation property of $h_{Q}$, we deduce that
+\begin{align}\label{comcom2}
+&m_\lambda(Q)^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dm_\lambda(x)\right|\nonumber\\
+&=m_\lambda(Q)^{-1/2}\left|\int_{Q}(b(x)-\alpha_{\hat{Q}}(b))h_{Q}(x)\,dm_\lambda(x)\right|\nonumber\\
+&\leq \frac{1}{m_\lambda(Q)}\int_{Q}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dm_\lambda(x)\nonumber\\
+&\leq \frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\int_{P_{i}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dm_\lambda(x)\nonumber\\
+&\leq \frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\int_{P_{i}\cap E_{1}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dm_\lambda(x)+ \frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\int_{P_{i}\cap E_{2}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dm_\lambda(x)\nonumber\\
+&=:{\rm A}_{1}^{Q}+{\rm A}_{2}^{Q}.
+\end{align}
+%Above, we are using the notation \eqref{e:E1S}.
+
+Now we denote
+\begin{align*}
+F_{1}^{Q}:=\{{\hat x}\in \hat{Q}:b({\hat x})\geq\alpha_{\hat{Q}}(b)\}\ \ {\rm and}\ \
+F_{2}^{Q}:=\{{\hat x}\in \hat{Q}:b({\hat x})\leq\alpha_{\hat{Q}}(b)\}.
+\end{align*}
+Then the definition of $\alpha_{\hat{Q}}(b)$ implies that $m_\lambda(F_{1}^{Q})=m_\lambda(F_{2}^{Q})\sim m_\lambda(\hat{Q})$ and $F_{1}^{Q}\cup F_{2}^{Q}=\hat{Q}$. Furthermore, for $s=1,2$, if $x\in E_{s}^{Q}$ and $y\in F_{s}^{Q}$, then
+\begin{align*}
+\left|b(x)-\alpha_{\hat{Q}}(b)\right|&\leq\left|b(x)-\alpha_{\hat{Q}}(b)\right|+\left|\alpha_{\hat{Q}}(b)-b(y)\right|\\
+&=\left|b(x)-\alpha_{\hat{Q}}(b)+\alpha_{\hat{Q}}(b)-b(y)\right|= \left|b(y)-b(x)\right|.
+\end{align*}
+This implies that, for $ s=1,2$,
+\begin{align}\label{haha}
+{\rm A}_{s}^{Q}&\lesssim \frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\int_{P_{i}\cap E_{s}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dm_\lambda(x)\frac{m_\lambda(F_{s}^{Q})}{m_\lambda(Q)}\nonumber\\
+&\lesssim \frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\int_{P_{i}\cap E_{s}^{Q}}\int_{F_{s}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|\left|K_{\lambda,\ell}(x,y)\right|dm_\lambda(y)dm_\lambda(x)\nonumber\\
+&\lesssim \frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\int_{P_{i}\cap E_{s}^{Q}}\int_{F_{s}^{Q}}\left|b(y)-b(x)\right|\left|K_{\lambda,\ell}(x,y)\right|dm_\lambda(y)dm_\lambda(x)\nonumber\\
+&=\frac{1}{m_\lambda(Q)}\sum_{i=1}^{M_Q}\left|\int_{P_{i}\cap E_{s}^{Q}}\int_{F_{s}^{Q}}(b(y)-b(x))K_{\lambda,\ell}(x,y)dm_\lambda(y)dm_\lambda(x)\right|,
+\end{align}
+where in the last equality we used the fact that $K_{\lambda,\ell}(x,y)$ and $b(y)-b(x)$ do not  change sign for $(x,y)\in (P_{i}\cap E_{s}^{Q})\times F_{s}^{Q}$, $s=1,2$. This, in combination with the inequalities \eqref{comcom1} and \eqref{comcom2}, implies that
+\begin{align}\label{eee ortho S norm}
+\sum_{\substack{Q\in\mathcal{D}_{k}\\Q\subseteq \mathbb{R}_+^{n+1}}}m_\lambda(Q)^{-p/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|^{p}
+& \lesssim  \sum_{s=1}^{2}\sum_{\substack{Q\in \mathcal{D}_{k}\\Q\subseteq \mathbb{R}_+^{n+1}}}\left|{\rm A}_{s}^{Q}\right|^{p}
+\nonumber\\
+&\lesssim  \sum_{s=1}^{2}\sum_{\substack{Q\in \mathcal{D}_{k}\\Q\subseteq \mathbb{R}_+^{n+1}}}\left(\sum_{i=1}^{M_Q}\left|\left\langle[b,R_{\lambda,\ell}] \frac{m_\lambda(P_{i})^{1/2}
+\chi_{F_{s}^{Q}}}{m_\lambda(Q)},\frac{\chi_{P_i\cap E_{s}^{Q}}}{m_\lambda(P_{i})^{1/2}}\right\rangle\right|\right)^{p}.
+\end{align}
+Note that the functions $e_Q:=\frac{m_\lambda(P_{i})^{1/2}
+\chi_{F_{s}^{Q}}}{m_\lambda(Q)} \subset \hat Q$ and $f_Q:=\frac{\chi_{P_i\cap E_{s}^{Q}}}{m_\lambda(P_{i})^{1/2}} \subset Q$ satisfy
+$|e_Q|, |f_Q|\leq Cm_\lambda(Q)^{-{1\over2}}\chi_{cQ} $, where $C$ and $c$ are absolute constants independent of $Q$.
+Summing this last inequality over $ k\in \mathbb Z $ and then using \eqref{e:NWO}, we finish the proof of   Lemma \ref{step1}.
+\end{proof}
+%{\color{red}The following corollary shows that the martingale Besov norm of $b$ is dominated by $C\|[b,R_{N,\ell}]\|_{S^p}$.}
+%\begin{coro}\label{direct}
+%Given a
+%system of dyadic cubes $\mathcal{D}
+%    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}$ with parameter $\delta\in (0,1)$. Let $1< p<\infty$ and suppose that $b\in L_{\rm loc}^1(\mathbb{R}_+^{n+1})$ satisfying $\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}<\infty$ for some $\ell\in\{1,2,\ldots,n+1\}$, then there exists a constant $C>0$ such that
+%\begin{align}
+%\sum_{k\in\mathbb{Z}}\delta^{-nk}\| E _{k+1,\pm}(b) -E_{k,\pm}(b)\|_{L^p(\mathbb{R}_{\pm}^{n})} ^{p} \leq C \|[b,R_{N,\ell}]\|_{S^p} ^{p}.
+%\end{align}
+%\end{coro}
+%\begin{proof}
+%It is a direct consequence of Lemma \ref{step1} by taking $h=0$ and noting that for any $x\in Q\in \mathcal{D}_{k,\pm}$, one has $E _{k,\pm}(b)(x)=E _{k,0}(b)(x)$. This ends the proof of Corollary \ref{direct}.
+%%\begin{align}
+%%\delta^{-nk}\int_{\mathbb{R}_{\pm}^n}|E_{k+1,\pm}(b)(x)-E_{k,\pm}(b)(x)|^{p}dx
+%%&=\sum_{Q\in\mathcal{D}_{k,\pm}}\fint_{Q}|E_{k+1,\pm}(b)(x)-E_{k,\pm}(b)(x)|^{p}dx\nonumber\\
+%%&=\sum_{Q\in\mathcal{D}_{k,\pm}}\fint_{Q}|E_{k+1,0}(b)(x)-E_{k,0}(b)(x)|^{p}dx .
+%%\end{align}
+%\end{proof}
+
+This is an immediate corollary.
+
+\begin{coro}\label{p:step1}
+Given a
+system of dyadic cubes $\mathcal{D}
+    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}$ with parameters $\delta\in(0,1)$.  Let $1<p<\infty$ and suppose that $b\in L_{{\rm loc}}^1(\mathbb{R}_{+}^{n+1})$  satisfying $\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}<\infty$ for some $\ell\in\{1,2,...,n+1\}$, then there exists a constant $C=C(\delta,\lambda,p)>0$ such that for any $k\in\mathbb{Z}$,
+\begin{align} \label{e:step11}
+\left(\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k}))}dm_\lambda(x)\right)^{1/p}\leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}.
+\end{align}
+\end{coro}
+
+\begin{proof}
+It follows from Lemma \ref{thm:convergence} that $E_{k}(b)\rightarrow b$ a.e. as $k\rightarrow \infty$. Moreover, we note that if $x\in Q\in\mathcal{D}_{k}$, then by the doubling inequality \eqref{Cmu0},
+$$m_\lambda(Q)\simeq m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k})).$$ This, in combination with Lemma~\ref{step1}, implies that for any $k\in\mathbb{Z}$,
+\begin{align*}
+\left(\int_{\mathbb{R}_{+}^{n+1}}\frac{|E_{k+1}b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k}))}dm_\lambda(x)\right)^{1/p}\leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}.
+\end{align*}
+This, in combination with the doubling inequality \eqref{doub}, yields
+\begin{align*}
+\left(\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k}))}dm_\lambda(x)\right)^{1/p}
+&\leq \sum_{j\geq k}\left(\int_{\mathbb{R}_{+}^{n+1}}\frac{|E_{j+1}b(x)-E_{j}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k}))}dm_\lambda(x)\right)^{1/p}\\
+&\leq \sum_{j\geq k}{\delta^{\frac{(n+1)(j-k)}{p}}}\left(\int_{\mathbb{R}_{+}^{n+1}}\frac{|E_{j+1}b(x)-E_{j}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{j}))}dm_\lambda(x)\right)^{1/p}\\
+&\leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}.
+\end{align*}
+This ends the proof of Lemma \ref{p:step1}.
+\end{proof}
+
+\begin{lemma}\label{step2}
+Given a
+system of dyadic cubes $\mathcal{D}
+    := \cup_{k\in\mathbb{Z}}\mathcal{D}_{k}$ with parameter $\delta\in(0,1)$. Let $1<p<\infty$ and suppose that $b\in L_{{\rm loc}}^1(\mathbb{R}_{+}^{n+1})$  satisfying $\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}<\infty$ for some $\ell\in\{1,2,...,n+1\}$, then  there exists a constant $C=C(\delta,\lambda,p)>0$ such that
+\begin{align}\label{eee Besov type}
+\left(\sum_{k\in\mathbb{Z}}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}&\leq C  \|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p}}.
+\end{align}
+\end{lemma}
+\begin{proof}
+It suffices to show that
+\begin{align}
+\left(\sum_{k=L}^M\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}&\leq C  \|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p}}
+\end{align}
+for some constant $C>0$ independent of $L<M\in\mathbb{N}$. To show this inequality, we denote by $\mathfrak J$ the term in the left-hand side above and then observe that
+\begin{align*}
+\mathfrak J&\leq \left(\sum_{k=L}^M\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k+1}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}+\left(\sum_{k=L}^M\int_{\mathbb{R}_{+}^{n+1}}\frac{|E_{k+1}b(x)-E_{k}b(x)|^{p}}{m_\lambda(Q(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}\\
+&=\left(\sum_{k=L+1}^{M+1}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k}))}dm_\lambda(x)\right)^{1/p}+\left(\sum_{k=L}^M \int_{\mathbb{R}_{+}^{n+1}}\frac{|E_{k+1}b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}\\
+%&\leq \delta^{n/p}\left(\sum_{k\in\mathbb{Z}}\delta^{-nk}\|b-E_{k,\pm}^\nu(b)\|_{L^p(\mathbb{R}_{\pm}^{n})}^{p}\right)^{1/p}\\
+%+(2n+1)^{(2n+2)M/p}\|b-E_{M+1}(b)\|_{p}\\
+%&\quad
+%+\left(\sum_{k=L}^M\int_{\mathbb{R}_{+}}\frac{|E_{k+1}b(x)-E_{k}b(x)|^{p}}{m_\lambda(I(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}\\
+&=: {\textup{Term}_{1}}+{\textup{Term}_{2}}. %+{\textup{Term}_{3}}.
+\end{align*}
+By Lemma~\ref{step1}, $ {\textup{Term}_{2}}$ is bounded by the required norm. Moreover, it follows from Corollary \ref{p:step1} and inequality \eqref{doub} that ${\textup{Term}_{1}}$ is dominated by
+\begin{align}\label{righ}
+&\left(\sum_{k=L}^{M}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k}))}dm_\lambda(x)\right)^{1/p}+\left(\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{M+1}b(x)|^{p}}{m_\lambda(Q(x,\delta^{M+1}))}dm_\lambda(x)\right)^{1/p}\nonumber\\
+&\leq {\delta^{\frac{n+1}{p}}} \left(\sum_{k=L}^{M}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x)\right)^{1/p}+C_p\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}.
+\end{align}
+Since the first term of the right-hand side in \eqref{righ} can be absorbed into $ \mathfrak J$, we finish the proof of Lemma \ref{step2}.
+  \end{proof}
+
+\begin{proposition}\label{schattenlarge1}
+Let $1<p<\infty$ and suppose that $b\in L_{\rm loc}^1(\mathbb{R}_{+}^{n+1})$  satisfying $\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}<\infty$ for some $\ell\in\{1,2,...,n+1\}$, then there exists a constant $C=C(\lambda,p)>0$ such that
+\begin{align*}
+\|b\|_{B_{p,p}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda)}\leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^p}.
+\end{align*}
+\end{proposition}
+\begin{proof}
+By the definition, we need to show
+\begin{align}\label{justify}
+\int_{\mathbb{R}_{+}^{n+1}}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|))^{2}}dm_\lambda(x)dm_\lambda(y)\lesssim \|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p}}^p.
+\end{align}
+To this end, we first observe that
+\begin{align*}
+&\int_{\mathbb{R}_{+}^{n+1}}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|))^{2}}dm_\lambda(x)dm_\lambda(y)\\
+&\leq \sum_{k\in\mathbb{Z}}\iint_{\substack{\delta^{k+1}<|x-y|\leq \delta^{k}\\x,y\in\mathbb{R}_{+}^{n+1}}}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|))^{2}}dm_\lambda(x)dm_\lambda(y)\\
+&\leq \sum_{k\in\mathbb{Z}}\iint_{\substack{\delta^{k+1}<|x-y|\leq \delta^{k}\\x,y\in\mathbb{R}_{+}^{n+1}}}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}dm_\lambda(x)dm_\lambda(y).
+\end{align*}
+To estimate the term on the right-hand side,  we first recall from Section \ref{s3ss} that there exists a collection $\{\mathcal{D}^\nu\colon
+    \nu = 1,2,\ldots ,\kappa\}$ of adjacent systems of dyadic cubes on $\mathbb{R}^{n+1}_+$ with
+    parameters $\delta\in (0, \frac{1}{96}) $ and $C_{\rm adj} := 8\delta^{-3}$ such that the properties in Section \ref{s3ss} hold. With these collection of adjacent systems, for any $f\in  L_{\rm loc}^1(\mathbb{R}_+^{n+1})$, we define
+     $$E_{k}^\nu(f)(x)=\sum_{Q\in \mathcal{D}_{k}^\nu}(f)_{Q}\chi_{Q}(x),\ x\in\mathbb{R}_+^{n+1}.$$
+Moreover, we denote by $d(y,Q)$ the distance from a point $y\in\mathbb{R}_+^{n+1}$ to a set $Q$ and the notation $x_0$ to denote the centre of $Q$. Then, we observe that there exists an absolute constant $k_0>0$ such that for any $Q\in \mathcal{D}_{k}^{0}$, the following inclusion holds:
+$$Q_{\delta^{k+1}}:=\{y\in\mathbb{R}_+^{n+1}:d(y,Q)\leq \delta^{k+1}\}\subset B_{\mathbb{R}_+^{n+1}}(x_0,\delta^{k-k_0}),$$
+Next, applying Lemma \ref{thm:existence2} to deduce that there exist $\nu \in \{1, 2, \ldots, \kappa\}$ and
+$Q^{\prime}\in\mathcal{D}_{k-k_0-2}^\nu$  such that
+\begin{equation}\label{eq:ball;included}
+    B_{\mathbb{R}_+^{n+1}}(x,\delta^{k-k_0})\subseteq Q^{\prime}\subseteq B_{\mathbb{R}_+^{n+1}}(x,C_{\rm adj}\delta^{k-k_0}).
+\end{equation}
+Combining with all the above facts, we conclude that
+\begin{align}\label{asdf}
+&\sum_{k\in\mathbb{Z}}\iint_{\substack{\delta^{k+1}<|x-y|\leq \delta^{k}\\x,y\in\mathbb{R}_{+}^{n+1}}}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}dm_\lambda(x)dm_\lambda(y)\nonumber\\
+&\lesssim \sum_{k\in\mathbb{Z}}\sum_{Q\in\mathcal{D}_{k}^{0}}\int_Q\int_{Q_{\delta^{k+1}}}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}dm_\lambda(x)dm_\lambda(y)\nonumber\\
+&\lesssim \sum_{k\in\mathbb{Z}}\sum_{Q\in\mathcal{D}_{k}^{0}}\int_{Q^\prime}\int_{Q^\prime}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}dm_\lambda(x)dm_\lambda(y)\nonumber\\
+&\lesssim \sum_{\nu=1}^{\kappa} \sum_{k\in\mathbb{Z}}\sum_{Q\in\mathcal{D}_{k-k_0-2}^{\nu}}\int_{Q}\int_{Q}\frac{|b(x)-b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}dm_\lambda(x)dm_\lambda(y),
+\end{align}
+where the last inequality applied the fact that each $Q^{\prime}\in \mathcal{D}_{k-k_0-2}^{\nu}$ contains at most $c$ (an absolute constant) $Q\in\mathcal{D}_{k}^{0}$.
+To continue,  we apply the doubling inequality \eqref{Cmu0} to deduce that if $x,y\in Q\in\mathcal{D}_{k-k_0-2}^{\nu}$, then
+$$m_\lambda(Q)\simeq m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))\simeq m_\lambda(B_{\mathbb{R}_+^{n+1}}(y,\delta^{k+1})).$$
+Thus,
+ the right-hand side in \eqref{asdf} is bounded by (up to a harmless constant)
+\begin{align*}
+&\sum_{\nu=1}^{\kappa} \sum_{k\in\mathbb{Z}}\sum_{Q\in\mathcal{D}_{k-k_0-2}^{\nu}}\int_{Q}\int_{Q}\frac{|b(x)-E_{k-k_{0}-2}^{\nu}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}+\frac{|b(y)-E_{k-k_{0}-2}^{\nu}b(y)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))^{2}}dm_\lambda(x)dm_\lambda(y)\\
+&=\sum_{\nu=1}^{\kappa} \sum_{k\in\mathbb{Z}}\sum_{Q\in\mathcal{D}_{k-k_0-2}^{\nu}}\int_{Q}\frac{|b(x)-E_{k-k_{0}-2}^{\nu}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x)\\
+&= \sum_{\nu=1}^{\kappa} \sum_{k\in\mathbb{Z}}\int_{\mathbb{R}_{+}^{n+1}}\frac{|b(x)-E_{k}^{\nu}b(x)|^{p}}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\delta^{k+1}))}dm_\lambda(x).
+\end{align*}
+Applying Lemma \ref{step2} to the last term, we complete the proof of Proposition \ref{schattenlarge1}.
+\end{proof}
+\section{Proof of the sufficient condition}
+At the beginning of this section, we will establish an interpolation theorem for the Bessel-Besov space $B_{p,p}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda)$, which plays a key role in the proof of sufficiency (the upper bound of Theorem \ref{schatten}).
+\begin{lemma}\label{complexinterpolation}
+Let $1<p_1<p<p_2<\infty$ and $0<\theta<1$, then the spaces $B_{p,p}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda)$ and $(B_{p_1,p_1}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda),B_{p_2,p_2}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda))_{\theta_p}$  coincide, with equivalent norms, where $\theta_p$ satisfies $\frac{1-\theta_p}{p_1}+\frac{\theta_p}{p_2}=\frac{1}{p}$.
+\end{lemma}
+\begin{proof}
+Define a quasi-distance function by
+$$d(x,y):=m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|)),\ {\rm for}\ {\rm any}\ x,\,y\in\mathbb{R}_+^{n+1}.$$
+Then it can be verified that $d(x,y)$ is equivalent to the Macias-Segovia distance function given by
+$$\rho(x,y):=\inf\ \{m_\lambda(B):B\ {\rm are}\ {\rm balls}\ {\rm containing}\ x\ {\rm and}\ y\}.$$
+Denote by $B_d(x,r):=\{y\in\mathbb{R}_+^{n+1}:\ d(x,y)<r\}$ the ball in $\mathbb{R}_{+}^{n+1}$ with respect to the distance function $d$. By \cite[Theorems 2 and 3]{MR546295} $(\mathbb{R}_+^{n+1},d,m_\lambda)$ is a $1$-dimensional space of homogeneous type, satisfying $m_\lambda(B_{d}(x,r))\sim r$. Moreover, for $f\in L_{\rm loc}^p(\mathbb{R}_+^{n+1},dm_\lambda)$,
+\begin{align*}
+&\left(\sum_{\nu\in\mathbb{Z}}2^\nu\int_{\mathbb{R}_+^{n+1}}\fint_{B_d(x,2^{-\nu})}|f(x)-f(y)|^pdm_\lambda(y)dm_\lambda(x)\right)^{1/p}\\
+&=\left(\sum_{\nu\in\mathbb{Z}}2^\nu\int_{\mathbb{R}_+^{n+1}}\frac{1}{m_\lambda(B_d(x,2^{-\nu}))}\sum_{\ell\geq\nu}\int_{B_d(x,2^{-\ell})\backslash B_d(x,2^{-\ell-1})}|f(x)-f(y)|^pdm_\lambda(y)dm_\lambda(x)\right)^{1/p}\\
+&\sim\left(\sum_{\ell\in\mathbb{Z}}\sum_{\nu\leq \ell}2^{2(\nu-\ell)}\int_{\mathbb{R}_+^{n+1}}\int_{B_d(x,2^{-\ell})\backslash B_d(x,2^{-\ell-1})}\frac{|f(x)-f(y)|^p}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|))^2}dm_\lambda(y)dm_\lambda(x)\right)^{1/p}\\
+&\lesssim\left(\sum_{\ell\in\mathbb{Z}}\int_{\mathbb{R}_+^{n+1}}\int_{B_d(x,2^{-\ell})\backslash B_d(x,2^{-\ell-1})}\frac{|f(x)-f(y)|^p}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|))^2}dm_\lambda(y)dm_\lambda(x)\right)^{1/p}\\
+&=\left(\int_{\mathbb{R}_+^{n+1}}\int_{\mathbb{R}_+^{n+1}}\frac{|f(x)-f(y)|^p}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,|x-y|))^2}dm_\lambda(y)dm_\lambda(x)\right)^{1/p}.
+\end{align*}
+Note that the expression in the left-hand side above is exactly the Lipschitz-type norm $\dot{L}_t(1,p,p,\mathbb{R}_+^{n+1})$ of $f$ given in \cite[Definition 3.2]{MR2503306}. This, in combination with \cite[Theorem 4.1]{MR2503306} and \cite[Theorem 3.1]{MR2084959}, finishes the proof of Lemma \ref{complexinterpolation}.
+\end{proof}
+
+\begin{lemma}\label{disin}
+For any $p>2$, $q>1$ satisfying $\frac{1}{q}=1-\frac{2}{p}$, one has
+\begin{align}
+\left\|\frac{1}{m_\lambda(B(x,|x-y|))^{1-2/p}}\right\|_{L^{\infty},L^{q,\infty}}<+\infty.
+\end{align}
+\end{lemma}
+\begin{proof}
+We apply inequality \eqref{measureeee} to deduce that
+\begin{align*}
+ &\left\|\frac{1}{m_\lambda(B(x,|x-y|))^{1-2/p}}\right\|_{L^{\infty},L^{q,\infty}}\\
+ &=\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha>0}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:\frac{1}{m_\lambda(B(x,|x-y|))^{1-2/p}}>\alpha\right\}^{1/q}\\
+ &\leq \sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha>0}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:\frac{c}{(|x-y|^{n+1}x_{n+1}^{2\lambda}+|x-y|^{n+1+2\lambda})^{1-2/p}}>\alpha\right\}^{1/q}\\
+ &\leq \sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha>0}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:|x-y|<x_{n+1}\ {\rm and}\ \frac{c}{(|x-y|^{n+1}x_{n+1}^{2\lambda})^{1-2/p}}>\alpha\right\}^{1/q}\\
+ &+ \sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha>0}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:|x-y|\geq x_{n+1}\ {\rm and}\ \frac{c}{(|x-y|^{n+1+2\lambda})^{1-2/p}}>\alpha\right\}^{1/q}\\
+ &=:{\rm I}+{\rm II},
+ \end{align*}
+ for some $c>0$ depending only on the implicit doubling constant.
+
+For the term ${\rm I}$, we apply inequality \eqref{measureeee} and the condition $\frac{1}{q}=1-\frac{2}{p}$ to deduce that
+\begin{align*}
+{\rm I}&=\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha>0}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:|x-y|<\min\Big\{x_{n+1},c_{n,p}\alpha^{-\frac{1}{(n+1)(1-2/p)}}x_{n+1}^{-\frac{2\lambda}{n+1}}\Big\}\right\}^{1/q}\\
+&\leq \sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{0<\alpha<x_{n+1}^{-(n+1+2\lambda)(1-2/p)}}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:|x-y|<x_{n+1}\right\}^{1/q}\\
+&+\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha\geq x_{n+1}^{-(n+1+2\lambda)(1-2/p)}}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:|x-y|<c_{n,p}\alpha^{-\frac{1}{(n+1)(1-2/p)}}x_{n+1}^{-\frac{2\lambda}{n+1}}\right\}^{1/q}\\
+&\leq C\left(\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{0<\alpha<x_{n+1}^{-(n+1+2\lambda)(1-2/p)}}\alpha x_{n+1}^{\frac{n+1+2\lambda}{q}}+\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha\geq x_{n+1}^{-(n+1+2\lambda)(1-2/p)}}\alpha \Bigg(\bigg(c_{n,p}\alpha^{-\frac{1}{(n+1)(1-2/p)}}x_{n+1}^{-\frac{2\lambda}{n+1}}\bigg)^{n+1}x_{n+1}^{2\lambda}\Bigg)^{1/q} \right)\\
+&\leq C,
+\end{align*}
+where we denote $c_{n,p}=c^{\frac{1}{(1-2/p)(n+1)}}$ for simplicity.
+
+Similarly, for the term ${\rm II}$,  we have
+\begin{align*}
+{\rm II}&=\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{\alpha>0}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}:x_{n+1}\leq |x-y|<c_{n,p,\lambda}\alpha^{-\frac{1}{(1-2/p)(n+1+2\lambda)}}\right\}^{1/q}\\
+&\leq\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{0<\alpha<c_{n,p,\lambda}x_{n+1}^{-(1-2/p)(n+1+2\lambda)}}\alpha m_\lambda\left\{y\in\mathbb{R}_+^{n+1}: |x-y|<c_{n,p,\lambda}\alpha^{-\frac{1}{(1-2/p)(n+1+2\lambda)}}\right\}^{1/q}\\
+&\leq C\sup\limits_{x\in\mathbb{R}_+^{n+1}}\sup\limits_{0<\alpha<c_{n,p,\lambda}x_{n+1}^{-(1-2/p)(n+1+2\lambda)}}\alpha \Bigg(c_{n,p,\lambda}\alpha^{-\frac{1}{(1-2/p)(n+1+2\lambda)}}\Bigg)^{\frac{n+1+2\lambda}{q}}\\
+&\leq C,
+\end{align*}
+where we denote $c_{n,p,\lambda}=c^{\frac{1}{(1-2/p)(n+1+2\lambda)}}$ for simplicity.
+\end{proof}
+\begin{proposition}\label{schattenlarge2}
+Suppose $\ell\in \{1,2,\ldots,n+1\}$, $n+1<p<\infty$ and $b\in L_{\rm loc}^1(\mathbb{R}_{+}^{n+1})$. If  $b\in B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)$, then $[b,R_{\lambda,\ell}]\in S_\lambda^p$.
+\end{proposition}
+\begin{proof}
+To begin with, we {\color{red}note that $B_{p,p}^{\frac{n+1}{p}}(\mathbb{R}_+^{n+1},dm_\lambda)\subset {\rm VMO}(\mathbb{R}_+^{n+1},dm_\lambda)$. Then, the condition $b\in B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)$ guarantees the compactness of $[b,R_{\lambda,\ell}]$ (see \cite[Theorem 5.3]{CY}).} Next, we shall adapt Russo's  principle (\cite{Russo}) to our Bessel setting, which is useful to dominate the Schatten norms of integral operators. The principle can be formulated as follows: for a general measure space $(X,\mu)$, if $K(x,y)\in  L^{2}(X\times X)$, then the integral operator $T$ associated to the kernel $K(x,y)$ satisfies for any $p>2$,
+\begin{align*}
+\|T\|_{S^{p}}\leq \|K\|_{L^p,L^{p^{\prime}}}^{1/2}\|K^{*}\|_{L^p,L^{p^{\prime}}}^{1/2},
+\end{align*}
+where $p'$ is the conjugate index of $p$ such that $1/p+1/p'=1$, $K^{*}(x,y)=\overline{K(y,x)}$, and $\|\cdot\|_{L^p, L^{p^{\prime}}}$ denotes the mixed-norm:
+$
+\|K\|_{L^p,L^{p^{\prime}}}:=\big\|\|K(x,y)\|_{L^p(d\mu(x))}\big\|_{L^{p^{\prime}}(d\mu(y))}.
+$
+Later, Goffeng (\cite{Goffeng}) proved that the condition $K(x,y)\in  L^{2}(X\times X)$ in the above statement can be removed.
+
+Furthermore, the above principle was extended to the corresponding weak-type version (see \cite[Lemma 1 and Lemma 2]{JW}): if $p>2$ and $1/p+1/p^{\prime}=1$, then
+\begin{align}\label{integral}
+\|T\|_{S^{p,\infty}}\leq \|K\|_{L^{p},L^{p^{\prime},\infty}}^{1/2}\|K^{*}\|_{L^{p},L^{p^{\prime},\infty}}^{1/2},
+\end{align}
+where $\|\cdot\|_{L^p, L^{p^{\prime},\infty}}$ denotes the mixed-norm:
+$
+\|K\|_{L^p,L^{p^{\prime},\infty}}:=\big\|\|K(x,y)\|_{L^p(d\mu(x))}\big\|_{L^{p^{\prime},\infty}(d\mu(y))}.
+$
+
+Next, back to our Bessel setting, we apply Lemma \ref{disin} and weak-type Young's inequality to deduce that that for $1/q=1-2/p$,
+\begin{align*}
+\|(b(x)-b(y))K_{\lambda,\ell}(x,y)\|_{L^p,L^{p^{\prime},\infty}}&\leq
+\left\|\frac{b(x)-b(y)}{m_\lambda(B(x,|x-y|))}\right\|_{L^p, L^{p^{\prime},\infty}}\nonumber\\
+&\leq \left\|\frac{b(x)-b(y)}{m_\lambda(B(x,|x-y|))^{2/p}}\right\|_{L^{p},L^{p}}\left\|\frac{1}{m_\lambda(B(x,|x-y|))^{1-2/p}}\right\|_{L^{\infty},L^{q,\infty}}\nonumber\\
+&\leq C\|b\|_{B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)}.
+\end{align*}
+%
+%
+%Similarly, for the second term,
+%\begin{align}\label{verify11}
+%\|(b(x)-b(y))K(x,y)\chi_{\mathbb{R}_{-}^n}(x)\chi_{\mathbb{R}_{-}^{n}}(y)\|_{L^p,L^{p^{\prime},\infty}}&\leq
+%\left\|\frac{b(x)-b(y)}{|x-y|^{n}}\chi_{\mathbb{R}_{-}^n}(x)\chi_{\mathbb{R}_{-}^{n}}(y)\right\|_{L^p, L^{p^{\prime},\infty}}\nonumber\\
+%&\leq \left\|\frac{b(x)-b(y)}{|x-y|^{2n/p}}\chi_{\mathbb{R}_{-}^n}(x)\chi_{\mathbb{R}_{-}^{n}}(y)\right\|_{L^{p},L^{p}}\left\|\frac{1}{|x-y|^{n(1-2/p)}}\right\|_{L^{\infty},L^{q,\infty}}\nonumber\\
+%&\leq C\|b_{-}\|_{B_{p,p}^{n/p,e}(\mathbb{R}_{-}^n)}\leq C\|b\|_{B_{p,p}^{\frac{n}{p},\Delta_N}(\mathbb{R}^n)}.
+%\end{align}
+Therefore,
+\begin{align}\label{verify1}
+\left\|(b(x)-b(y))K_{\lambda,\ell}(x,y)\right\|_{L^p, L^{p^{\prime},\infty}}\leq C\|b\|_{B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)}.
+\end{align}
+Combining the inequality \eqref{verify1} and then applying the weak-type Russo's inequality \eqref{integral}, we see that $$\|[b,R_{\lambda,\ell}]\|_{S^{p,\infty}}\leq C\|b\|_{B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)}.$$ Since this inequality holds for all $n+1<p<\infty$, we can apply the interpolation $(S_\lambda^{p_1,\infty},S_\lambda^{p_2,\infty})_{\theta_p}=S_\lambda^{p}$ and  $(B_{p_1,p_1}^{\frac{n+1}{p_1}}(\mathbb R_+^{n+1},dm_\lambda),B_{p_2,p_2}^{\frac{n+1}{p_2}}(\mathbb R_+^{n+1},dm_\lambda))_{\theta_{p}}=B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)$, where $\frac{1-\theta_p}{p_1}+\frac{\theta_p}{p_2}=\frac{1}{p}$, to obtain that
+\begin{align*}
+\|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p}}\leq C\|b\|_{B_{p,p}^{\frac{n+1}{p}}(\mathbb R_+^{n+1},dm_\lambda)}.
+\end{align*}
+This finishes the proof of sufficient condition for the case $n+1<p<\infty$.
+\end{proof}
+\section{Theorem \ref{schatten}: $0<p\leq n+1$}\label{four}
+
+This section is devote to providing a proof for the second case of Theorem \ref{schatten}. That is, for each $\ell\in \{1,2,\ldots,n+1\}$ and for $0<p\leq n+1$, we will show that the commutator $[b,R_{\lambda,\ell}]\in S_\lambda^p$ if and only if $b$ is a constant  on $\mathbb{R}^{n+1}_+$ . The key difficulty is to show the necessary part of the Theorem \ref{schatten}. To show this, it suffices to consider the endpoint case $p=n+1$ since one has the inclusion $S^p \subset S^q$ for $p<q.$
+
+To complete our proof we will use the following lemmas.
+
+\begin{lemma}\label{twocubes}
+For any $k\in\mathbb{Z}$ and cube $Q\in \mathcal{D}_{k}^0$ and $a_j=\pm 1(j=1,2,\ldots,n+1)$, there are cubes $Q' \in \mathcal{D}_{k+2}^0, Q'' \in \mathcal{D}_{k+2}^0$ such that $Q'\subset Q, Q'' \subset Q$ and if $x=(x_1,x_2,\ldots,x_{n+1})\in Q'$, $y= (y_1,y_2,\ldots,y_{n+1})\in Q''$, then $a_j(x_j-y_j)\geq 2^{-k}$ for $j=1,2,\ldots,n+1$.
+\end{lemma}
+Now, we provide a lower bound for a local pseudo oscillation of the symbol $b$ in the commutator.
+\begin{lemma}\label{lowerboundcommu}
+Let $b\in C^2(\mathbb{R}_+^{n+1})$. Suppose that there is a point $x_0\in \mathbb{R}_+^{n+1}$ such that $\nabla b(x_0) \neq 0$. Then there exist constants $C>0, \epsilon>0$ and  $N>0$ such that if $k>N$, then for any cube $Q \in \mathcal{D}_{k}^0$ satisfying $|{\rm center}(Q)- x_0|<\epsilon$, one has
+\begin{equation}\label{contonb}
+\left|\fint_{Q'}b(x)dm_\lambda(x) -\fint_{Q''}b(x)dm_\lambda(x)\right| \geq C2^{-k}|\nabla b(x_0)|,
+\end{equation}
+where $Q'$ and $Q''$ are the cubes chosen in Lemma \ref{twocubes}.
+
+\end{lemma}
+
+\begin{proof}
+We denote by $c_Q := (c_Q^1,c_Q^2,\ldots,c_Q^{n+1})$ the center of $Q$ and $x = (x_1, x_2,\ldots,x_{n+1})$, then it follows from Taylor's formula that
+\begin{equation}\label{usetay}
+ b(x) = b(c_Q) + \sum_{j=1}^{n+1}{(\partial_{x_j}b)(c_Q)}(x_j-c_{Q}^j) + R(x,c_Q),
+\end{equation}
+where the remainder term $R(x,c_Q)$ satisfies
+\begin{equation}\label{laste}
+ |R(x,c_Q)|\leq C\sum_{j=1}^{n+1}\sum_{k=1}^{n+1} \sup_{\theta\in[0,1]}\big|(\partial_{x_j}\partial_{x_k}b)(x+\theta(c_Q-x))\big| |c_Q - x|^{2},
+\end{equation}
+for some $\theta\in[0,1]$. Note that if $x\in Q$, then
+$$|x+\theta(c_Q-x)-c_Q|\lesssim 2^{-k}.$$
+%which implies that for $\epsilon = \epsilon_b >0$ sufficiently small, the right hand side in estimate \eqref{laste} can be absorbed in the right hand side of \eqref{contonb}. Thus, it suffices to deal with the first two terms on the right hand side of \eqref{usetay}.
+By  Lemma \ref{twocubes}, for $x'=(x_1',...,x_{n+1}')\in Q'$ and $x''=(x_{1}'',...,x_{n+1}'')\in Q''$, we have
+\begin{equation*}
+    {\rm sgn}(\partial_{x_j}b)(c_Q)(x_j^{'}-x_j^{''})\geq 2^{-k}, \quad j=1,2,\ldots,n+1.
+\end{equation*}
+Combining the above facts, we deduce that
+\begin{align*}
+&\left|\fint_{Q'}b(x')dm_\lambda(x') -\fint_{Q''}b(x'')dm_\lambda(x'')\right|\\ & \geq  \bigg|\fint_{Q'}\fint_{Q''}\sum_{j=1}^{n+1}{(\partial_{x_j}b)(c_Q)}(x_j^{'}-x_j^{''})dm_\lambda(x'')dm_\lambda(x')\bigg| \\
+&\hspace{1.0cm}- \fint_{Q'}|R(x',c_Q)|dm_\lambda(x') - \fint_{Q''}|R(x'',c_Q)|dm_\lambda(x'')  \\&\geq C\sum_{j=1}^{n+1}|(\partial_{x_j}b)(c_Q)|2^{-k} -C2^{-2k}\|\nabla^2 b\|_{L^\infty(B(x_0,1))}\\
+&\geq C2^{-k} |\nabla b(x_0)|,
+\end{align*}
+where in the last inequality we choose $\epsilon=\epsilon_b$ be a sufficiently small constant. This completes the proof of Lemma \ref{lowerboundcommu}.
+\end{proof}
+
+Define the conditional expectation of a locally integrable function $f$ on $\mathbb{R}_+^{n+1}$  with respect to the increasing family of $\sigma-$algebras $\sigma(\mathcal{D}_{k}^0)$   by the expression:
+$$E_{k}^0(f)(x)=\sum_{Q\in \mathcal{D}_{k}^0}(f)_{Q}\chi_{Q}(x),\ x\in\mathbb{R}_+^{n+1},$$
+%$$E_{k,h}^0(f)(x)=\sum_{Q\in \tau^h\mathcal{D}_{k}^0}(f)_{Q}\chi_{Q}(x),\ x\in\mathbb{R}^n,$$
+%respectively.
+We have the following Lemma.
+
+\begin{lemma}\label{aux}
+A function {\color{red}$b \in C^2(\mathbb{R}_+^{n+1})$} is a constant on $\mathbb{R}_+^{n+1}$ if there exist constants $C>0$ and $\ell\in\{1,2,...,n+1\}$ such that
+\begin{align}\label{eqsup1}
+\bigg\|\bigg\{\fint_{Q}\fint_{Q}|E_{k+2}^0(b)(x') - E_{k+2}^0(b)(x'')|dm_\lambda(x')dm_\lambda(x'')\bigg\}_{\substack{Q\in \mathcal{D}^0\\Q\subseteq \mathbb{R}_+^{n+1}}}\bigg\|_{l^{n+1}} \leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^{n+1}}.
+\end{align}
+(In the display $Q\in \mathcal{D}_{k}^0$ and $Q\subseteq \mathbb{R}_+^{n+1}$, and both $Q$ and $k$ vary.)
+\end{lemma}
+
+\begin{proof}
+%Pick a smooth compactly supported function $\psi$ over $\mathbb{R}^n$ which integrates to 1 and pick $\varepsilon$ be a small positive constant. Consider $\psi_{\varepsilon}(x) = \frac{1}{\varepsilon^n}\psi(\frac{x}{\varepsilon^n})$ and $b_{\varepsilon} := b*\psi_{\varepsilon}$, where $0<\varepsilon<1$. Then $b_{\varepsilon}$ is a smooth function and converges to $b$ almost everywhere.
+
+%Now we claim that $b_\varepsilon$ is a constant on $\mathbb{R}_{\pm,\varepsilon}^n$, where
+%$$\mathbb{R}_{\pm,\varepsilon}^n:=\mathbb{R}_\pm^n\pm\varepsilon e_n,\ \ {\rm for}\ e_n=(0,0,...,1).$$
+%Now we show that if $b_{\epsilon}$ is not constant, then the norm above is infinite,  which gives us a contradiction.
+If not, then observe that there exists a point $x_0=(x_0^{(1)},\ldots,x_0^{(n+1)})\in \mathbb{R}_{+}^{n+1}$ such that $\nabla b(x_0) \neq 0$. By Lemma \ref{lowerboundcommu}, there exist some $\epsilon\in (0,x_0^{(n+1)})$ and $N>0$ such that if $k>N$, then for any cube $Q\in \mathcal{D}_{k}^0$ satisfying $|{\rm center}(Q)-x_0|<\epsilon$,
+\begin{equation*}
+\fint_{Q}\fint_{Q}|E_{k+2}^0(b)(x') - E_{k+2}^0(b)(x'')|dm_\lambda(x')dm_\lambda(x'') \gtrsim 2^{-k}|\nabla b(x_0)|.
+\end{equation*}
+Denote $\mathcal{A}_k(x_0)$ be the set consisting of $Q\in \mathcal{D}_{k}^0$ satisfying $|{\rm center}(Q)-x_0|<\epsilon$. Then observe that for any $k>N$, the number of $\mathcal{A}_k(x_0)$ is at least $2^{k(n+1)}$, which implies that
+\begin{align*}
+\sum_{k>N}\sum_{Q\in \mathcal{A}_k (x_0)}\left(\fint_{Q}\fint_{Q}|E_{k+2}^0(b)(x') - E_{k+2}^0(b)(x'')|dm_\lambda(x')dm_\lambda(x'') \right)^{n+1}=+\infty.
+\end{align*}
+However, the left hand side above is dominated by
+%\begin{align}\label{gjkl}
+%&\sup\limits_{h\in B(0,\varepsilon)}\sum_{k\in\mathbb{Z}}\sum_{Q\in \mathcal{A}_k^\pm (x_0)}\left(\fint_{Q}\fint_{Q}|E_{k+2}^0(\tau^hb)(x') - E_{k+2}^0(\tau^hb)(x'')|dx'dx'' \right)^n\nonumber\\
+%&=\sup\limits_{h\in B(0,\varepsilon)}\sum_{k\in\mathbb{Z}}\sum_{Q\in \mathcal{A}_k^\pm (x_0)}\left(\fint_{Q}\fint_{Q}|\tau^hE_{k+2,h}^0(b)(x') - \tau^hE_{k+2,h}^0(b)(x'')|dx'dx'' \right)^n\nonumber\\
+%&=\sup\limits_{h\in B(0,\varepsilon)}\sum_{k\in\mathbb{Z}}\sum_{Q\in \mathcal{A}_k^\pm (x_0)}\left(\fint_{\tau^hQ}\fint_{\tau^hQ}|E_{k+2,h}^0(b)(x') - E_{k+2,h}^0(b)(x'')|dx'dx'' \right)^n.
+%\end{align}
+%Note that the restriction $x_0\in\mathbb{R}_{\pm,\varepsilon}^{n}$ implies that for any $h\in B(0,\varepsilon)$ and $Q\in \mathcal{A}_k^\pm (x_0)$, one has $\tau^hQ\subseteq \mathbb{R}^n_\pm$. This, together with inequality \eqref{eqsup1}, implies that the right hand side of inequality \eqref{gjkl} is dominated by
+$\|[b,R_{\lambda,\ell}]\|_{S_\lambda^{n+1}}^{n+1}$, which is a contradiction.
+This ends the proof of Lemma \ref{aux}.
+\end{proof}
+\begin{proposition}\label{kkkey}
+Suppose {\color{red}$b \in C^2(\mathbb{R}_+^{n+1})$}. Then for any $\ell\in \{1,2,\ldots,n+1\}$, the commutator $[b,R_{N,\ell}]\in S_\lambda^{n+1}$ if and only if $b$ is a constant on $\mathbb{R}^{n+1}_+$.
+\end{proposition}
+
+\begin{proof}
+It is obvious that if $b$ is a constant on $\mathbb{R}^{n+1}_+$, then
+$[b,R_{\lambda,\ell}]=0$. Hence it remains to  consider the direction in which we assume $[b,R_{\lambda,\ell}]\in S_\lambda^{n+1}$. To this end, by Lemma \ref{step1},
+there exists a constant $C>0$ such that
+\begin{align}\label{condineq}
+&\bigg\|\bigg\{\fint_{Q}\fint_{Q}|E_{k+2}^0(b)(x') - E_{k+2}^0(b)(x'')|dm_\lambda(x')dm_\lambda(x'')\bigg\}_{\substack{Q\in \mathcal{D}^0\\Q\subseteq \mathbb{R}_+^{n+1}}}\bigg\|_{l^{n+1}}\nonumber\\
+&\leq C\bigg\|\bigg\{\fint_{Q}|E_{k+2}^0(b)(x') - E_{k}^0(b)(x')|dm_\lambda(x')\bigg\}_{\substack{Q\in \mathcal{D}^0\\Q\subseteq \mathbb{R}_{+}^{n+1}}}\bigg\|_{l^{n+1}}\nonumber\\
+&{\color{red}\leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^{n+1}}.}
+\end{align}
+{\color{red}[Comment: the red part doesn't work for $n=0$ since the endpoint equal to 1 while we require $p>1$ in Lemma \ref{step1}]}
+
+(In the display $Q\in \mathcal{D}_{k}^0$, $Q\subseteq \mathbb{R}_+^{n+1}$, and both $Q$ and $k$ vary.)
+This, together with Lemma \ref{aux}, finishes the proof of Proposition \ref{kkkey}.
+\end{proof}
+
+\section{Weak-type endpoint Schatten estimate}
+{\color{red}Unify the notation $D_k$ in the above sections}
+
+For any $Q\in\mathcal{D}^0$, {\color{red}let $\hat{Q}$ be the cube chosen in Lemma \ref{sign}} {\color{red}We need to make sure that $\hat{Q}\in\mathcal{D}_k^0$}. Define
+$$J_{Q}(x,y):=m_\lambda(Q)^{-1}m_\lambda(\hat{Q})^{-1}K_{\lambda,\ell}(x,\,y)^{-1}\chi_Q(x)\chi_{\hat{Q}}(y).$$
+Here we omit the dependence on $\lambda$ and $\ell$ since these two parameters play no role in the proof below.
+\begin{lemma}\label{jq}
+There is a finite index set $\mathcal{I}$ such that
+for any $\ell\in\{1,2,...,n+1\}$, $Q\in\mathcal{D}^0$ and $k\in\mathbb{Z}^2$, one can construct  functions $f_{Q,k,v}$ , $g_{Q,k,v}$ and a sequence $\{C_{Q,k,v}\}$ satisfying for any $v\in\mathcal{I}$,
+\begin{enumerate}
+  \item ${\rm supp}(f_{Q,k,v})\subset Q$, ${\rm supp}(g_{Q,k,v})\subset \hat{Q}$,
+  \item $\|f_{Q,k,v}\|_{\infty}\leq m_\lambda(Q)^{-1/2}$, $\|g_{Q,k,v}\|_{\infty}\leq m_\lambda(Q)^{-1/2}$,
+  \item $|C_{Q,k,v}|\leq C_N(1+|k|)^{-N}$ for any $N\in\mathbb{Z}_+$ and for some $C_N>0$ independent of  $Q$ and $k$,
+\item $J_{Q}$ admits the following factorization
+\begin{align*}
+J_{Q}(x,\,y)=\sum_{v\in\mathcal{I}}\sum_{k\in\mathbb{Z}^2}C_{Q,k,v}f_{Q,k,v}(x)g_{Q,k,v}(y).
+\end{align*}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+To begin with, define the conditional expectation of a locally integrable function $f$ on $\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1}$ by
+$$E_{k}^{(1)}(f)(x,\,y)=\sum_{Q\in \mathcal{D}_{k}^0}\fint_{Q}f(z,\,y)dm_\lambda(z)\chi_{Q}(x),\ x,y\in \mathbb{R}_+^{n+1},$$
+$$E_{k}^{(2)}(f)(x,\,y)=\sum_{Q\in \mathcal{D}_{k}^0}\fint_{Q}f(x,\,z)dm_\lambda(z)\chi_{Q}(y),\ x,y\in \mathbb{R}_+^{n+1}.$$
+We also define partial martingale difference of a locally integrable function $f$ on $\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1}$ by
+$$D_{k}^{(i)}(f)(x,\,y)=E_{k}^{(i)}(f)(x,\,y)-E_{k-1}^{(i)}(f)(x,\,y),\ i=1,2.$$
+Expanding in terms of Haar functions yields an equivalent form (see \cite{KLPW}):
+\begin{align}
+&D_{k}^{(1)}(f)(x,\,y)=\sum_{P\in\mathcal{D}^0_{k-1}}\sum_{\epsilon=1}^{2^n-1}\langle f(\cdot,\,y), h_P^\epsilon\rangle h_P^\epsilon(x),\label{dkdef}\\
+&D_{k}^{(2)}(f)(x,\,y)=\sum_{P\in\mathcal{D}^0_{k-1}}\sum_{\epsilon=1}^{2^n-1}\langle f(x,\,\cdot), h_P^\epsilon\rangle h_P^\epsilon(y).\label{dkdef2}
+\end{align}
+Since $E_k(f)\rightarrow f$, a.e as $k\rightarrow -\infty$, one has
+\begin{align}
+J_{Q}(x,\,y)&=\left(-E_{k_Q}^{(1)}+\sum_{k_1=-\infty}^{k_Q}D_{k_1}^{(1)}\right)\left(-E_{k_Q}^{(2)}+\sum_{k_2=-\infty}^{k_Q}D_{k_2}^{(2)}\right)(J_Q)(x,\,y)\chi_Q(x)\chi_{\hat{Q}}(y)\nonumber\\
+&=E_{k_Q}^{(1)}E_{k_Q}^{(2)}(J_Q)(x,\,y)\chi_Q(x)\chi_{\hat{Q}}(y)-\sum_{k_1=-\infty}^{k_Q}D_{k_1}^{(1)}E_{k_Q}^{(2)}(J_Q)(x,\,y)\chi_Q(x)\chi_{\hat{Q}}(y)\nonumber\\
+&\hspace{1.0cm}-\sum_{k_2=-\infty}^{k_Q}E_{k_Q}^{(1)}D_{k_2}^{(2)}(J_Q)(x,\,y)\chi_Q(x)\chi_{\hat{Q}}(y)+\sum_{k_1=-\infty}^{k_Q}\sum_{k_2=-\infty}^{k_Q}D_{k_1}^{(1)}D_{k_2}^{(2)}(J_Q)(x,\,y)\chi_Q(x)\chi_{\hat{Q}}(y)\nonumber\\
+&=:\sum_{u=1}^4{\rm I}_u.
+\end{align}
+where we choose $k_Q$ be the integer such that $2^{-k_Q}\leq \ell(Q)<2^{-k_Q+1}$. Next we deal with these four terms separately.
+
+For the term ${\rm I}_1$, by the definition of conditional expectation, we see that
+$${\rm I}_1=m_\lambda(Q)^{-1}m_\lambda(\hat{Q})^{-1}\fint_Q\fint_{\hat{Q}}K_{\lambda,\ell}(z,\,w)^{-1}dm_\lambda(z)dm_\lambda(w)\chi_Q(x)\chi_{\hat{Q}}(y).$$
+Let $f_{Q,0,0}(x):=m_\lambda(Q)^{-1/2}\chi_Q(x)$, $g_{Q,0,0}(y):=m_\lambda(Q)^{-1/2}\chi_{\hat{Q}}(y)$ and $$C_{Q,0,0}:=m_\lambda(\hat{Q})^{-1}\fint_Q\fint_{\hat{Q}}K_{\lambda,\ell}(z,\,w)^{-1}dm_\lambda(z)dm_\lambda(w).$$
+ It follows from Lemma \ref{sign} that
+$
+|C_{Q,0,0}|\lesssim 1.
+$
+%If $k_1\neq 0$ or $k_2\neq 0$, then we let $f_{Q,k_1,k_2}^1=g_{Q,k_1,k_2}^1=C_{Q,k_1,k_2}^1=0$.
+Moreover, $${\rm I}_1=C_{Q,0,0}f_{Q,0,0}(x)g_{Q,0,0}(y).$$
+%Therefore, we have factorized ${\rm I}$ into a required form.
+
+For the term ${\rm I}_2$, it follows from the definition of conditional expectation and formula \eqref{dkdef} that
+\begin{align*}
+{\rm I}_2&=\sum_{k_1=-\infty}^{k_Q}\sum_{P\in\mathcal{D}^0_{k_1-1}}\sum_{\epsilon=1}^{2^n-1}\langle E_{k_Q}^{(2)}(J_Q)(\cdot,\,y), h_P^\epsilon\rangle h_P^\epsilon(x)\chi_Q(x)\chi_{\hat{Q}}(y)\\
+&=m_\lambda(Q)^{-1}m_\lambda(\hat{Q})^{-1}\sum_{k_1=-\infty}^{k_Q}\sum_{P\in\mathcal{D}^0_{k_1-1}}\sum_{\epsilon=1}^{2^n-1}\int_{P\cap Q}\fint_{\hat{Q}} K_{\lambda,\ell}(z,\,w)^{-1}dm_\lambda(w)h_P^\epsilon(z)dm_\lambda(z)h_P^\epsilon(x)\chi_Q(x)\chi_{\hat{Q}}(y).
+\end{align*}
+Note that for any $k\in\mathbb{Z}$, there is a unique $P\in\mathcal{D}^0_{k-1}$ such that $P\cap Q\neq\emptyset$. We denote this cube by $Q_{k-1}$. Then
+\begin{align*}
+{\rm I_2}=m_\lambda(Q)^{-1}m_\lambda(\hat{Q})^{-1}\sum_{k_1=-\infty}^{k_Q}\sum_{\epsilon=1}^{2^n-1}\int_{ Q}\fint_{\hat{Q}} K_{\lambda,\ell}(z,\,w)^{-1}dm_\lambda(w)h_{Q_{k_1-1}}^\epsilon(z)dm_\lambda(z)h_{Q_{k_1-1}}^\epsilon(x)\chi_Q(x)\chi_{\hat{Q}}(y).
+\end{align*}
+For any integer $k_1\leq k_Q $, we let $$f_{Q,k_Q-k_1,0}^{\epsilon}(x):=\Big(\frac{m_{\lambda}(Q_{k_1-1})}{m_\lambda(Q)}\Big)^{1/2}h_{Q_{k_1-1}}^\epsilon(x)\chi_Q(x),\ \  g_{Q,k_Q-k_1,0}^{\epsilon}(y):=m_\lambda(Q)^{-1/2}\chi_{\hat{Q}}(y)$$ and $$C_{Q,k_Q-k_1,0}^{\epsilon}:=m_\lambda(\hat{Q})^{-1}m_{\lambda}(Q_{k_1-1})^{-1/2}\int_{ Q}\fint_{\hat{Q}} K_{\lambda,\ell}(z,\,w)^{-1}dm_\lambda(w)h_{Q_{k_1-1}}^\epsilon(z)dm_\lambda(z).$$
+It follows from Lemma \ref{sign} and inequality \eqref{doub} that
+$$
+|C_{Q,k_Q-k_1,0}^{\epsilon}|\lesssim \frac{m_\lambda(Q)}{m_\lambda(Q_{k_1-1})}\lesssim \delta^{(n+1)(k_Q-k_1)}\leq C_N (1+|k_Q-k_1|)^{-N}.
+$$
+%If $k_1>k_Q$ or $k_2\neq0$, then we let $f_{Q,k_Q-k_1,k_2}^{\epsilon}=g_{Q,k_Q-k_1,k_2}^{\epsilon}=C_{Q,k_Q-k_1,k_2}^{\epsilon}=0$.
+A change of variable yields that $${\rm I}_2=\sum_{\epsilon=1}^{2^n-1}\sum_{k_1\geq 0}C_{Q,k_1,0}^{\epsilon} f_{Q,k_1,0}^{\epsilon}(x)g_{Q,k_1,0}^{\epsilon}(y).$$
+%Therefore, we have factorized ${\rm I}_2$ into a required form.
+
+For the term ${\rm I}_3$, note that $E_{k_Q}^{(1)}$ commutes with $D_{k_2}^{(2)}$. Therefore, ${\rm I}_3$ can be factorized in a similar way as term ${\rm I}_2$ by changing the roles of $x$ and $y$.
+
+
+For the term ${\rm I}_4$, we first note that for any $k\in\mathbb{Z}$, there is a unique $P\in\mathcal{D}^0_{k-1}$ such that $P\cap \hat{Q}\neq\emptyset$. We denote this cube by $\hat{Q}_{k-1}$. Then it follows from formulas \eqref{dkdef} and \eqref{dkdef2} that
+\begin{align*}
+{\rm I}_4&=\sum_{k_1=-\infty}^{k_Q}\sum_{k_2=-\infty}^{k_Q}\sum_{P_1\in\mathcal{D}^0_{k_1-1}}\sum_{P_2\in\mathcal{D}^0_{k_2-1}}\sum_{\epsilon_1=1}^{2^n-1}\sum_{\epsilon_2=1}^{2^n-1}\\
+&\hspace{1.0cm}\fint_Q\fint_{\hat{Q}}K_{\lambda,\ell}(z,\,w)^{-1}h_{P_1}^{\epsilon_1}(z)h_{P_2}^{\epsilon_2}(w)dm_\lambda(z)dm_\lambda(w)h_{P_1}^{\epsilon_1}(x)\chi_Q(x)h_{P_2}^{\epsilon_2}(y)\chi_{\hat{Q}}(y)\\
+&=\sum_{k_1=-\infty}^{k_Q}\sum_{k_2=-\infty}^{k_Q}\sum_{\epsilon_1=1}^{2^n-1}\sum_{\epsilon_2=1}^{2^n-1}\\
+&\hspace{1.0cm}\fint_Q\fint_{\hat{Q}}K_{\lambda,\ell}(z,\,w)^{-1}h_{Q_{k_1-1}}^{\epsilon_1}(z)h_{\hat{Q}_{k_2-1}}^{\epsilon_2}(w)dm_\lambda(z)dm_\lambda(w)h_{Q_{k_1-1}}^{\epsilon_1}(x)\chi_Q(x)h_{\hat{Q}_{k_2-1}}^{\epsilon_2}(y)\chi_{\hat{Q}}(y).
+\end{align*}
+For any integer $k_1\leq k_Q $ and any integer $k_2\leq k_Q$, we let $$f_{Q,k_Q-k_1,k_Q-k_2}^{\epsilon_1,\epsilon_2}(x):=\Big(\frac{m_{\lambda}(Q_{k_1-1})}{m_\lambda(Q)}\Big)^{1/2}h_{Q_{k_1-1}}^{\epsilon_1}(x)\chi_Q(x),\ \ g_{Q,k_Q-k_1,k_Q-k_2}^{\epsilon_1,\epsilon_2}(y):=\Big(\frac{m_{\lambda}(\hat{Q}_{k_2-1})}{m_\lambda(Q)}\Big)^{1/2}h_{\hat{Q}_{k_2-1}}^{\epsilon_2}(y)\chi_{\hat{Q}}(y)$$ and
+\begin{align*}
+C_{Q,k_Q-k_1,k_Q-k_2}^{\epsilon_1,\epsilon_2}:&=m_{\lambda}(Q_{k_1-1})^{-1/2}m_\lambda(\hat{Q}_{k_2-1})^{-1/2}\int_Q\fint_{\hat{Q}}K_{\lambda,\ell}(z,\,w)^{-1}h_{Q_{k_1-1}}^{\epsilon_1}(z)h_{\hat{Q}_{k_2-1}}^{\epsilon_2}(w)dm_\lambda(z)dm_\lambda(w).
+\end{align*}
+It follows from Lemma \ref{sign} and inequality \eqref{doub} that
+\begin{align*}
+|C_{Q,k_Q-k_1,k_Q-k_2}^{\epsilon_1,\epsilon_2}|&\lesssim \left(\frac{m_\lambda(Q)}{m_\lambda(Q_{k_1-1})}\right)\left(\frac{m_\lambda(Q)}{m_\lambda(Q_{k_2-1})}\right)\\
+&\lesssim \delta^{(n+1)(k_Q-k_1)}\delta^{(n+1)(k_Q-k_2)}\\
+&\leq C_N (1+|k_Q-k_1|)^{-N}(1+|k_Q-k_2|)^{-N}.
+\end{align*}
+A change of variable yields that $${\rm I}_4=\sum_{\epsilon_1=1}^{2^n-1}\sum_{\epsilon_2=1}^{2^n-1}\sum_{k_1\geq0}\sum_{k_2\geq0}C_{Q,k_1,k_2}^{\epsilon_1,\epsilon_2}f_{Q,k_1,k_2}^{\epsilon_1,\epsilon_2}(x)g_{Q,k_1,k_2}^{\epsilon_1,\epsilon_2}(y).$$
+Therefore, we have factorized each term ${\rm I}_u$, $u=1,2,3,4$, into a required form, respectively. The proof of Lemma \ref{jq} is completed.
+%Recall that we let $Q_{k-1}$ be the unique $P\in\mathcal{D}_{k-1}$ such that $P\cap Q\neq\emptyset$. Similarly, we also let $\hat{Q}_{k-1}$ be the unique $P\in\mathcal{D}_{k-1}$ such that $P\cap \hat{Q}\neq\emptyset$. Then
+\end{proof}
+%For any locally integrable function $b$, we define its mean oscillation over a cube $Q$ by
+%\begin{align*}
+%MO_Q(b):=\fint_{Q}|b(x)-(b)_Q|dm_\lambda(x).
+%\end{align*}
+\begin{proposition}\label{weakpro}
+Suppose {\color{red}$1<p<\infty$}, $0<q\leq \infty$, $\lambda>0$, $n\geq 0$ and $b\in L^1_{\rm loc}(\mathbb{R}^{n+1}_+)$. Then there is a constant $C>0$ such that for any $\ell\in\{1,2,...,n+1\}$,
+\begin{align*}
+\left\|\left\{MO_Q(b)\right\}_{Q\in\mathcal{D}^0}\right\|_{\ell^{p,q}}\leq C\|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p,q}}.
+\end{align*}
+
+\end{proposition}
+\begin{proof}
+By Lemma \ref{sign}, for any $Q\in \ \mathcal{D}^0_{k}$ with center $c_Q$, one can find a ball $\hat{Q}:=B_{\mathbb{R}_{+}^{n+1}}(c_{\hat{Q}},\frac{1}{12}\delta^k)\subset \mathbb{R}_{+}^{n+1}$ such that $|x_{0}-y_{0}|=A\delta^k$, and for all $(x,\,y)\in Q\times\hat{Q}$, $K_{\lambda,\ell}(x,\,y)$ does not change sign and satisfies
+\begin{align*}
+|K_{\lambda,\ell}(x,\,y)|\geq \frac{C}{m_\lambda(Q)}.
+\end{align*}
+To continue, we let $s_Q(x):={\rm sgn}(b(x)-(b)_{\hat{Q}})\chi_Q(x)$ and deduce that
+\begin{align}\label{tr1}
+MO_Q(b)%&\leq \fint_Q|b(x)-(b)_{\hat{Q}}|dm_\lambda(x)+|(b)_Q-(b)_{\hat{Q}}|\nonumber\\
+&\lesssim \fint_Q|b(x)-(b)_{\hat{Q}}|dm_\lambda(x)\nonumber\\
+&=C\fint_Q(b(x)-(b)_{\hat{Q}})s_Q(x)dm_\lambda(x).
+\end{align}
+Furthermore, we let $$L_{Q}(f)(x):=\int_Qs_Q(x)J_{Q}(x,\,y)f(y)dm_\lambda(y),$$ where $J_{Q}$ is given in Lemma \ref{jq}. Then a direct calculation yields that
+$$[b,R_{\lambda,\ell}]L_{Q}(f)(x)=\fint_Q\fint_{\hat{Q}}(b(x)-b(z))K_{\lambda,\ell}(x,\,z)s_Q(z)K_{\lambda,\ell}(z,\,y)^{-1}f(y)dm_\lambda(y)dm_\lambda(z).$$
+This implies that
+\begin{align}\label{tr2}
+{\rm Trace}([b,R_{\lambda,\ell}]L_{Q})=\fint_Q\fint_{\hat{Q}}(b(x)-b(y))s_Q(x)dm_\lambda(y)dm_\lambda(x).
+\end{align}
+Combining inequality \eqref{tr1} with equality \eqref{tr2}, we see that
+\begin{align*}
+MO_Q(b)\lesssim |{\rm Trace}([b,R_{\lambda,\ell}]L_{Q})|.
+\end{align*}
+Using the duality between Lorentz spaces $\ell^{p',q'}$ and $\ell^{p,q}$, where $1/p+1/p'=1$ and $1/q+1/q'=1$, we deduce that
+\begin{align}\label{uuuno}
+\left\|\left\{MO_Q(b)\right\}_{Q\in\mathcal{D}^0}\right\|_{\ell^{p,q}}
+&\lesssim \left\|\left\{{\rm Trace}([b,R_{\lambda,\ell}]L_{Q})\right\}_{Q\in\mathcal{D}^0}\right\|_{\ell^{p,q}}\nonumber\\
+&=C\sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1}\Bigg|\sum_{Q\in\mathcal{D}^0}{\rm Trace}([b,R_{\lambda,\ell}]L_{Q})a_Q\Bigg|\nonumber\\
+&=C\sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1}\Big\|[b,R_{\lambda,\ell}]\Big(\sum_{Q\in\mathcal{D}^0}L_{Q}a_Q\Big)\Big\|_{S_\lambda^1}\nonumber\\
+&\lesssim \|[b,R_{\lambda,\ell}]\|_{S_\lambda^{p,q}}\sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1}\Big\|\sum_{Q\in\mathcal{D}^0}L_{Q}a_Q\Big\|_{S_\lambda^{p',q'}}.
+\end{align}
+To continue, we apply Lemma \ref{jq} to see that $\sum_{Q\in\mathcal{D}^0}L_{Q}a_Q$ can be written as
+\begin{align*}
+\sum_{Q\in\mathcal{D}^0}L_{Q}a_Q=\sum_{\nu\in\mathcal{I}}\sum_{k\in\mathbb{Z}}\sum_{Q\in\mathcal{D}^0}a_QC_{Q,k,v}h_{Q,k,v}(x)\langle f ,g_{Q,k,v}\rangle,
+\end{align*}
+where $h_{Q,k,v}(x):=s_Q(x)f_{Q,k,v}(x)$ and $g_{Q,k,v}(x)$ are two \emph{nearly weakly orthogonal  (NWO)} sequences of functions. Therefore, {\color{red}it follows from \cite[Corollary 2.7]{RS} that}
+\begin{align*}
+\sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1}\Big\|\sum_{Q\in\mathcal{D}^0}L_{Q}a_Q\Big\|_{S_\lambda^{p',q'}}
+&\leq \sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1}\sum_{\nu\in\mathcal{I}}\sum_{k\in\mathbb{Z}}\Big\|\sum_{Q\in\mathcal{D}^0}a_QC_{Q,k,v}h_{Q,k,v}(x)\langle f ,g_{Q,k,v}\rangle\Big\|_{S_\lambda^{p',q'}}\\
+&\lesssim \sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1} \sum_{\nu\in\mathcal{I}}\sum_{k\in\mathbb{Z}}\|\{a_QC_{Q,k,v}\}_{Q\in\mathcal{D}^0}\|_{\ell^{p',q'}}\\
+&\lesssim \sup\limits_{\|\{a_Q\}\|_{\ell^{p',q'}}=1} \sum_{\nu\in\mathcal{I}}\sum_{k\in\mathbb{Z}}(1+|k|)^{-N}\|\{a_Q\}_{Q\in\mathcal{D}^0}\|_{\ell^{p',q'}}\\
+&\lesssim 1.
+\end{align*}
+Substituting the above inequality into \eqref{uuuno}, we complete the proof of Proposition \ref{weakpro}.
+\end{proof}
+
+\section{Schatten-Lorentz estimate}
+Let $\Gamma$ and $J_s$ denote the Gamma function and the Bessel function of the first kind of order $s$ with $s\in (-1/2,\infty)$, respectively. For any $f$, $g\in L^1((0,\infty),dm_\lambda)$, we define their Hankel convolution by
+$$f\sharp_\lambda g(x):=\int_0^\infty f(y)\tau_x^{[\lambda]}g(y)dm_\lambda(y),\ {\rm for}\ {\rm all}\ x\in (0,\infty),$$
+where $\tau_x^{[\lambda]}$ denotes the Hankel translation of $g$, which can be expressed as
+$$\tau_x^{[\lambda]}g(y):=\frac{\Gamma(\lambda+1/2)}{\Gamma(\lambda)\sqrt{\pi}}\int_0^\pi g(\sqrt{x^2+y^2-2xy\cos\theta})(\sin\theta)^{2\lambda-1}d\theta.$$
+For any function $\phi$, we denote $\phi_t(y):=t^{-2\lambda-1}\phi(y/t)$. Then recall from \cite{MR2496404} that \begin{align}\label{heatex}
+e^{-t\Delta_\lambda}f=f\sharp_\lambda W_{\sqrt{2t}}^{[\lambda]}
+\end{align}
+ for all $t\in\mathbb{R}_+$, where we denote
+$$W^{[\lambda]}(x)=2^{(1-2\lambda)/2}\exp(-x^2/2)/\Gamma(\lambda+1/2).$$
+
+{\color{red}1-dim?$m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))?$}
+\begin{lemma}\label{heat kernel}
+There exist constants $C,c>0$  such that
+\begin{align*}
+&(1) \ |K_{e^{-t^2 \Delta_\lambda}}(x,\,y)|\leq \frac{C}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))}\exp\left(-c\frac{|x-y|^2}{t^2}\right)\\
+&(2) \ |K_{\partial_t e^{-t^2 \Delta_\lambda} }(x,\,y)|\leq \frac{C}{tm_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))}\exp\left(-c\frac{|x-y|^2}{t^2}\right)\\
+&(3) \ |K_{\partial_{{\color{red}x}} e^{-t^2 \Delta_\lambda} }(x,\,y)|\leq \frac{C}{tm_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))}\exp\left(-c\frac{|x-y|^2}{t^2}\right)\\
+&(4) \ {\color{red}\int_{0}^\infty}K_{e^{-t^2 \Delta_\lambda}}(x,\,y)dm_\lambda(y)=1.{\color{red}\ Multiplied\ by\ a\ normalized\ constant?}
+\end{align*}
+for all $x,y\in\mathbb{R}_+^{n+1}$ and $t\in\mathbb{R}_+$.
+\end{lemma}
+\begin{proof}
+By \eqref{heatex}, we see that
+\begin{align}
+K_{e^{-t^2 \Delta_\lambda}}(x,\,y)
+&=\frac{\Gamma(\lambda+1/2)}{\Gamma(\lambda)\sqrt{\pi}}\int_0^\pi W_{\sqrt{2}t}^{[\lambda]}(\sqrt{x^2+y^2-2xy\cos\theta})(\sin\theta)^{2\lambda-1}d\theta\nonumber\\
+&=2^{(1-2\lambda)/2}\frac{\Gamma(\lambda+1/2)}{\Gamma(\lambda)\sqrt{\pi}}\int_0^\pi (\sqrt{2}t)^{-2\lambda-1}\exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta\label{middd}\\
+&\sim t^{-2\lambda-1}\int_0^\pi \exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta.\label{midd}
+\end{align}
+To continue, we divide the proof into two cases.
+
+{\bf Case (i).} If $t\geq x$ or $|x-y|\geq x/2$, then it follows from \eqref{midd} and the doubling condition \eqref{doub} that
+\begin{align*}
+K_{e^{-t^2 \Delta_\lambda}}(x,\,y)&\lesssim t^{-2\lambda-1} \exp\left(-\frac{|x-y|^2}{4t^2}\right)\\
+&\lesssim \frac{1}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))}\exp\left(-\frac{|x-y|^2}{8t^2}\right).
+\end{align*}
+
+{\bf Case (ii).} If $t< x$ and $|x-y|< x/2$, then observe that $x\sim y$, $\sin\theta\sim \theta$ for all $\theta\in (0,\pi/2)$ and $1-\cos\theta\geq 2(\theta/\pi)^2$. Now we note that the right-hand side of \eqref{midd} can be written as
+\begin{align*}
+&Ct^{-2\lambda-1}\int_0^{\pi/2} \exp\left(-\frac{|x-y|^2+2xy(1-\cos\theta)}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta\\
+&\hspace{1.0cm}+Ct^{-2\lambda-1}\int_{\pi/2}^\pi \exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta=:{\rm A}+{\rm B}.
+\end{align*}
+For the term ${\rm A}$, by a change of variable, we have
+\begin{align*}
+{\rm A}&\lesssim t^{-2\lambda-1}\int_0^{\pi/2} \exp\left(-\frac{|x-y|^2+4xy\theta^2/\pi^2}{4t^2}\right)\theta^{2\lambda-1}d\theta\\
+&\lesssim t^{-2\lambda-1}\exp\left(-\frac{|x-y|^2}{4t^2}\right)\int_0^{\infty} \exp\left(-\frac{4xy\theta^2/\pi^2}{4t^2}\right)\theta^{2\lambda-1}d\theta\\
+&\lesssim (tx^{2\lambda}y^{2\lambda})^{-1}\exp\left(-\frac{|x-y|^2}{4t^2}\right)\\
+&\lesssim \frac{1}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))}\exp\left(-\frac{|x-y|^2}{4t^2}\right).
+\end{align*}
+For the term ${\rm B}$, we note that $\cos\theta<0$ for all $\theta\in (\pi/2,\pi)$. Thus,
+\begin{align*}
+{\rm B}&\lesssim t^{-2\lambda-1}\exp\left(-\frac{x^2}{4t^2}\right)\exp\left(-\frac{|x-y|^2}{4t^2}\right)\int_{\pi/2}^\pi (\sin\theta)^{2\lambda-1}d\theta\\
+&\lesssim (tx^{2\lambda})^{-1}\exp\left(-\frac{|x-y|^2}{4t^2}\right)\\
+&\lesssim \frac{1}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))}\exp\left(-\frac{|x-y|^2}{4t^2}\right).
+\end{align*}
+This ends the proof of (1).
+
+Now we show (2). It follows from \eqref{middd} that
+\begin{align}\label{t2220}
+K_{\partial_te^{-t^2 \Delta_\lambda}}(x,\,y)
+&\sim  t^{-2\lambda-2}\int_0^\pi \exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta\nonumber\\
+&+\hspace{1.0cm} t^{-2\lambda-4}(x^2+y^2-2xy\cos\theta)\int_0^\pi \exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta\nonumber\\
+&\lesssim t^{-2\lambda-2}\int_0^\pi \exp\left(-\frac{x^2+y^2-2xy\cos\theta}{8t^2}\right)(\sin\theta)^{2\lambda-1}d\theta.
+\end{align}
+Note that the integral term above is exactly the integral term on the right-hand side of \eqref{midd}, up a harmless constant in the exponential term. Therefore, we obtain (2).
+
+Finally, we show (3). It follows from \eqref{middd} that
+\begin{align*}
+K_{\partial_{{\color{red}x}}e^{-t^2 \Delta_\lambda}}(x,\,y)
+&=  -C_\lambda\frac{x-y\cos\theta}{t^2}\int_0^\pi t^{-2\lambda-1}\exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta\\
+&\lesssim\frac{|x-y|}{t^2}\int_0^\pi t^{-2\lambda-1}\exp\left(-\frac{x^2+y^2-2xy\cos\theta}{4t^2}\right)(\sin\theta)^{2\lambda-1}d\theta\\
+&\lesssim t^{-2\lambda-2}\int_0^\pi \exp\left(-\frac{x^2+y^2-2xy\cos\theta}{8t^2}\right)(\sin\theta)^{2\lambda-1}d\theta.
+\end{align*}
+Note that up an absolute constant, the term above is equal to the term on the right-hand side of \eqref{t2220}. Therefore, we obtain (3). This finishes the proof of Lemma \ref{heat kernel}.
+%where we denote $C_\lambda:=2^{(1-2\lambda)/2}\frac{\Gamma(\lambda+1/2)}{\Gamma(\lambda)\sqrt{\pi}}(-2\lambda-1)\sqrt{2}^{-2\lambda-1}$ for simplicity.
+\end{proof}
+
+\begin{lemma}\label{SchurL}
+Suppose that $1<p<\infty$. Let $A=(a_{ij})$ be an infinite matrix with non-negative entries. Suppose that there is a constant $K>0$ and a non-negative sequence $\{b_i\}$ such that
+$$\sum_ja_{ij}b_j^{p'}\leq Kb_i^{p'},\ {\rm for}\ {\rm any}\ j=1,2,\ldots,$$
+$$\sum_ia_{ij}b_i^p\leq Kb_j^p,\ {\rm for}\ {\rm any}\ j=1,2,\ldots.$$
+Then the map $T:\ (f_i)_i\rightarrow (\sum_{j}a_{ij}f_j)_i$ is bounded on $\ell^p$ with norm bounded by $K$.
+\end{lemma}
+For any $b\in L_{{\rm loc}}^1(\mathbb{R}_+^{n+1},dm_\lambda)$, we define the heat maximal function associated with Bessel operator over Carleson box centred at $(x,\,t)\in\mathbb{R}_+^{n+1}$ by $$S_\lambda(b)(x,\,t):=\sup\left\{s\left|\nabla e^{-s^2 {\Delta_\lambda}}b(y)\right|:\ y\in B_{\mathbb{R}_+^{n+1}}(x,\,t),\ t/2\leq s\leq t\right\},$$
+where $\nabla$ is the full gradient given by $\nabla=(\partial_{x_1},\ldots,\partial_{x_{n+1}},\partial_t)$.
+Moreover, for any $1\leq r<\infty$ and any $b\in L_{{\rm loc}}^r(\mathbb{R}_+^{n+1},dm_\lambda)$, we define its {\color{red}$r$-mean oscillation} over a cube $Q$ by
+\begin{align*}
+MO_Q^r(b):=\left(\fint_{Q}|b(x)-(b)_Q|^rdm_\lambda(x)\right)^{1/r}.
+\end{align*}
+\begin{lemma}\label{aujxi}
+Let $0<p<\infty$, $0<q\leq \infty$ and $b\in L_{{\rm loc}}^1(\mathbb{R}_+^{n+1},dm_\lambda)$. Then for any $\nu\in\{1,2,\ldots ,\kappa\}$, one has
+\begin{align*}
+\left\|\left\{\sup\limits\left\{S_\lambda(b)(x,t):x\in Q,\ \delta\ell(Q)\leq t\leq \ell(Q)\right\}\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\lesssim\sum_{\iota=1}^\kappa\left\|\left\{MO_Q^1(b)\right\}_{Q\in\mathcal{D}^\iota}\right\|_{\ell^{p,q}},
+\end{align*}
+where $\ell(Q)$ is denoted by the sidelength of $Q$.
+\end{lemma}
+\begin{proof}
+To begin with, recall from \eqref{eq:contain} that for any $Q\in\mathcal{D}_j^\nu$ centred at $c_Q\in\mathbb{R}_+^{n+1}$, there is a ball $B_Q:=B_{\mathbb{R}_{+}^{n+1}}(c_Q,\,4\delta^j)$ such that $Q\subset B_Q$. Then by Lemma \ref{heat kernel}, for any sufficient constant $N>0$ to be chosen later,
+\begin{align}\label{hjlll}
+&s\left|\nabla e^{-s^2{\Delta_\lambda}}b(y)\right|\nonumber\\
+&=s\left|\nabla\int_{\mathbb{R}_+^{n+1}}(b(y)-(b)_{B_Q})K_{e^{-s^2{\Delta_\lambda}}}(x,\,y)dm_\lambda(y)\right|\nonumber\\
+&\leq\int_{\mathbb{R}_+^{n+1}}|b(y)-(b)_{B_Q}||K_{s\nabla e^{-s^2{\Delta_\lambda}}}(x,\,y)|dm_\lambda(y)\nonumber\\
+&\lesssim\sum_{k\geq 0}\frac{1}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,s))}\int_{2^{k+1}B_Q\backslash 2^kB_Q}|b(y)-(b)_{B_Q}| \left(\frac{s}{s+|x-y|}\right)^N dm_\lambda(y)\nonumber\\
+&\lesssim \sum_{k\geq 0}2^{-kN}\fint_{2^{k+1}B_Q}|b(y)-(b)_{B_Q}|dm_\lambda(y)\nonumber\\
+&\lesssim \sum_{k\geq 0}2^{-kN}\fint_{2^{k+1}B_Q}|b(y)-(b)_{2^{k+1}B_Q}|dm_\lambda(y)
+\end{align}
+for some implicit constant $C>0$ independent of $x\in Q\in\mathcal{D}^\nu,\ \delta\ell(Q)\leq t\leq \ell(Q)$, $y\in B_{\mathbb{R}_+^{n+1}}(x,\,t)$ and $\delta t\leq s\leq t$,
+where the last two inequalities used the doubling inequality \eqref{doub}. To continue, we apply Lemma \ref{thm:existence2} to see that for any $k\in\mathbb{Z}$ and $Q\in\mathcal{D}_j^\nu$, there is a $\iota\in\{1,2,\ldots ,\kappa\}$ and a cube $P_Q^k\in \mathcal{D}_{j-k-1}^\iota$ such that
+\begin{equation}
+    2^{k+1}B_Q\subseteq P_Q^k\subseteq C_{{\rm adj}}2^{k+1}B_Q.
+\end{equation}
+%Moreover, we note that each $P_Q^k$ contains at most {\color{red}$c2^{k(n+1)}$} cubes $I_Q^k\in\mathcal{D}^\nu_{j}$.
+Therefore,
+\begin{align}\label{rhss1}
+{\rm RHS}\ {\rm of}\ \eqref{hjlll}\lesssim\sum_{k\geq 0}2^{-kN}\fint_{P_Q^k}|f(y)-(f)_{P_Q^k}|dm_\lambda(y).
+\end{align}
+Note that for any $k\in\mathbb{Z}$ and $Q\in\mathcal{D}^\nu_j$, one has $Q\subset P_Q^k$. Therefore, the number of $Q'\in\mathcal{D}^\nu_j$ such that $P_Q^k=P_{Q'}^k$ is at most $c2^{k(n+1)}$. This, in combination with inequality \eqref{rhss1}, yields
+\begin{align*}
+&\left\|\left\{\sup\limits\left\{S_\lambda(b)(x,t):x\in Q,\ \delta\ell(Q)\leq t\leq \ell(Q)\right\}\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&\lesssim \sum_{k\geq 0}2^{-kN}\left\|\left\{\fint_{P_Q^k}|f(y)-(f)_{P_Q^k}|dm_\lambda(y)\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&\lesssim \sum_{\iota=1}^\kappa\sum_{k\geq 0}2^{-k(N-n-1)}\left\|\left\{\fint_{Q}|f(y)-(f)_{Q}|dm_\lambda(y)\right\}_{Q\in\mathcal{D}^\iota}\right\|_{\ell^{p,q}}\\
+&\lesssim \sum_{\iota=1}^\kappa\|\{MO_Q^1(b)\}_{Q\in\mathcal{D}^\iota}\|_{\ell^{p,q}},
+\end{align*}
+where the last inequality holds since $N$ can be chosen to be larger than $n+1$. This ends the proof of Lemma \ref{aujxi}.
+\end{proof}
+
+
+
+\begin{lemma}\label{technic}
+Let $1\leq r<\infty$, $0<p<\infty$ and $0<q\leq \infty$. Then the following statements are equivalent:
+\begin{enumerate}
+  \item For any $r\in [1,\infty)$ and $\nu\in\{1,2,\ldots ,\kappa\}$, one has $\{MO_Q^r(b)\}_{Q\in\mathcal{D}^\nu}\in \ell^{p,q}$.
+  \item For any $\nu\in\{1,2,\ldots ,\kappa\}$, one has $\{MO_Q^1(b)\}_{Q\in\mathcal{D}^\nu}\in \ell^{p,q}$.
+  %\item The function
+  %$$S_\lambda(b)(x,t):=\sup\left\{s\left|\nabla e^{-s^2 {\Delta_\lambda}}f(y)\right|:\ y\in B_{\mathbb{R}_+^{n+1}}(x,\,t),\ t/2\leq s\leq t\right\}$$ is in $L^{p,q}(\mathbb{R}_+^{n+1}\times\mathbb{R}_+,\frac{dm_\lambda(x)dt}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))t))})$.
+\end{enumerate}
+
+\end{lemma}
+\begin{proof}
+It is direct that (1) implies (2). Now we show that (2) implies (1).
+To begin with, we have
+\begin{align*}
+\|\{MO_Q^r(b)\}_{Q\in\mathcal{D}^\nu}\|_{\ell^{p,q}}
+&\lesssim \left\|\left\{\left(\fint_Q|b(x)-e^{-\ell(Q)^2 \Delta_\lambda }b(c_Q)|^rdm_\lambda(x)\right)^{1/r}\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&\lesssim \left\|\left\{\sup\limits_{x\in Q}\left|e^{-\ell(Q)^2 \Delta_\lambda}b(x)-e^{-\ell(Q)^2\Delta_\lambda}b(c_Q)\right|\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&\hspace{1.0cm}+\left\|\left\{\left(\fint_Q \left(\int_0^{\ell(Q)}\left|\frac{\partial}{\partial t}e^{-t^2 \Delta_\lambda }b(x)\right|dt\right)^rdm_\lambda(x)\right)^{1/r}\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&=:{\rm I}+{\rm II}.
+\end{align*}
+
+For the term ${\rm I}$, we apply the mean value theorem and Lemma \ref{aujxi} to conclude that
+\begin{align*}
+{\rm I}\lesssim\left\|\left\{\sup\limits_{x\in Q}\ell(Q)|\nabla e^{-\ell(Q)^2 \Delta_\lambda}b(x)|\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}
+%&\lesssim \left\|\left\{\sup\limits\left\{S_\lambda(b)(x,t):x\in Q,\ \ell(Q)/2\leq t\leq \ell(Q)\right\}\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+\lesssim \sum_{\iota=1}^\kappa\|\{MO_Q^1(b)\}_{Q\in\mathcal{D}^\iota}\|_{\ell^{p,q}}.
+\end{align*}
+
+
+
+
+For the term ${\rm II}$, we first apply Jensen's inequality to deduce that
+\begin{align}\label{rhs123}
+&\left(\fint_Q \left(\int_0^{\ell(Q)}\left|\frac{\partial}{\partial t}e^{-t^2 \Delta_\lambda }b(x)\right|dt\right)^rdm_\lambda(x)\right)^{1/r}\nonumber\\
+&\leq  \left(\fint_Q \left(\sum_{j=-\infty}^{\log_{\delta^{-1}}\ell(Q)}\sup\limits_{\delta^{-j+1}\leq t\leq \delta^{-j}}t|\nabla e^{-t^2 \Delta_\lambda }b(x)(x,\,t)| \right)^rdm_\lambda(x)\right)^{1/r} \nonumber\\
+&\leq  \left(\fint_Q \left(\sum_{j=-\infty}^{\log_{\delta^{-1}}\ell(Q)}S_\lambda(b)(x,\,\delta^{-j}) \right)^rdm_\lambda(x)\right)^{1/r} \nonumber\\
+&=  \left(\fint_Q \left(\sum_{j=-\infty}^{\log_{\delta^{-1}}\ell(Q)}(\log_{\delta^{-1}}\ell(Q)-j+1)^{-2}\times (\log_{\delta^{-1}}\ell(Q)-j+1)^2S_\lambda(b)(x,\,\delta^{-j}) \right)^rdm_\lambda(x)\right)^{1/r} \nonumber\\
+&\lesssim  \left(\fint_Q \sum_{j=-\infty}^{\log_{\delta^{-1}}\ell(Q)}(\log_{\delta^{-1}}\ell(Q)-j+1)^{-2}\times \left( (\log_{\delta^{-1}}\ell(Q)-j+1)^2S_\lambda(b)(x,\,\delta^{-j}) \right)^rdm_\lambda(x)\right)^{1/r} \nonumber\\
+&=C\left(\sum_{j=-\infty}^{\log_{\delta^{-1}}\ell(Q)}(\log_{\delta^{-1}}\ell(Q)-j+1)^{2r-2}\fint_QS_\lambda(b)(x,\,\delta^{-j})^rdm_\lambda(x) \right)^{1/r}.
+\end{align}
+To continue, for each $\nu\in\{1,2,\ldots ,\kappa\}$, $j\in (-\infty,\log_{\delta^{-1}}\ell(Q)]\cap\mathbb{Z}$ and $Q\in\mathcal{D}^\nu$, we let
+$$\mathcal{D}_Q^\nu:=\{R\in\mathcal{D}^\nu:\ R\subseteq Q\},$$
+$$\mathcal{D}_{Q,j}^\nu:=\{R\in\mathcal{D}_j^\nu:\ R\subseteq Q\}.$$
+Then we have
+\begin{align}\label{backo}
+{\rm RHS}\ {\rm of}\ \eqref{rhs123}
+&\lesssim\left(\sum_{j=-\infty}^{\log_{\delta^{-1}}\ell(Q)}\sum_{R\in\mathcal{D}_{Q,-j}^\nu}(\log_{\delta^{-1}}\ell(Q)-j+1)^{2r-2}m_\lambda(Q)^{-1}\int_{R}S_\lambda(b)(x,\,\delta^{-j})^rdm_\lambda(x) \right)^{1/r}\nonumber\\
+&\lesssim\left(\sum_{R\in\mathcal{D}_{Q}^\nu}\frac{m_\lambda(R)}{m_\lambda(Q)}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}\sup\limits_{x\in R}S_\lambda(b)(x,\,\ell(R))^r \right)^{1/r}.
+\end{align}
+To continue, for any sequence $\{a_Q\}_{Q\in\mathcal{D}^\nu}$, we let
+$$M_r(a)(Q)=\sum_{R\in\mathcal{D}_{Q}^\nu}\frac{m_\lambda(R)}{m_\lambda(Q)}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}|a_R|.$$
+We {\bf claim} that $M_r$ is a bounded operator on $\ell^{p,q}$ for any $0<p<\infty$ and $0<q\leq \infty$. Before providing its proof, we first illustrate how it implies our desired inequality. we apply the $\ell^{p,q}$ boundedness of $M_r$ and inequality \eqref{backo}, together with Lemma \ref{aujxi}, to conclude that
+\begin{align*}
+{\rm II}&\leq C \left\|\left\{\left(\sum_{R\in\mathcal{D}_{Q}^\nu}\frac{m_\lambda(R)}{m_\lambda(Q)}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}\sup\limits_{x\in R}S_\lambda(b)(x,\,\ell(R))^r \right)^{1/r}\right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&= C \left\|\left\{\sum_{R\in\mathcal{D}_{Q}^\nu}\frac{m_\lambda(R)}{m_\lambda(Q)}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}\sup\limits_{x\in R}S_\lambda(b)(x,\,\ell(R))^r \right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p/r,q/r}}\\
+&\leq C\left\|\left\{S_\lambda(b)(x,\,\ell(Q))^r \right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p/r,q/r}}\\
+&=C\left\|\left\{S_\lambda(b)(x,\,\ell(Q)) \right\}_{Q\in\mathcal{D}^\nu}\right\|_{\ell^{p,q}}\\
+&\leq C \sum_{\iota=1}^\kappa\|\{MO_Q^1(b)\}_{Q\in\mathcal{D}^\iota}\|_{\ell^{p,q}}.
+\end{align*}
+
+Now we go back to the proof of the claim. By interpolation, it suffices to show that it is a bounded operator on $\ell^p$ for any $0<p<\infty$. To show this, we let
+$$\mathcal{E}_R^\nu:=\{Q\in\mathcal{D}^\nu:\ Q\supseteq R\},$$
+%$$\mathcal{E}_{R,j}^\nu:=\{Q\in\mathcal{D}_j^\nu:\  Q\supseteq R\}.$$
+and then divide the proof into two cases:
+
+
+{\bf Case (i).} If $0<p\leq 1$, then we apply inequality \eqref{doub} to get that
+\begin{align*}
+\|\{M_r(a)(Q)\}_{Q\in\mathcal{D}^\nu}\|_{\ell^p}&\leq \left(\sum_{Q\in\mathcal{D}^\nu}\sum_{R\in\mathcal{D}_{Q}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^p\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{(2r-2)p}|a_R|^p\right)^{1/p}\\
+&=\left(\sum_{R\in\mathcal{D}^\nu}\sum_{Q\in\mathcal{E}_{R}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^p\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{(2r-2)p}|a_R|^p\right)^{1/p}\\
+&\lesssim\left(\sum_{R\in\mathcal{D}^\nu}\sum_{Q\in\mathcal{E}_{R}^\nu}\left(\frac{\ell(R)}{\ell(Q)}\right)^{(n+1)p}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{(2r-2)p}|a_R|^p\right)^{1/p}\\
+&=C\left(\sum_{R\in\mathcal{D}^\nu}\sum_{j:\delta^j\geq \ell(R)}\left(\frac{\ell(R)}{\delta^j}\right)^{(n+1)p}\left(\log_{\delta^{-1}}\frac{\delta^j}{\ell(R)}+1\right)^{(2r-2)p}|a_R|^p\right)^{1/p},
+%&=\left(\sum_{R\in\mathcal{D}^\iota}\sum_{j:\delta^j\geq \ell(R)}\sum_{Q:\ R\cap 10Q\neq \emptyset}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^p\left(\log_2\frac{\ell(Q)}{\ell(R)}+1\right)^{(2r-2)p}|a_R|^p\right)^{1/p}
+\end{align*}
+where in the last equality we used the fact that for any $R\in\mathcal{D}^\nu$ and $j\in\mathbb{Z}$ satisfying $\delta^j\geq \ell(R)$, there exists a unique $Q\in\mathcal{D}_j^\nu$ such that $Q\supseteq R$. This deduces that the right-hand side above is dominated by $C\|\{a_Q\}_{Q\in\mathcal{D}^\nu}\|_{\ell^p}$.
+
+
+{\bf Case (ii).} If $1<p<\infty$, then we shall verify that
+\begin{align}
+&\sum_{R\in\mathcal{D}_{Q}^\nu}\frac{m_\lambda(R)}{m_\lambda(Q)}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}b_R^{p'}\lesssim b_Q^{p'},\label{ver10}\\
+&\sum_{Q\in\mathcal{E}_{R}^\nu}\frac{m_\lambda(R)}{m_\lambda(Q)}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}b_Q^{p'}\lesssim b_R^{p'}\label{ver11},
+\end{align}
+where we choose $b_Q:=m_\lambda(Q)^\epsilon$ for some $\epsilon>0$ small enough. Indeed, to obtain \eqref{ver10}, by changing the order of the sum and then applying inequality \eqref{doub}, we see that
+\begin{align}\label{intoa}
+{\rm LHS}\ {\rm of}\ \eqref{ver10}&=m_\lambda(Q)^{\epsilon p'}\sum_{R\in\mathcal{D}_{Q}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^{1+\epsilon p'}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}\nonumber\\
+&\leq C m_\lambda(Q)^{\epsilon p'}\sum_{R\in\mathcal{D}_{Q}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^{1+\epsilon p'/2}\nonumber\\
+%&\leq C m_\lambda(Q)^{\epsilon p'}\sum_{R\in\mathcal{D}_{Q}^\iota}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^{1+\epsilon p'/2}\\
+&= C m_\lambda(Q)^{\epsilon p'}\sum_{j:\delta^j\leq \ell(Q)}\sum_{R\in\mathcal{D}_{Q,j}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^{1+\epsilon p'/2},
+\end{align}
+where the constant $C$ depends only on $r$ and $p$. Since we are in the Bessel setting, in which the upper dimension is not equal to the lower one, one need to deal with the volumn term more delicately. To this end, we apply inequality \eqref{doub} to see that
+\begin{align*}
+\sum_{j:\delta^j\leq \ell(Q)}\sum_{R\in\mathcal{D}_{Q,j}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^{1+\epsilon p'/2}
+&\leq C \sum_{j:\delta^j\leq \ell(Q)}\left(\frac{\delta^j}{\ell(Q)}\right)^{(n+1)\epsilon p'/2}\sum_{R\in\mathcal{D}_{Q,j}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)\\
+&=C\sum_{j:\delta^j\leq \ell(Q)}\left(\frac{\delta^j}{\ell(Q)}\right)^{(n+1)\epsilon p'/2}\left(\frac{m_\lambda(\bigcup_{R\in\mathcal{D}_{Q,j}^\nu}R)}{m_\lambda(Q)}\right)\\
+&\leq C.
+\end{align*}
+Substituting the above inequality into \eqref{intoa}, we deduce that the right-hand side of \eqref{intoa} is dominated by $m_\lambda(Q)^{\epsilon p'}$. This verifies \eqref{ver10}. Next, we verify \eqref{ver11}. By inequality \eqref{doub},
+\begin{align*}
+{\rm LHS}\ {\rm of}\ \eqref{ver11}%&=m_\lambda(R)^{\epsilon p'}\sum_{j:\delta^j\geq \ell(R)}\sum_{Q\in\mathcal{E}_{R,j}^\nu}\left(\frac{m_\lambda(R)}{m_\lambda(Q)}\right)^{1-\epsilon p'}\left(\log_{\delta^{-1}}\frac{\ell(Q)}{\ell(R)}+1\right)^{2r-2}\\
+&\lesssim m_\lambda(R)^{\epsilon p'}\sum_{j:\delta^j\geq \ell(R)}\left(\frac{\ell(R)}{\delta^j}\right)^{(n+1)(1-\epsilon p')}\left(\log_{\delta^{-1}}\frac{\delta^j}{\ell(R)}+1\right)^{2r-2}\\
+&\lesssim m_\lambda(R)^{\epsilon p'},
+\end{align*}
+where in the first inequality we used the fact again that for any $R\in\mathcal{D}^\nu$ and $j\in\mathbb{Z}$ satisfying $\delta^j\geq \ell(R)$, there exists a unique $Q\in\mathcal{D}_j^\nu$ such that $Q\supseteq R$. Combining \eqref{ver10}, \eqref{ver11} with Lemma \ref{SchurL}, we see that $M_r$ is a bounded operator on $\ell^p$.
+This completes the proof of Lemma \ref{technic}.
+\end{proof}
+
+\section{???}
+Let $\Xi_+=\{(x,\,y)\in\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1}:\ x=y\}$. {\color{red}Notation of $\ell(Q)$}
+\begin{lemma}\label{Whitney}
+There exists a family of closed standard dyadic cubes $\mathcal{P}=\{P_j\}_j$ on $(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+$ such that
+\begin{enumerate}
+  \item $\cup_jP_j=(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+$;
+  \item $\ell(P_j)\approx d(P_j,\,(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+)$;
+  \item If the boundaries of two cubes $P_j$ and $P_k$ touch, then $\ell(P_j)\approx \ell(P_k)$;
+  \item For a given $P_j$, there are at most $c_n$ cubes $P_k$ that touch it;
+  \item Let $0<\epsilon<1/4$ and $P_j^*$ be the cube with the same center as $P_j$ and with the sidelength $(1+\epsilon)\ell(P_j)$. Then each point of $(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+$ is contained in at most $c_n$ of the cubes $P_j^*$.
+\end{enumerate}
+\begin{proof}
+Since the boundary of $(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+$ is {\color{red}$\Xi_+\cup \{(x,\,0):\ x\in\mathbb{R}_+^{n+1}\}\cup \{(0,\,y):\ y\in\mathbb{R}_+^{n+1}\}$}, one may not apply the standard dyadic Whitney decomposition on $(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+$ directly to get the desired result. Instead, we apply the standard dyadic Whitney decomposition on the region $(\mathbb{R}^{n+1}\times \mathbb{R}^{n+1})\backslash \Xi$, where $\Xi=\{(x,\,y)\in\mathbb{R}^{n+1}\times \mathbb{R}^{n+1}:\ x=y\}$,  to see that there exists a family of closed standard dyadic cubes $\mathcal{P}'=\{P_j'\}_j$ on $(\mathbb{R}^{n+1}\times \mathbb{R}^{n+1})\backslash \Xi$ such that (1)--(5) holds with $P_j$ and $(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+$ replaced by $P_j'$ and $(\mathbb{R}^{n+1}\times \mathbb{R}^{n+1})\backslash \Xi$, respectively. Since each $P_j'$ is contained in or disjoint with $\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\Xi_+$, this allows us to choose $\mathcal{P}=\{P_j\}_j$ be a sub-family of $\mathcal{P}'$ such that $$\cup_jP_j= (\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+.$$
+For these $\{P_j\}_j$, we see that (2) holds since
+$$d(P_j,\,(\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1})\backslash \Xi_+)\approx d(P_j,\,(\mathbb{R}^{n+1}\times \mathbb{R}^{n+1})\backslash \Xi).$$
+Moreover,  (3)--(5) hold directly due to the construction of $\{P_j'\}_j$. This ends the proof of Lemma \ref{Whitney}.
+\end{proof}
+
+\end{lemma}
+Let $\mathcal{P}=\{P_i\}$ be a dyadic Whitney decomposition of $\Omega:=\mathbb{R}_+^{n+1}\times\mathbb{R}_+^{n+1}\backslash \{(x,\,y)\in\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1}:\ x=y\}$. This means that $\Omega=\cup P_i$, each $P_i$ is a dyadic cube in $\mathbb{R}_+^{n+1}$, $P_i^\circ\cap P_j^\circ=\emptyset$ if $i\neq j$, and the sidelength of $P_i$ is comparable to the distance from $P_i$ to the diagonal $\{(x,\,y)\in\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1}:\ x=y\}$. Moreover, for any $P\in\mathcal{P}$, one can write $P=Q^1\times Q^2$, where $Q^1,Q^2\in\mathcal{D}^0$, the collection of standard dyadic cubes in $\mathbb{R}_+^{n+1}$.
+
+For any $Q\in\mathcal{D}^0$, {\color{red}let $\hat{Q}$ be the cube chosen in Lemma \ref{sign}} {\color{red}We need to make sure that $\hat{Q}\in\mathcal{D}_k^0$}. Define
+$$U_{Q}(x,y):=K_{\lambda,\ell}(x,\,y)\chi_Q(x)\chi_{\hat{Q}}(y).$$
+Here we omit the dependence on $\lambda$ and $\ell$ since these two parameters play no role in the proof below.
+\begin{lemma}\label{jq}
+There is a finite index set $\mathcal{I}$ such that
+for any $\ell\in\{1,2,...,n+1\}$, $Q\in\mathcal{D}^0$ and $k\in\mathbb{Z}^2$, one can construct  functions $F_{Q,k,v}$ , $G_{Q,k,v}$ and a sequence $\{B_{Q,k,v}\}$ satisfying for any $v\in\mathcal{I}$,
+\begin{enumerate}
+  \item ${\rm supp}(F_{Q,k,v})\subset Q$, ${\rm supp}(G_{Q,k,v})\subset \hat{Q}$,
+  \item $\|F_{Q,k,v}\|_{\infty}\leq m_\lambda(Q)^{-1/2}$, $\|G_{Q,k,v}\|_{\infty}\leq m_\lambda(Q)^{-1/2}$,
+  \item $|B_{Q,k,v}|\leq C_N(1+|k|)^{-N}$ for any $N\in\mathbb{Z}_+$ and for some $C_N>0$ independent of  $Q$ and $k$,
+\item $U_{Q}$ admits the following factorization
+\begin{align*}
+U_{Q}(x,\,y)=\sum_{v\in\mathcal{I}}\sum_{k\in\mathbb{Z}^2}C_{Q,k,v}F_{Q,k,v}(x)G_{Q,k,v}(y).
+\end{align*}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma ???, the kernel  of $[b,R_{\lambda,\ell}]$ can be factorized as
+$$\sum_{v\in\mathcal{I}}\sum_{k\in\mathbb{Z}^2}C_{Q,k,v}F_{Q,k,v}(x)G_{Q,k,v}(y)$$
+\end{proof}
+%---------------------------------------------------------------------------------------
+%
+%The following maybe useless:
+%
+%\begin{proof}
+%{\color{red}To begin with, we set $d\mu_\lambda(x,t):=\frac{dm_\lambda(x)dt}{m_\lambda(B_{\mathbb{R}_+^{n+1}}(x,\,t))t}$. Then {\color{red}according to the definition of $L^{p,q}$ norm}, we note that
+%\begin{align}\label{senorm}
+%\|S_\lambda(b)\|_{L^{p,q}}\leq \left\|\left\{\sup\limits\left\{S_\lambda(b)(x,t):x\in Q,\ \ell(Q)/2\leq t\leq \ell(Q)\right\}\right\}_{Q\in\mathcal{D}^0}\right\|_{\ell^{p,q}}
+%\end{align}
+%{\color{red}Unify $(x,y)$ $(x,\,y)$.}
+%Indeed, for any $0<q<\infty$,
+%\begin{align*}
+%&\|S_\lambda(b)\|_{L^{p,q}}\\
+%&=p^{1/q}\left(\int_0^\infty\left(\mu_\lambda\left\{(x,\,t)\in\mathbb{R}_+^{n+1}\times \mathbb{R}_+:|S_\lambda(b)(x,t)|>\lambda\right\}^{1/p}\lambda\right)^q\frac{d\lambda}{\lambda}\right)^{1/q}\\
+%&=p^{1/q}\left(\int_0^\infty\left(\left(\sum_{Q\in\mathcal{D}^0}\mu_\lambda\left\{(x,\,t)\in Q\times \Big[\frac{\ell(Q)}{2},\ell(Q)\Big]:|S_\lambda(b)(x,t)|>\lambda\right\}\right)^{1/p}\lambda\right)^q\frac{d\lambda}{\lambda}\right)^{1/q}\\
+%&\leq p^{1/q}\left(\int_0^\infty\left(\left(\sum_{Q\in\mathcal{D}^0}\mu_\lambda\left\{(x,\,t)\in Q\times \Big[\frac{\ell(Q)}{2},\ell(Q)\Big]:\sup\limits_{\substack{x\in Q\\ \ell(Q)/2\leq t\leq \ell(Q)}}|S_\lambda(b)(x,t)|>\lambda\right\}\right)^{1/p}\lambda\right)^q\frac{d\lambda}{\lambda}\right)^{1/q}\\
+%&=p^{1/q}\left(\int_0^\infty\left(\#\left\{Q\in\mathcal{D}^0:\sup\limits_{\substack{x\in Q\\ \ell(Q)/2\leq t\leq \ell(Q)}}|S_\lambda(b)(x,t)|>\lambda\right\}\lambda\right)^{q/p}\frac{d\lambda}{\lambda}\right)^{1/q}\\
+%&=\|\{\sup\limits\{S_\lambda(b)(x,t):x\in Q,\ \ell(Q)/2\leq t\leq \ell(Q)\}\}_{Q\in\mathcal{D}^0}\|_{\ell^{p,q}},
+%\end{align*}
+%where we used the notation $\#$ to denote the counting measure. This ends the proof of \eqref{senorm} for $0<q<\infty$, while the proof in the case of $q=\infty$ is similar, so we skip the details. }
+%\end{proof}
+%---------------------------------------------------------------------------------------
+%%
+%Next, we define the conditional expectation of a locally integrable function $b$ on $\mathbb{R}^{n}$ with respect to the increasing family of $\sigma-$algebras $\sigma(\mathcal{D}_{k})$ by the expression: $$E_{k}(b)(x)=\sum_{Q\in\mathcal{D}_{k}}(b)_{Q}\chi_{Q}(x),$$
+%where we denote $(b)_{Q}$ be the average of $b$ over $Q$, that is, $(b)_{Q}:=\frac{1}{|Q|}\int_{Q}b(x)dx$.
+%
+%We see that
+%\begin{align*}
+%&\sum_{k=L}^{M}2^{2nk}\iint_{|x-y|\leq 2^{-k-1}}|b(x)-b(y)|^{p}dxdy\\
+%&\lesssim\sum_{k=L}^{M}2^{2nk}\sum_{Q\in\mathcal{D}_{k}}\int_{Q}\int_{Q}|b(x)-b(y)|^{p}dxdy\\
+%&\lesssim\sum_{k=L}^{M}2^{2nk}\sum_{Q\in\mathcal{D}_{k}}\int_{Q}\int_{Q}|b(x)-E_{k}(b)(x)|^{p}+|b(y)-E_{k}(b)(y)|^{p}dxdy\\
+%&=C\sum_{k=L}^{M}2^{nk}\sum_{Q\in\mathcal{D}_{k}}\int_{Q}|b(x)-E_{k}(b)(x)|^{p}dx\\
+%&=C\sum_{k=L}^{M}2^{nk}\|b-E_{k}(b)\|_{p}^{p}=:C\sum_{k=L}^{M}2^{nk}A_{k}.
+%\end{align*}
+%Note that
+%\begin{align*}
+%&\left(\sum_{k=L}^{M}2^{nk}\|b-E_{k}(b)\|_{p}^{p}\right)^{1/p}\\
+%&\leq \left(\sum_{k=L}^{M}2^{nk}\|b-E_{k+1}(b)\|_{p}^{p}\right)^{1/p}+\left(\sum_{k=L}^{M}2^{nk}\|E_{k+1}(b)-E_{k}(b)\|_{p}^{p}\right)^{1/p}\\
+%&=\left(\sum_{k=L+1}^{M+1}2^{n(k-1)}\|b-E_{k}(b)\|_{p}^{p}\right)^{1/p}+\left(\sum_{k=L}^{M}2^{nk}\|E_{k+1}(b)-E_{k}(b)\|_{p}^{p}\right)^{1/p}\\
+%&\leq 2^{-n/p}\left(\sum_{k=L}^{M}2^{nk}\|b-E_{k}(b)\|_{p}^{p}\right)^{1/p}+\left(2^{nM}\|b-E_{M+1}(b)\|_{p}^{p}\right)^{1/p}+\left(\sum_{k=L}^{M}2^{nk}\|E_{k+1}(b)-E_{k}(b)\|_{p}^{p}\right)^{1/p}.
+%\end{align*}
+%%Averaging $\nu$ in \eqref{aver} over $E_{M,L}$ yields
+%%\begin{align*}
+%%\left(\sum_{k=L}^{M}2^{nk}A_{k}\right)^{1/p}\leq 2^{-n/p}\left(\sum_{k=L}^{M}2^{nk}A_{k}\right)^{1/p}+(2^{nM}A_{M+1})^{1/p}+\left(\sum_{k=L}^{M}2^{nk}\frac{1}{\# E_{M,L}}\sum_{\nu\in E_{M,L}}\|E_{k+1}^{\nu}(f)-E_{k}^{\nu}(f)\|_{p}^{p}\right)^{1/p}.
+%%\end{align*}
+%We assume that $2^{nk}A_{k}\leq C$ for a constant independent of $k$ at the moment, whose proof will be given later. With this hypothesis, we have
+%\begin{align}\label{long}
+%\left(\sum_{k=L}^{M}2^{nk}A_{k}\right)^{1/p}&\lesssim 1+\left(\sum_{k=L}^{M}2^{nk}\|E_{k+1}(b)-E_{k}(b)\|_{p}^{p}\right)^{1/p}\nonumber\\
+%&\lesssim 1+\left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\right)^{1/p}.
+%\end{align}
+%To estimate the second term on the right hand side of the above expression, for $Q\in\mathcal{D}_{k}$, we let $h_{Q}^{1}(x)$, $h_{Q}^{2}(x)\ldots h_{Q}^{2^{n}-1}(x)$ be a family of Haar functions that are $0$ off $Q$, $|Q|^{-1/2}$ on exactly $2^{n-1}$ of the $2^{n}$ subcubes of $Q$ belonging to $Q\in\mathcal{D}_{k+1}$, and $-|Q|^{-1/2}$ on the others. Next, we choose $h_{Q}$ among these functions such that
+%$$h_{Q}=\left\{h_{Q}^{i}:\left|\int_{Q}b(x)h_{Q}^{i}(x)dx\right|{\rm \ is\ maximal\ with\ respect\ to\ }i=1,2,\ldots,2^{n}-1 \right\}.$$
+%
+%\textcolor[rgb]{1.00,0.00,0.00}{Then by a standard argument (see for example), we have
+%\begin{align}\label{tttt1}
+%\left(\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\right)^{1/p}\leq C  |Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|,
+%\end{align}
+%where $C$ is a constant only depending on $p$ and $n$.}
+%
+%To continue, we fix $\ell=1,2,\ldots,n$ and $Q\in\mathcal{D}_{k}$ for some $L\leq k\leq M$, denote $x_{Q}:=(x_{Q}^{(1)},x_{Q}^{(2)},\ldots,x_{Q}^{(n)})$ be the center of $Q$, choose $N$ be a sufficient large integer and divide our proof into four cases.
+%
+%{\bf Case 1.}  If $(m-1)2^{N-k+2}<x_{Q}^{(\ell)}\leq (2m-1)2^{N-k+1}$ for some $m\in \mathbb{Z}_{+}$, then we  choose $e_{\ell}=(0,\ldots,0,1,0,\ldots,0)$ be $\ell$-th standard orthonormal basis on $\mathbb{R}^{n}$  and denote $Q^{+}=Q+2^{N-k}e_{\ell}$.  Note that $K_{\ell}(x,y)$ satisfies the homogeneity: for any $\lambda>0$, $$K_{\ell}(\lambda x,\lambda y)=\lambda^{-n}K_{\ell}(x,y).$$
+%Besides, calculating by the equalities \eqref{kernel1} and \eqref{kernel2} directly, we see that for any $\ell=1,2,\ldots,n$,
+%\begin{align}\label{b2}
+%|K_{\ell}(e_{\ell}+2^{k-N}x_{Q},2^{k-N}x_{Q})|\geq C_{n},
+%\end{align}
+%
+%
+%
+%
+%
+%With the above two observations, we use the cancellation condition of $h_{Q}$ to deduce that
+%\begin{align}\label{b1}
+%&|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|\nonumber\\
+%&=2^{nN}|Q|^{1/2}|K_{\ell}(e_{\ell}+2^{k-N}x_{Q},2^{k-N}x_{Q})|^{-1}\left|\int_{Q}K_{\ell}(e_{\ell}+2^{k-N}x_{Q},2^{k-N}x_{Q})2^{n(k-N)}b(y)h_{Q}(y)dy\right|\nonumber\\
+%&=2^{nN}|Q|^{1/2}|K_{\ell}(e_{\ell}+2^{k-N}x_{Q},2^{k-N}x_{Q})|^{-1}\left|\int_{Q}K_{\ell}(2^{N-k}e_{\ell}+x_{Q},x_{Q})b(y)h_{Q}(y)dy\right|\nonumber\\
+%&=2^{nN}|Q|^{1/2}|K_{\ell}(e_{\ell}+2^{k-N}x_{Q},2^{k-N}x_{Q})|^{-1}\left|\fint_{Q^{+}}\int_{Q}K_{\ell}(2^{N-k}e_{\ell}+x_{Q},x_{Q})(b(x)-b(y))h_{Q}(y)dydx\right|\nonumber\\
+%&\leq C_{n}2^{nN}|Q|^{1/2}\left|\fint_{Q^{+}}\int_{Q}(K_{\ell}(x,y)-K_{\ell}(2^{N-k}e_{\ell}+x_{Q},x_{Q}))(b(x)-b(y))h_{Q}(y)dydx\right|\nonumber\\
+%&+C_{n}2^{nN}|Q|^{1/2}\left|\fint_{Q^{+}}\int_{Q}K_{\ell}(x,y)(b(x)-b(y))h_{Q}(y)dydx\right|.
+%\end{align}
+%Besides, if $x\in Q^{+}$ and $y\in Q$, then $|x-y|\geq |2^{N-k}e_{\ell}|-|x-x_{Q}-2^{N-k}e_{\ell}|-|y-x_{Q}|\gtrsim 2^{N-k}\geq \frac{1}{2}|y-x_{Q}|$ and $|x-x_{Q}|\gtrsim |2^{N-k}e_{\ell}|-|x-(x_{Q}+2^{N-k}e_{\ell})|\gtrsim 2^{N-k}\geq \frac{1}{2}|x-2^{N-k}e_{\ell}-x_{Q}|$, which in combination with Lemma \ref{CZO} implies that
+%\begin{align}\label{b3}
+%|K_{\ell}(x,y)-K_{\ell}(2^{N-k}e_{\ell}+x_{Q},x_{Q})|
+%&\leq |K_{\ell}(x,y)-K_{\ell}(x,x_{Q})|+|K_{\ell}(x,x_{Q})-K_{\ell}(2^{N-k}e_{\ell}+x_{Q},x_{Q})|\nonumber\\
+%&\lesssim \frac{|y-x_{Q}|}{|x-y|^{n+1}}+\frac{|x-2^{N-k}e_{\ell}-x_{Q}|}{|x-x_{Q}|^{n+1}}\nonumber\\
+%&\lesssim 2^{-k}2^{-(N-k)(n+1)}.
+%\end{align}
+%
+%Combining the inequalities \eqref{b1}, \eqref{b2} and \eqref{b3}, we obtain that
+%\begin{align}\label{d1}
+%|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|
+%&\leq \fint_{Q^{+}}\fint_{Q}|b(x)-b(y)|dxdy\nonumber\\
+%&+2^{n(N+\frac{k}{2})}\left|\int_{Q^{+}}\int_{Q}K_{\ell}(x,y)(b(x)-b(y))h_{Q}(y)dydx\right|.
+%\end{align}
+%
+%
+%
+%{\bf Case 2.}  If $(2m-1)2^{N-k+1}<x_{Q}^{(\ell)}\leq m2^{N-k+2}$ for some $m\in \mathbb{Z}_{+}$, then we denote $Q^{-}=Q-2^{N-k}e_{\ell}$.
+%In this case, we see that if $\ell=1,2,\ldots,n-1$, then
+%\begin{align}\label{bbbb2}
+%|K_{\ell}(-e_{\ell}+2^{k-N}x_{Q},2^{k-N}x_{Q})|=C_{n}\left|-1+\frac{-1}{(1+|2^{k-N+1}x_{Q}^{(n)}|^{2})^{\frac{n+1}{2}}}\right|\geq C_{n},
+%\end{align}
+%and if $\ell=n$, then
+%\begin{align}\label{bbbb3}
+%|K_{n}(-e_{n}+2^{k-N}x_{Q},2^{k-N}x_{Q})|=C_{n}\left|-1+\frac{-1+2^{k-N+1}x_{Q}^{(n)}}{|-1+2^{k-N+1}x_{Q}^{(n)}|^{n+1}}\right|\geq \frac{C_{n}}{2},
+%\end{align}
+%where we used the fact that $0<\frac{-1+2^{k-N+1}x_{Q}^{(n)}}{|-1+2^{k-N+1}x_{Q}^{(n)}|^{n+1}}\leq\frac{1}{2}$ since $x_{Q}^{(n)}>2^{N-k+1}$. Averaging over $Q^{-}$ instead of over $Q^{+}$ in \eqref{b1}, we have
+%\begin{align}\label{bbb1}
+%&|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|\nonumber\\
+%&\leq C_{n}2^{nN}|Q|^{1/2}\left|\fint_{Q^{-}}\int_{Q}(K_{\ell}(x,y)-K_{\ell}(-2^{N-k}e_{\ell}+x_{Q},x_{Q}))(b(x)-b(y))h_{Q}(y)dydx\right|\nonumber\\
+%&+C_{n}2^{nN}|Q|^{1/2}\left|\fint_{Q^{-}}\int_{Q}K_{\ell}(x,y)(b(x)-b(y))h_{Q}(y)dydx\right|.
+%\end{align}
+%Besides, if $x\in Q^{-}$ and $y\in Q$, then $|x-y|\geq |2^{N-k}e_{\ell}|-|x-x_{Q}+2^{N-k}e_{\ell}|-|y-x_{Q}|\gtrsim 2^{N-k}\geq \frac{1}{2}|y-x_{Q}|$ and $|x-x_{Q}|\gtrsim |2^{N-k}e_{\ell}|-|x-x_{Q}+2^{N-k}e_{\ell}|\gtrsim 2^{N-k}\geq \frac{1}{2}|x+2^{N-k}e_{\ell}-x_{Q}|$, which in combination with Lemma \ref{CZO} implies that
+%\begin{align}\label{bbb3}
+%|K_{\ell}(x,y)-K_{\ell}(-2^{N-k}e_{\ell}+x_{Q},x_{Q})|
+%&\leq |K_{\ell}(x,y)-K_{\ell}(x,x_{Q})|+|K_{\ell}(x,x_{Q})-K_{\ell}(-2^{N-k}e_{\ell}+x_{Q},x_{Q})|\nonumber\\
+%&\lesssim \frac{|y-x_{Q}|}{|x-y|^{n+1}}+\frac{|x+2^{N-k}e_{\ell}-x_{Q}|}{|x-x_{Q}|^{n+1}}\nonumber\\
+%&\lesssim 2^{-k}2^{-(N-k)(n+1)}.
+%\end{align}
+%Combining the inequalities  \eqref{bbbb2}-\eqref{bbb3}, we obtain that
+%\begin{align}\label{ddd1}
+%|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|
+%&\leq \fint_{Q^{-}}\fint_{Q}|b(x)-b(y)|dxdy\nonumber\\
+%&+2^{n(N+\frac{k}{2})}\left|\int_{Q^{-}}\int_{Q}K_{\ell}(x,y)(b(x)-b(y))h_{Q}(y)dydx\right|.
+%\end{align}
+%{\bf Case 3.}  If $-(m-1)2^{N-k+2}<x_{Q}^{(\ell)}\leq -(2m-1)2^{N-k+1}$ for some $m\in \mathbb{Z}_{+}$, then by symmetry, we have
+%\begin{align}\label{eee1}
+%|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|
+%&\leq \fint_{Q^{-}}\fint_{Q}|b(x)-b(y)|dxdy\nonumber\\
+%&+2^{n(N+\frac{k}{2})}\left|\int_{Q^{-}}\int_{Q}K_{\ell}(x,y)(b(x)-b(y))h_{Q}(y)dydx\right|.
+%\end{align}
+%{\bf Case 4.}  If $-(2m-1)2^{N-k+1}<x_{Q}^{(\ell)}\leq -m2^{N-k+2}$ for some $m\in \mathbb{Z}_{+}$, then by symmetry, we have
+%\begin{align}\label{fff1}
+%|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|
+%&\leq \fint_{Q^{+}}\fint_{Q}|b(x)-b(y)|dxdy\nonumber\\
+%&+2^{n(N+\frac{k}{2})}\left|\int_{Q^{+}}\int_{Q}K_{\ell}(x,y)(b(x)-b(y))h_{Q}(y)dydx\right|.
+%\end{align}
+%Combining the estimates \eqref{tttt1}, \eqref{d1}, \eqref{ddd1}, \eqref{eee1} and \eqref{fff1}, we obtain that
+%\begin{align}\label{uio}
+%&\left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\right)^{1/p}\nonumber\\
+%&\leq 2^{-N} \left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\left(\fint_{\Delta_{Q}}\fint_{Q}|b(x)-b(y)|dxdy\right)^{p}\right)^{1/p}+2^{nN}\left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}|\langle [b,R_{N,\ell}]h_{Q},g_{Q}\rangle|^{p}\right)^{1/p},
+%\end{align}
+%where we denote
+%$$ \Delta_{Q}=\left\{\begin{array}{llll}Q^{+}, &{\rm if} (m-1)2^{N-k+2}<x_{Q}^{(\ell)}\leq (2m-1)2^{N-k+1} \ {\rm for\ some}\ m\in \mathbb{Z}_{+} \\Q^{-}, &{\rm if} (2m-1)2^{N-k+1}<x_{Q}^{(\ell)}\leq m2^{N-k+2} \ {\rm for\ some}\ m\in \mathbb{Z}_{+}\\Q^{-}, &{\rm if} -(m-1)2^{N-k+2}<x_{Q}^{(\ell)}\leq -(2m-1)2^{N-k+1} \ {\rm for\ some}\ m\in \mathbb{Z}_{+}\\Q^{+}, &{\rm if} -(2m-1)2^{N-k+1}<x_{Q}^{(\ell)}\leq -m2^{N-k+2} \ {\rm for\ some}\ m\in \mathbb{Z}_{+}\end{array}\right.$$
+%and
+%$g_{Q}(x):=2^{nk/2}\chi_{\Delta_{Q}}(x)$. To estimate the second term on the right hand side of \eqref{uio}, we note that when $Q$ range over $\mathcal{D}_{k}$ for $L\leq k\leq M$, $\{h_{Q}\}_{Q}$ is an orthonormal sequence and $\{g_{Q}\}_{Q}=1$. Besides, according to the assumption that $[b,R_{N,\ell}]\in S^{p}$, by Lemma ???, we have
+%\begin{align}\label{scha}
+%\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}|\langle [b,R_{N,\ell}]h_{Q},g_{Q}\rangle|^{p}\leq \sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\|[b,R_{N,\ell}]h_{Q}\|_{2}^{p}\leq C.
+%\end{align}
+%Here we used the fact that $p\geq 2$. Next, we estimate the first term on the right hand side of \eqref{uio}. To this end, we note from the definition of $\mathcal{D}_{k}$  that there exists a unique $Q_{1}\in \mathcal{D}_{k-1}$ such that $Q_{0}:=Q\subseteq Q_{1}$. Inductively, one can find a family of dyadic cubes $\{Q_{j}\}_{j=0}^{N+2}$, where $Q_{j}\in\mathcal{D}_{k-j}$, such that $$Q_{0}\subseteq Q_{1}\subseteq Q_{2}\subseteq \cdots\subseteq Q_{N+2}.$$
+%
+%Similarly, one can find a family of dyadic cubes $\{Q_{j}^{\prime}\}_{j=0}^{N+2}$, where $Q_{j}^{\prime}\in\mathcal{D}_{k-j}$, such that $$Q_{0}^{\prime}:=\Delta_{Q}\subseteq Q_{1}^{\prime}\subseteq Q_{2}^{\prime}\subseteq \cdots\subseteq Q_{N+2}^{\prime}.$$
+%By the chosen of $Q_{0}^{\prime}$ we see that $(m-1)2^{N-k+2}<x_{Q}^{(\ell)},x_{Q_{0}^{\prime}}^{(\ell)}<m2^{N-k+2}$ for some $m\in\mathbb{Z}$ and $x_{Q}^{(q)}=x_{Q_{0}^{\prime}}^{(q)}$ if $q\neq\ell$. This means that $Q_{N+2}=Q_{N+2}^{\prime}$ and therefore,
+%\begin{align*}
+%&|(b)_{Q}-(b)_{\Delta_{Q}}|\\
+%&\leq \sum_{j=0}^{N+1}|(b)_{Q_{j}}-(b)_{Q_{j+1}}|+\sum_{j=0}^{N+1}|(b)_{Q_{j}^{\prime}}-(b)_{Q_{j+1}^{\prime}}|\\
+%&\leq \sum_{j=0}^{N+1}\frac{1}{|Q_{j}|}\int_{Q_{j}}|b(x)-(b)_{Q_{j+1}}|dx+\sum_{j=0}^{N+1}\frac{1}{|Q_{j}^{\prime}|}\int_{Q_{j}^{\prime}}|b(x)-(b)_{Q_{j+1}^{\prime}}|dx\\
+%&\leq \sum_{j=0}^{N+1}\frac{2^{n}}{|Q_{j+1}|}\int_{Q_{j+1}}|b(x)-(b)_{Q_{j+1}}|dx+\sum_{j=0}^{N+1}\frac{2^{n}}{|Q_{j+1}^{\prime}|}\int_{Q_{j+1}^{\prime}}|b(x)-(b)_{Q_{j+1}^{\prime}}|dx\\
+%&\leq 2^{n} \sum_{j=0}^{N+1}\left\{\left(\frac{1}{|Q_{j+1}|}\int_{Q_{j+1}}|b(x)-(b)_{Q_{j+1}}|^{p}dx\right)^{1/p}+\left(\frac{1}{|Q_{j+1}^{\prime}|}\int_{Q_{j+1}^{\prime}}|b(x)-(b)_{Q_{j+1}^{\prime}}|^{p}dx\right)^{1/p}\right\}.
+%\end{align*}
+%Back to the estimate of the first term on the right hand side of \eqref{d1}, we have
+%\begin{align*}
+%&\fint_{\Delta_{Q}}\fint_{Q}|b(x)-b(y)|dxdy\\
+%&\leq \fint_{Q}|b(x)-(b)_{Q}|dx+|(b)_{Q}-(b)_{\Delta_{Q}}|+\fint_{\Delta_{Q}}|b(y)-(b)_{\Delta_{Q}}|dy\\
+%&\leq 2^{n} \sum_{j=0}^{N+1}\left\{\left(\frac{1}{|Q_{j}|}\int_{Q_{j}}|b(x)-(b)_{Q_{j}}|^{p}dx\right)^{1/p}+\left(\frac{1}{|Q_{j}^{\prime}|}\int_{Q_{j}^{\prime}}|b(x)-(b)_{Q_{j}^{\prime}}|^{p}dx\right)^{1/p}\right\}.
+%\end{align*}
+%This, combined with \eqref{scha} and \eqref{uio}, implies
+%\begin{align}\label{uio}
+%&\left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\right)^{1/p}\nonumber\\
+%&\lesssim 2^{-N} \left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\left(\fint_{\Delta_{Q}}\fint_{Q}|b(x)-b(y)|dxdy\right)^{p}\right)^{1/p}+1\nonumber\\
+%&\lesssim 2^{-N}\sum_{j=0}^{N+1} \left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\frac{1}{|Q_{j}|}\int_{Q_{j}}|b(x)-(b)_{Q_{j}}|^{p}dx+\frac{1}{|Q_{j}^{\prime}|}\int_{Q_{j}^{\prime}}|b(x)-(b)_{Q_{j}^{\prime}}|^{p}dx\right)^{1/p}+1.
+%\end{align}
+%Note that as $Q$ ranges over $\cup_{k=L}^{M}\mathcal{D}_{k}$, $\{Q_{j}\}$ and $\{Q_{j}^{\prime}\}$ cover $\mathbb{R}^{n}$ $2^{nj}$ times each (for fixed $j$, $k$) and $Q_{j}\in\mathcal{D}_{k-j}$ for any $j=1,\ldots,N+1$. Therefore,
+%\begin{align*}
+%&\left(\sum_{Q\in \cup_{k=L}^{M}\mathcal{D}_{k}}\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\right)^{1/p}\nonumber\\
+%&\lesssim 2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L}^{M}\sum_{Q\in\mathcal{D}_{k}}\frac{1}{|Q_{j}|}\int_{Q_{j}}|b(x)-(b)_{Q_{j}}|^{p}dx+\frac{1}{|Q_{j}^{\prime}|}\int_{Q_{j}^{\prime}}|b(x)-(b)_{Q_{j}^{\prime}}|^{p}dx\right)^{1/p}+1\\
+%&\lesssim 2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L}^{M}2^{nj+1}\sum_{Q\in\mathcal{D}_{k-j}}\frac{1}{|Q|}\int_{Q}|b(x)-(b)_{Q}|^{p}dx\right)^{1/p}+1\\
+%&\lesssim 2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L}^{M}2^{nj+1}2^{n(k-j)}A_{k-j}\right)^{1/p}+1
+%\end{align*}
+%This, together with inequality \eqref{long} and the assumption that $2^{nk}A_{k}<\infty$, yields
+%\begin{align*}
+%\left(\sum_{k=L}^{M}2^{nk}A_{k}\right)^{1/p}
+%&\lesssim 1+2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L}^{M}2^{nj}2^{n(k-j)}A_{k-j}\right)^{1/p}\\
+%&= 1+2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L-j}^{M-j}2^{nj}2^{nk}A_{k}\right)^{1/p}\\
+%&\lesssim 1+2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L-j}^{L-1}2^{nj}2^{nk}A_{k}\right)^{1/p}+2^{-N}\sum_{j=0}^{N+1} \left(\sum_{k=L}^{M}2^{nj}2^{nk}A_{k}\right)^{1/p}\\
+%&\lesssim 1+2^{-N}2^{\frac{n(N+1)}{p}}\left(\sum_{k=L}^{M}2^{nk}A_{k}\right)^{1/p}.
+%\end{align*}
+%If $N$ is chosen large enough, then $C2^{-N}2^{\frac{n(N+1)}{p}}\leq \frac{1}{2}$ since $p>n$ and therefore, the second term on the right hand side of the above inequality can be absorbed by the first term on the left hand side. Hence,
+%\begin{align*}
+%\left(\sum_{k=L}^{M}2^{nk}A_{k}\right)^{1/p}&\leq C,
+%\end{align*}
+%for some constant $C>0$ independent of $L$ and $M$ and therefore, inequality \eqref{maingoal} holds.
+%
+%Now it remains to show that $2^{nk}A_{k}\leq C$ for some constant $C>0$ independent of $k$. That is, $\|f-E_{k}(f)\|_{p}\leq C2^{-nk/p}$. Note that $E_{k}(f)\rightarrow f$ a.e. as $k\rightarrow \infty$, so it suffices to show that $\|E_{k+1}(f)-E_{k}(f)\|_{p}\leq C2^{-nk/p}$. That is,
+%\begin{align*}
+%2^{nk}\int_{\mathbb{R}^{n}}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\leq C.
+%\end{align*}
+%
+%By \eqref{tttt1}, we have
+%\begin{align}\label{comcom1}
+%2^{nk}\int_{\mathbb{R}^{n}}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx
+%&=\sum_{Q\in\mathcal{D}_{k}}\fint_{Q}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\nonumber\\
+%&\leq C\sum_{Q\in\mathcal{D}_{k}}|Q|^{-p/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|^{p}.
+%\end{align}
+%To continue, for any $Q\in\mathcal{D}_{k}$, let $\hat{Q}$ be as in Lemma \ref{sign}, then $K_{\ell}(x,y)$ does not change sign for all $(x,y)\in Q\times\hat{Q}$ and
+%\begin{align}\label{lower}
+%|K_{\ell}(x,y)|\geq\frac{C}{|Q|},
+%\end{align}
+%for some constant $C>0$.
+%
+%Besides, let $\alpha_{\hat{Q}}(b)$ be the median value of $b$ over $\hat{Q}$ and write $Q=\cup_{i=1}^{2^{n}}P_{i}$, where $P_{i}\in\mathcal{D}_{k+1}$ and $P_{i}\subseteq Q$ satisfying $P_{i}\neq P_{j}$ if $i\neq j$. Next, denote
+%\begin{align*}
+%E_{1}^{Q}:=\{x\in Q:b(x)\leq\alpha_{\hat{Q}}(b)\}\ \ {\rm and}\ \
+%E_{2}^{Q}:=\{x\in Q:b(x)>\alpha_{\hat{Q}}(b)\}.
+%\end{align*}
+%By the cancellation property of $h_{Q}$, we see that
+%\begin{align}\label{comcom2}
+%|Q|^{-1/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|&=|Q|^{-1/2}\left|\int_{Q}(b(x)-\alpha_{\hat{Q}}(b))h_{Q}(x)dx\right|\nonumber\\
+%&\leq \frac{1}{|Q|}\int_{Q}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dx\nonumber\\
+%&\leq \frac{1}{|Q|}\sum_{i=1}^{2^{n}}\int_{P_{i}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dx\nonumber\\
+%&\leq \frac{1}{|Q|}\sum_{i=1}^{2^{n}}\int_{P_{i}\cap E_{1}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dx\nonumber\\
+%&+ \frac{1}{|Q|}\sum_{i=1}^{2^{n}}\int_{P_{i}\cap E_{2}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dx=:{\rm I}_{1}^{Q}+{\rm I}_{2}^{Q}.
+%\end{align}
+%
+%
+%Now we denote
+%\begin{align*}
+%F_{1}^{Q}:=\{y\in \hat{Q}:b(y)\geq\alpha_{\hat{Q}}(b)\}\ \ {\rm and}\ \
+%F_{2}^{Q}:=\{y\in \hat{Q}:b(y)\leq\alpha_{\hat{Q}}(b)\}.
+%\end{align*}
+%Then by the definition of $\alpha_{\hat{Q}}(b)$, we have $|F_{1}^{Q}|=|F_{2}^{Q}|\sim|\hat{Q}|$ and $F_{1}^{Q}\cup F_{2}^{Q}=\hat{Q}$. Note that for $s=1,2$, if $x\in E_{s}^{Q}$ and $y\in F_{s}^{Q}$, then
+%\begin{align*}
+%\left|b(x)-\alpha_{\hat{Q}}(b)\right|&\leq\left|b(x)-\alpha_{\hat{Q}}(b)\right|+|\alpha_{\hat{Q}}(b)-b(y)|\\
+%&=|b(x)-\alpha_{\hat{Q}}(b)+\alpha_{\hat{Q}}(b)-b(y)|= \left|b(y)-b(x)\right|.
+%\end{align*}
+%Therefore,
+%\begin{align}\label{haha}
+%{\rm I}_{s}^{Q}&\lesssim \frac{1}{|Q|}\sum_{i=1}^{2^{n}}\int_{P_{i}\cap E_{s}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|dx\frac{|F_{s}^{Q}|}{|Q|}\nonumber\\
+%&\lesssim \frac{1}{|Q|}\sum_{i=1}^{2^{n}}\int_{P_{i}\cap E_{s}^{Q}}\int_{F_{s}^{Q}}\left|b(x)-\alpha_{\hat{Q}}(b)\right|\left|K_{\ell}(x,y)\right|dydx\nonumber\\
+%&\lesssim \frac{1}{|Q|}\sum_{i=1}^{2^{n}}\int_{P_{i}\cap E_{s}^{Q}}\int_{F_{s}^{Q}}\left|b(y)-b(x)\right|\left|K_{\ell}(x,y)\right|dydx\nonumber\\
+%&=\frac{1}{|Q|}\sum_{i=1}^{2^{n}}\left|\int_{P_{i}\cap E_{s}^{Q}}\int_{F_{s}^{Q}}(b(y)-b(x))K_{\ell}(x,y)dydx\right|,
+%\end{align}
+%where in the last equality we used the fact that $K_{\ell}(x,y)$ and $b(y)-b(x)$ don't change sign for $(x,y)\in (Q_{i}\cap E_{s}^{Q})\times F_{s}^{Q}$, $s=1,2$. This, combined with the inequalities \eqref{comcom1} and \eqref{comcom2}, implies that
+%\begin{align}
+%\left(2^{nk}\int_{\mathbb{R}^{n}}|E_{k+1}(b)(x)-E_{k}(b)(x)|^{p}dx\right)^{1/p}
+%&\leq C\left(\sum_{Q\in\mathcal{D}_{k}}|Q|^{-p/2}\left|\int_{Q}b(x)h_{Q}(x)dx\right|^{p}\right)^{1/p}\nonumber\\
+%&\leq C\sum_{s=1}^{2}\left(\sum_{Q\in\mathcal{D}_{k}}\left|{\rm I}_{s}^{Q}\right|^{p}\right)^{1/p}\nonumber\\
+%&\leq C\sum_{s=1}^{2}\left(\sum_{Q\in\mathcal{D}_{k}}\left(\sum_{i=1}^{2^{n}}\left|\left\langle[b,R_{N,\ell}]\frac{|P_{i}|^{1/2}\chi_{F_{s}^{Q}}}{|Q|},\frac{\chi_{E_{s}^{Q}}}{|P_{i}|^{1/2}}\right\rangle\right|\right)^{p}\right)^{1/p}\nonumber\\
+%&\leq C\sum_{s=1}^{2} \left(\sum_{Q\in\mathcal{D}_{k}}\left\|[b,R_{N,\ell}]\frac{\chi_{F_{s}^{Q}}}{|Q|^{1/2}}\right\|_{2}^{p}\right)^{1/p},
+%\end{align}
+%To continue, let $\{\phi_{i}\}_{i=1}^{\infty}$ be an orthonormal basis on $L^{2}(\mathbb{R}^{n})$. Next, for $s=1,2$, we consider a sequence $\{f_{i}^{s}\}_{i=1}^{\infty}:=\{\phi_{i}\}_{i=1}^{\infty}\cup \{a_{Q}^{s}\}_{Q\in\mathcal{D}_{k}}$ defined on $L^{2}(\mathbb{R}^{n})$, where $a_{Q}^{s}(x):=|Q|^{-1/2}\chi_{F_{s}^{Q}}(x)$. Observe from the proof of Lemma \ref{sign} that when $Q$ range over $\mathcal{D}_{k}$, $\hat{Q}$ is the translation of $Q$ to a fixed direction, which implies that $\{a_{Q}^{s}\}_{Q}$ is an orthogonal sequence on $L^{2}(\mathbb{R}^{n})$. This, in combination with the fact that $\|a_{Q}^{s}\|_{2}\leq 1$ for all $Q\in\mathcal{D}_{k}$ and Bessel's inequality, implies that for all $f\in L^{2}(\mathbb{R}^{n})$,
+%\begin{align*}
+%\left(\sum_{Q\in\mathcal{D}_{k}}|\langle f, a_{Q}^{s}\rangle|^{2}\right)^{1/2}\leq C\|f\|_{2}.
+%\end{align*}
+%Hence, for all $f\in L^{2}(\mathbb{R}^{n})$,
+%\begin{align*}
+%\left(\sum_{i=1}^{\infty}|\langle f, f_{i}\rangle|^{2}\right)^{1/2}\leq \left(\sum_{i=1}^{\infty}|\langle f, \phi_{i}\rangle|^{2}\right)^{1/2}+\left(\sum_{Q\in\mathcal{D}_{k}}|\langle f, a_{Q}^{s}\rangle|^{2}\right)^{1/2}\leq C\|f\|_{2},
+%\end{align*}
+%Besides, it is direct that
+%\begin{align*}
+%\|f\|_{2}=\left(\sum_{i=1}^{n}|\langle f, \phi_{i}\rangle|^{2}\right)^{1/2}\leq \left(\sum_{i=1}^{\infty}|\langle f, f_{i}\rangle|^{2}\right)^{1/2}.
+%\end{align*}
+%This means that $\{f_{i}\}_{i=1}^{\infty}$ is a frame for $L^{2}(\mathbb{R}^{n})$. By Lemma ??,
+%\begin{align*}
+%\sum_{s=1}^{2} \left(\sum_{Q\in\mathcal{D}_{k}}\left\|[b,R_{N,\ell}]a_{Q}^{s}\right\|_{2}^{p}\right)^{1/p}
+%\leq \sum_{s=1}^{2} \left(\sum_{i=1}^{\infty}\left\|[b,R_{N,\ell}]f_{i}\right\|_{2}^{p}\right)^{1/p}
+%\leq C.
+%\end{align*}
+%This shows $2^{nk}A_{k}\leq C$ for some constant $C>0$ independent of $k$ and therefore, the proof of necessary condition when $p>n$ is completed.
+%\setcounter{equation}{0}
+%\label{s:NeumannRiesz}
+%
+%We now recall some notation and basic facts introduced in \cite[Section 2]{DDSY}. For any subset $A\subset \mathbb{R}^n$ and a function $f: \mathbb{R}^n\rightarrow\mathbb{C}$, denote $f|_A$ be the restriction of $f$ to $A$.   Next we set $\mathbb{R}^n_+=\{(x',x_n)\in \mathbb{R}^n: x'=(x_1,\ldots,x_{n-1})\in \mathbb{R}^{n-1},x_n>0\}$.
+%For any function $f$ on
+%$\mathbb{R}^n$, we set
+%$$ f_+=f|_{\mathbb{R}^n_+}\ \ \ {\rm and}\ \ \ f_-=f|_{\mathbb{R}^n_-}. $$
+% For any $x=(x',x_n)\in\mathbb{R}^n$ we set $\widetilde{x}=(x',-x_n)$. If $f$ is any function defined on $\mathbb{R}^n_+$, its even extension defined on $\mathbb{R}^n$ is
+%\begin{align}\label{f e}
+%f_e(x)=f(x),\ {\rm if }\ x\in \mathbb{R}^n_+;\ \ f_e(x)=f(\widetilde{x}),\ {\rm if }\ x\in \mathbb{R}^n_-.
+%\end{align}
+
+
+
+\bigskip
+
+ \noindent
+ {\bf Acknowledgements:}
+
+
+Z. Fan is supported by China Postdoctoral Science Foundation
+(No. 2023M740799). J. Li is supported by the Australian Research Council (ARC) through the
+research grant DP170101060.
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+%
+%\begin{thebibliography}{99999}
+%\bibitem{DDSY} D. Deng, X. Duong, A. Sikora and L. Yan, Comparison of the classical BMO with the BMO spaces associated
+%   with operators and applications,  {\it Rev. Mat. Iberoam}. {\bf 24} (2008),  267--296.
+%
+%\bibitem{HKZ} B. Hu, L.H. K and K. Zhu, Frames and operators in Schatten classes, {\it Houston J. Math}. {\bf 41} (2015), 1191-1219.
+%
+%\bibitem{Journe} J.L. Journ\'{e}, Calder\'{o}n-Zygmund operators, pseudodifferential operators and the Cauchy integral of Calder\'{o}n, {\it lecture notes in mathematics}. {\bf 994}. Springer-Verlag, Berlin, (1983).
+%
+%\bibitem{LW} J. Li and B.D. Wick, Characterizations of $H_{\Delta_{N}}^{1}(\mathbb{R}^{n})$ and $BMO_{\Delta_{N}}(\mathbb{R}^{n})$ via weak factorizations and commutators. {\it J. Funct. Anal}. {\bf 272} (2017), 5384--5416.
+%
+%    \bibitem{RS}  R. Rochberg  and S. Semmes,  Nearly weakly orthonormal sequences, singular value estimates, and Calderon-Zygmund operators, {\it J. Funct. Anal}., {\bf86} (1989), 237--306.
+%
+%\bibitem{Simon} B. Simon, Trace ideals and their applications. {\it Cambridge Univ. Press}. Cambridge, (1979).
+%
+%\bibitem{S} W. A. Strauss, Partial differential equation: An introduction, {\it John Wiley \& Sons, Inc., New York}. (2008), xiv+454.
+%\end{thebibliography}
+
+
+\end{document}
