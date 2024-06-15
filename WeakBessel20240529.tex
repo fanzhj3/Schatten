@@ -1,17 +1,15 @@
-\documentclass[12pt]{amsart}
-\usepackage{ amsmath, amsthm, amsfonts, amssymb, color}
- \usepackage{mathrsfs}
- \usepackage{enumerate}
-\usepackage{amsfonts, amsmath}
- \usepackage{amsmath,amstext,amsthm,amssymb,amsxtra}
- \usepackage{txfonts} %also pxfonts
- \usepackage[colorlinks, citecolor=blue,pagebackref,hypertexnames=false]{hyperref}
- \allowdisplaybreaks
- \usepackage{pgf,tikz}
- \usepackage{multirow}%newtablepackage1
- \usepackage{diagbox} %newtablepackage2
+\documentclass{amsart}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, color}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{amstext,amsxtra}
+\usepackage{txfonts} %also pxfonts
+\usepackage[colorlinks, citecolor=blue,pagebackref,hypertexnames=false]{hyperref}
+\allowdisplaybreaks
+\usepackage{pgf,tikz}
+\usepackage{multirow}%newtablepackage1
+\usepackage{diagbox} %newtablepackage2
 
- \usepackage{tikz}
 
 \usetikzlibrary{decorations.pathreplacing}
 
@@ -109,25 +107,27 @@ For any function $f$, we define its associated pointwise multiplier operator $M_
 
 Let $\Delta$ be the standard non-negative Laplacian operator on $\mathbb{R}^{n+1}$, which is given by $\Delta:=-\sum_{k=1}^{n+1}\partial_{k}^2$. For $1\leq k\leq n+1$, we define $k$-th classical Riesz transform by $R_k:=\partial_k\Delta^{-\frac12}$.
 
-
 \begin{theorem}\label{main theorem} Let $n\geq1,$ $1\leq k\leq n+1,$ and let $f\in L_{\infty}(\mathbb{R}^{n+1}_+).$
 \begin{enumerate}[{\rm (i)}]
 \item\label{mta} if $f\in\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+),$ then $[R_{\lambda,k},M_f]\in \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))$ and
 $$\|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\leq c_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+)}.$$
 \item\label{mtb} if $[R_{\lambda,k},M_f]\in \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})),$ then $f\in\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+)$ and
 $$\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+)}\leq c_{n,\lambda}\|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}.$$
-\item\label{mtc} if $f\in\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+),$ then there exists a limit {\color{red} the limit does not exactly equal the Sobolev semi-norm. instead, it is explicitly computable expression which provides an equivalent semi-norm}
-$$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t,[R_{\lambda,k},M_f])=c_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+)}.$$
+\item\label{mtc} if $f\in\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+),$ then there exists a limit
+$$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t,[R_{\lambda,k},M_f])=c_{n,\lambda}|||f|||_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}.$$
+Here, the semi-norm $|||\cdot|||_{\dot{W}^{1,p}(\mathbb{R}_+^{n+1})}$ on $\dot{W}^{1,p}(\mathbb{R}_+^{n+1})$ is defined few lines later.
 \end{enumerate}
 \end{theorem}
+
 \subsection{Notation}
-For any multi-index $\alpha=(\alpha_1,\cdots,\alpha_{n+1})\in\mathbb{N}^{n+1}$, we denote by $|\alpha|_1:=\sum_{j=1}^{n+1}\alpha_j$ the size of $\alpha$.
+For any multi-index $\alpha=(\alpha_1,\cdots,\alpha_{n+1})\in\mathbb{Z}_+^{n+1}$, we denote by $|\alpha|_1:=\sum_{j=1}^{n+1}\alpha_j.$
 
 For any positive integer $k$ and $p\in [1,\infty]$, we let $\dot{W}^{k,p}(\Omega)$ and $W^{k,p}(\Omega)$ be the homogeneous Sobolev space and inhomogeneous Sobolev space over domain $\Omega\subset \mathbb{R}^{n+1}$, respectively. In particular, $\dot{W}^{1,p}(\mathbb{R}_+^{n+1})$ consists of locally integrable functions $f$ whose distributional gradient belongs to $L_p(\mathbb{R}_+^{n+1})$. For this $f$, we set
 $$\|f\|_{\dot{W}^{1,p}(\mathbb{R}_+^{n+1})}:=\|\nabla f\|_{L_p(\mathbb{R}_+^{n+1})}.$$
 In our context, $\Omega$ maybe taken to be $\mathbb{R}_\pm$, $\mathbb{R}_+^{n+1}$ and $\mathbb{R}^{n+1}$.
 
-
+Besides that, we need equivalent semi-norm $|||\cdot|||_{\dot{W}^{1,p}(\mathbb{R}_+^{n+1})}$ on $\dot{W}^{1,p}(\mathbb{R}_+^{n+1})$ given by the formula (the formula involves the number $k\in\{1,\cdots,n+1\},$ however it is easy to see that the right hand side does not depend on the particular choice of $k$)
+$$|||\cdot|||_{\dot{W}^{1,p}(\mathbb{R}_+^{n+1})}=\Big(\int_{\mathbb{R}^{n+1}_+\times\mathbb{S}^n}|(\partial_kf)(x)-s_k\sum_{m=1}^ps_m(\partial_mf)(x)|^{n+1}dxds\Big)^{\frac1p}.$$
 
 
 
@@ -162,16 +162,16 @@ For $0<p<\infty$, the weak Schatten class $\mathcal{L}_{p,\infty}(H)$ is the set
 \begin{align*}
 \|T\|_{\mathcal{L}_{p,\infty}(H)}:=\sup\limits_{t>0}t^{\frac 1p}\mu_{B(H)}(t,T)<\infty.
 \end{align*}
-More details about Schatten class can be found in e.g. \cite{LSZ1,LSZ2}.
+More details about Schatten class can be found in e.g. \cite{LSZold,LSZ1}.
 
 For $1\leq p <\infty$, we define an ideal $(\mathcal{L}_{p,\infty}(H))_{0}$ by setting
 \begin{align*}
-(\mathcal{L}_{p,\infty}(H))_{0}:=\{T \in \mathcal{L}_{p,\infty}(H)   :  \lim_{t\to +\infty} t^{\frac 1p} \mu_{B(H)}(t,T) = 0 \}.
+(\mathcal{L}_{p,\infty}(H))_{0}:=\{T \in \mathcal{L}_{p,\infty}(H)   :  \lim_{t\to +\infty} t^{\frac 1p} \mu_{B(H)}(k,T) = 0 \}.
 \end{align*}
 Equivalently, $(\mathcal{L}_{p,\infty}(H))_{0}$ is the closure of the ideal of all finite rank operators in the norm $\|\cdot\|_{\mathcal{L}_{p,\infty}(H)}$.
-As a closed subspace of $\mathcal{L}_{p,\infty}(H)$, this ideal is commonly called the separable part of $\mathcal{L}_{p,\infty}(H)$ (See \cite{LSZ1,LSZ2} for more details about separable part).
+As a closed subspace of $\mathcal{L}_{p,\infty}(H)$, this ideal is commonly called the separable part of $\mathcal{L}_{p,\infty}(H)$ (See \cite{LSZold,LSZ1} for more details about separable part).
 
-Recall from \cite[Corollary 2.3.16]{LSZ1} that for two compact operators $T$ and $G$,
+Recall from \cite[Corollary 2.3.16]{LSZold} that for two compact operators $T$ and $G$,
 $$\mu_{B(H)}(t,T+G)\leq \mu_{B(H)}(\frac t2,T)+\mu_{B(H)}(\frac t2,G).$$
 This implies that
 $$\|T+G\|_{\mathcal{L}_{p,\infty}(H)}\leq 2^{\frac1p}(\|T\|_{\mathcal{L}_{p,\infty}(H)}+\|G\|_{\mathcal{L}_{p,\infty}(H)}).$$
@@ -179,14 +179,15 @@ Moreover, it also implies the following ideal property of $(\mathcal{L}_{p,\inft
 
 The following Lemma is useful to transform the problems on weighted $L_2$ space into problems on unweighted $L_2$ space.
 \begin{lemma}\label{weight}
-For any  $1\leq p<\infty$, we have
-\begin{enumerate}
-  \item $T\in\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1},m_\lambda))$ if and only if $T\in\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))$. Moreover,
-      $$\|T\|_{\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1},m_\lambda))}=\|T\|_ {\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))};$$
-  \item $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda))$ if and only if $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))$. Moreover,
-      $$\|T\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda))}=\|T\|_ {\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))};$$
-  \item $T\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda)))_0$ if and only if $M_{x_{n+1}^\lambda}TM_{x_{n+1}^{-\lambda}}\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1})))_0$. Moreover,
-      $$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t,T)=\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+))}(t,M_{x_{n+1}^\lambda}TM_{x_{n+1}^{-\lambda}}).$$
+For every $1\leq p<\infty$, we have
+\begin{enumerate}[{\rm (i)}]
+\item $T\in\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1},m_\lambda))$ if and only if $T\in\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))$. Moreover,
+$$\|T\|_{\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1},m_\lambda))}=\|T\|_ {\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))};$$
+\item $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda))$ if and only if $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))$. Moreover,
+$$\|T\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda))}=\|T\|_ {\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))};$$
+\item
+$$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t,T)=\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+))}(t,M_{x_{n+1}^\lambda}TM_{x_{n+1}^{-\lambda}}).$$
+In particular, $T\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda)))_0$ if and only if $M_{x_{n+1}^\lambda}TM_{x_{n+1}^{-\lambda}}\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1})))_0$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -194,34 +195,31 @@ The argument can be referred to \cite[Lemma 2.7]{MR4706933}. The key observation
 $$\|T\|_{\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1},m_\lambda))}=\|M_{x_{n+1}^\lambda}TM_{x_{n+1}^{-\lambda}}\|_ {\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))}=\|T\|_ {\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))},$$
 $$\|T\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1},m_\lambda))}=\|M_{x_{n+1}^\lambda}TM_{x_{n+1}^{-\lambda}}\|_ {\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))}=\|T\|_ {\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))},$$
 and the third statement.
-{\color{blue}[Check the proof and simplify the statement later.]}
 \end{proof}
-Let $E_+$ be the zero extension operator defined by
-$$E_+(f)(x):=\begin{cases}
+
+Let $E$ be the zero extension operator defined by
+$$(Ef)(x):=\begin{cases}
 f(x),& x\in \mathbb{R}_+^{n+1},\\
 0,& x\notin \mathbb{R}_+^{n+1},
 \end{cases}
 $$
-for any function $f$ on $\mathbb{R}_+^{n+1}$.
-Moreover, let $R_+$ be the restriction operator defined by $R_+(g)(x):=g\big|_{\mathbb{R}_+^{n+1}}(x)$, for any function $g$ on $\mathbb{R}^{n+1}$. It is direct to see that for any function $g$ on $\mathbb{R}^{n+1}$, we have $E_+R_+(g)(x)=\chi_{\mathbb{R}_+^{n+1}}(x)g(x)$.
+for every function $f$ on $\mathbb{R}_+^{n+1}.$ It is immediate that $E^{\ast}E=1$ and $EE^{\ast}=M_{\chi_{\mathbb{R}_+^{n+1}}}.$
 
 The following Lemma is useful to transform the problems over $\mathbb{R}_+^{n+1}$ into problems on $\mathbb{R}^{n+1}$.
 \begin{lemma}\label{half}
-For any  $1\leq p<\infty$, we have
-\begin{enumerate}
-  \item $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))$ if and only if $E_+TR_+\in\mathcal{L}_{p}(L_2(\mathbb{R}^{n+1}))$. Moreover,
-      $$\|T\|_{\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))}=\|E_+TR_+\|_{\mathcal{L}_{p}(L_2(\mathbb{R}^{n+1}))},$$
-  \item $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))$ if and only if $E_+TR_+\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}))$. Moreover,
-      $$\|T\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))}=\|E_+TR_+\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}))},$$
-  \item $T\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1})))_0$ if and only if $E_+TR_+\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1})))_0$. Moreover,
-      $$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}_+^{n+1}))}(t,T)=\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t,E_+TR_+).$$
+For every $1\leq p<\infty$, we have
+\begin{enumerate}[{\rm (i)}]
+\item $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))$ if and only if $ETE^{\ast}\in\mathcal{L}_{p}(L_2(\mathbb{R}^{n+1}))$. Moreover,
+$$\|T\|_{\mathcal{L}_{p}(L_2(\mathbb{R}_+^{n+1}))}=\|ETE^{\ast}\|_{\mathcal{L}_{p}(L_2(\mathbb{R}^{n+1}))},$$
+\item $T\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))$ if and only if $ETE^{\ast}\in\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}))$. Moreover,
+$$\|T\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1}))}=\|ETE^{\ast}\|_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}))},$$
+\item
+$$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}_+^{n+1}))}(t,T)=\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t,ETE^{\ast}).$$
+In particular, $T\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}_+^{n+1})))_0$ if and only if $ETE^{\ast}\in(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1})))_0.$
 \end{enumerate}
 \end{lemma}
-\begin{proof}
- {\color{blue}The proof is simple. Do we need to write down a whole proof?}
-\end{proof}
 
-\subsection{\color{red}Extension of $\Delta_\lambda$}
+\subsection{Self-adjoint extension of $\Delta_\lambda$}
 Let $\mathcal{F}(f)$ denote the Fourier transform of a compactly supported smooth function on $\mathbb{R}^n$ by the formula
 \begin{align*}
 \mathcal{F}(f)(\xi):=\frac{1}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}f(x)e^{-ix\xi}dx, \ \ \xi\in\mathbb{R}^{n}.
@@ -249,52 +247,55 @@ Let $p>2$ and $n\geq 2.$ Then there is a constant $C_{n,p}>0$ such that for any 
 $$\|M_fg(\sqrt{\Delta})\|_{\mathcal{L}_{p,\infty}}\leq C_{n,p}\|f\|_{L_p(\mathbb{R}^{n+1})}\|g\|_{L_{p,\infty}(\mathbb{R}_+,r^ndr)}.$$
 \end{lemma}
 
-%A Schur multiplier associated to a measurable function $M:X\times X\rightarrow \mathbb{C}$ is the map $\mathfrak{S}_M$ sending an operator $A:L_2(X)\rightarrow L_2(X)$ with matrix representation $(A_{x,y})_{x,y\in X}$ to the operator represented by $(M(x,y)A_{x,y})_{x,y\in X}$.
 
 \section{Boundedness of Schur multipliers}
 \setcounter{equation}{0}
 
-This section is devoted to establishing the $\mathcal{L}_p$-boundedness of Schur multipliers associated with {\color{blue}transformer function [Introduce this name in the introduction]} $F\circ H$, where $F$ is a class of smooth function and $H$ is defined via the formula
-$$H(x,y):=\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}},\quad x,y\in\mathbb{R}^{n+1}_+.$$
-To begin with, we first recall the definition of Schur multipliers. Let $(X,\mu)$ be a $\sigma$-finite measure space. In the sequel, $(X,\mu)$ would be taken to be $(\mathbb{R}_+^{n+1},m_\lambda)$ or $(\mathbb{R}^{n+1},dx)$. Recall that $\mathcal{L}_2(X,\mu)\backsimeq L_2(X\times X,\mu\times\mu)$ via the identification $T\rightarrow (T_{x,y})_{x,y\in X}$, where $T_{x,y}=K_T(x,y)\in L_2(X\times X,\mu\times\mu)$ is the integral kernel of $T$.
+This section is devoted to establishing the $\mathcal{L}_p$-boundedness of Schur multipliers associated with symbol $F\circ H$, where $F$ is a class of smooth function and $H$ is defined via the formula
+$$H(x,y):=\frac{|x-y|}{|x_{n+1}y_{n+1}|^{\frac12}},\quad x,y\in\mathbb{R}^{n+1}.$$
+To begin with, we first recall the definition of Schur multipliers. Let $(X,\mu)$ be a $\sigma$-finite measure space. In the sequel, $(X,\mu)$ would be taken to be $(\mathbb{R}_+^{n+1},m_\lambda)$ or $(\mathbb{R}^{n+1},dx)$. Recall that $\mathcal{L}_2(X,\mu)\backsimeq L_2(X\times X,\mu\times\mu)$ via the identification $T\rightarrow (K_T(x,y))_{x,y\in X},$ where $K_T(x,y)\in L_2(X\times X,\mu\times\mu)$ is the integral kernel of $T.$
+
 \begin{definition}
-Let $M:X\times X\rightarrow \mathbb{C}$ be a bounded function, then the Schur multiplier $\mathfrak{S}_M: \mathcal{L}_2(X,\mu)\rightarrow \mathcal{L}_2(X,\mu)$ is a linear operator defined by sending an operator $A:L_2(X,\mu)\rightarrow L_2(X,\mu)$ with kernel $A_{x,y}$ to the operator with kernel $M(x,y)A_{x,y}$.
+Let $M:X\times X\rightarrow \mathbb{C}$ be a bounded function, then the Schur multiplier $\mathfrak{S}_M: \mathcal{L}_2(X,\mu)\rightarrow \mathcal{L}_2(X,\mu)$ is a linear operator defined by sending an operator $T:L_2(X,\mu)\rightarrow L_2(X,\mu)$ with kernel $K_T(x,y)$ to the operator with integral kernel $M(x,y)K_T(x,y).$
 \end{definition}
 
 
 The main result in this section can be stated as follows.
-\begin{theorem}\label{main schur theorem} Let $F$ be a smooth function on $(0,\infty)$ and right continuous at $0.$ If $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+)$ and $(F-F(0))\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-),$ then $\mathfrak{S}_{F\circ H}$ is a bounded mapping from $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))$ to itself for every $1<p<\infty.$
+\begin{theorem}\label{main schur theorem} Let $F$ be a smooth function on $(0,\infty)$ and right continuous at $0.$ If $F\circ\exp\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+)$ and $(F-F(0))\circ\exp\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-),$ then $\mathfrak{S}_{F\circ H}$ is a bounded mapping from $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))$ to itself for every $1<p<\infty.$
 \end{theorem}
 
 The proof of Theorem \ref{main schur theorem} relies on a landmark result established very recently by Conde-Alonso etc., which provides a simple sufficient condition for the $\mathcal{L}_p$-boundedness of Schur multipliers.
 \begin{theorem}\cite[Theorem A]{MR4660138}\label{Annalspaper}
-Let $M\in C^{[n/2]+1}(\mathbb{R}^{2n}\backslash \{x=y\})$ be a bounded function satisfying
-$$\left|\frac{\partial^\alpha M}{\partial x^\alpha}(x,y)\right|+\left|\frac{\partial^\alpha M}{\partial y^\alpha}(x,y)\right|\lesssim |x-y|^{-\alpha},\, {\rm for}\ {\rm any}\ |\alpha|\leq \lceil\frac{n}{2}\rceil+1.$$
-Then $\mathfrak{S}_M$ is bounded on $\mathcal{L}_p(X,\mu)$ for any $1<p<\infty$.
+Let $M\in C^{[\frac{n}{2}]+1}((\mathbb{R}^n\times\mathbb{R}^n)\backslash\{x=y\})$ be a bounded function satisfying the condition
+$$\left|\frac{\partial^\alpha M}{\partial x^\alpha}(x,y)\right|+\left|\frac{\partial^\alpha M}{\partial y^\alpha}(x,y)\right|\lesssim |x-y|^{-|\alpha|_1},\quad x,y\in\mathbb{R}^n,$$
+for each $\alpha\in\mathbb{Z}_+^n$ with $|\alpha|_1\leq \lceil\frac{n}{2}\rceil+1.$ Under these assumptions, $\mathfrak{S}_M$ is bounded on $\mathcal{L}_p(L_2(\mathbb{R}^n))$ for every $1<p<\infty.$
 \end{theorem}
 
 \begin{lemma}\label{ratio is bounded}
-Let $(x,y)=(x',x_{n+1},y',y_{n+1})\in\mathbb{R}_+^{n+1}\times \mathbb{R}_+^{n+1}$ be any point such that $H(x,y)\leq 1,$ then
-$$\frac{3-\sqrt{5}}{2}y_{n+1}\leq x_{n+1}\leq \frac{3+\sqrt{5}}{2}y_{n+1}.$$	
+Let $(x,y)=(x',x_{n+1},y',y_{n+1})\in\mathbb{R}^{n+1}\times \mathbb{R}^{n+1}$ be any point such that $H(x,y)\leq 1,$ then
+$$\frac{3-\sqrt{5}}{2}|y_{n+1}|\leq |x_{n+1}|\leq \frac{3+\sqrt{5}}{2}|y_{n+1}|.$$	
 \end{lemma}
-\begin{proof} Since for any $(x',y')\in \mathbb{R}^n\times\mathbb{R}^n$, the inclusion $$\left\{(x_{n+1},y_{n+1})\in\mathbb{R}_+^2:\frac{|x-y|^2}{x_{n+1}y_{n+1}}\leq 1\right\}\subset \left\{(x_{n+1},y_{n+1})\in\mathbb{R}_+^2:\frac{|x_{n+1}-y_{n+1}|^2}{x_{n+1}y_{n+1}}\leq 1\right\}$$
-holds, we deduce that
+\begin{proof} Using obvious inclusion
+$$\left\{(x_{n+1},y_{n+1})\in\mathbb{R}^2:\ \frac{|x-y|^2}{|x_{n+1}y_{n+1}|}\leq 1\right\}\subset \left\{(x_{n+1},y_{n+1})\in\mathbb{R}^2:\ \frac{|x_{n+1}-y_{n+1}|^2}{|x_{n+1}y_{n+1}|}\leq 1\right\}.$$
+we deduce that
 \begin{align*}
-\inf\Big\{\frac{x_{n+1}}{y_{n+1}}:\ \frac{|x-y|^2}{x_{n+1}y_{n+1}}\leq 1\Big\}&\geq\inf\Big\{\frac{x_{n+1}}{y_{n+1}}:\ \frac{|x_{n+1}-y_{n+1}|^2}{x_{n+1}y_{n+1}}\leq 1\Big\}\\
+\inf\Big\{\frac{|x_{n+1}|}{|y_{n+1}|}:\ \frac{|x-y|^2}{|x_{n+1}y_{n+1}|}\leq 1\Big\}&\geq\inf\Big\{\frac{|x_{n+1}|}{|y_{n+1}|}:\ \frac{|x_{n+1}-y_{n+1}|^2}{|x_{n+1}y_{n+1}|}\leq 1\Big\}\\
 &=\inf\{u>0:\ u+u^{-1}\leq 3\}=\frac{3-\sqrt{5}}{2},
 \end{align*}
 and that
 \begin{align*}
-\sup\Big\{\frac{x_{n+1}}{y_{n+1}}:\ \frac{|x-y|^2}{x_{n+1}y_{n+1}}\leq 1\Big\}&\leq\sup\Big\{\frac{x_{n+1}}{y_{n+1}}:\ \frac{|x_{n+1}-y_{n+1}|^2}{x_{n+1}y_{n+1}}\leq 1\Big\}\\
+\sup\Big\{\frac{|x_{n+1}|}{|y_{n+1}|}:\ \frac{|x-y|^2}{|x_{n+1}y_{n+1}|}\leq 1\Big\}&\leq\sup\Big\{\frac{|x_{n+1}|}{|y_{n+1}|}:\ \frac{|x_{n+1}-y_{n+1}|^2}{|x_{n+1}y_{n+1}|}\leq 1\Big\}\\
 &=\sup\{u>0:\ u+u^{-1}\leq 3\}=\frac{3+\sqrt{5}}{2}.
 \end{align*}
 This ends the proof of Lemma \ref{ratio is bounded}.
 \end{proof}
 
-\begin{lemma}\label{H derivatives lemma} If $x,y\in\mathbb{R}^{n+1}_+$ are such that $H(x,y)\leq 1,$ then for any multi-index $\alpha\in\mathbb{Z}^{2n+2}_+$, there is a constant $c_\alpha>0$ such that
-$$|\partial_{x,y}^{\alpha}H(x,y)|\leq\frac{c_{\alpha}}{|x-y|^{\alpha}}.$$
+\begin{lemma}\label{H derivatives lemma} For every multi-index $\alpha\in\mathbb{Z}^{2n+2}_+,$ there is a constant $c_\alpha>0$ such that
+$$|(\partial_{x,y}^{\alpha}H)(x,y)|\leq\frac{c_{\alpha}}{|x-y|^{\alpha}},\quad x,y\in\mathbb{R}^{n+1},\quad H(x,y)\leq 1.$$
 \end{lemma}
-\begin{proof} Set $H_1(x,y)=|x-y|,$ $H_2(x,y)=x_{n+1}^{-\frac12},$ $H_3(x,y)=y_{n+1}^{-\frac12}.$ By Leibniz's rule,
+\begin{proof} To lighten the notations, we may assume without loss of generality that $x_{n+1},y_{n+1}>0.$
+
+Set $H_1(x,y)=|x-y|,$ $H_2(x,y)=x_{n+1}^{-\frac12},$ $H_3(x,y)=y_{n+1}^{-\frac12}.$ By Leibniz's rule,
 $$\partial_{x,y}^{\alpha}H=\partial_{x,y}^{\alpha}(H_1H_2H_3)=\sum_{\substack{\alpha_1,\alpha_2,\alpha_3\in\mathbb{Z}_+^{2n+2}\\ \alpha_1+\alpha_2+\alpha_3=\alpha}}c_{\alpha_1,\alpha_2,\alpha_3}\partial_{x,y}^{\alpha_1}H_1\cdot\partial_{x_{n+1}}^{\alpha_2}H_2\cdot\partial_{y_{n+1}}^{\alpha_3}H_3.$$
 
 Clearly,
@@ -313,10 +314,10 @@ Combining these estimates, we complete the proof.
 \end{proof}
 
 \begin{lemma}\label{pre-parcet lemma} Let $\alpha\in\mathbb{Z}^{2n+2}_+.$ If $F\in C^{|\alpha|_1}[0,\infty)$ is supported on $[0,1],$ then
-$$|x-y|^{|\alpha|_1}|\partial_{x,y}^{\alpha}(F\circ H)(x,y)|\leq c_{\alpha}\|F\|_{C^{|\alpha|_1}[0,1]},\quad x,y\in\mathbb{R}^{n+1}_+.$$
+$$|x-y|^{|\alpha|_1}|\partial_{x,y}^{\alpha}(F\circ H)(x,y)|\leq c_{\alpha}\|F\|_{C^{|\alpha|_1}[0,1]},\quad x,y\in\mathbb{R}^{n+1}.$$
 \end{lemma}
 \begin{proof}
-Since $F$ is supported on $[0,1]$, it suffices to prove the assertion for those $x,y\in\mathbb{R}^{n+1}_+$ with $H(x,y)\leq 1.$
+Since $F$ is supported on $[0,1]$, it suffices to prove the assertion for those $x,y\in\mathbb{R}^{n+1}$ with $H(x,y)\leq 1.$
 
 We prove the assertion by induction on $|\alpha|_1.$ Base of induction is obvious. It suffices to prove the step of induction. Suppose the assertion is established for all $\alpha\in\mathbb{Z}^{2n+2}_+$ with $|\alpha|_1\leq m.$
 	
@@ -331,47 +332,41 @@ Therefore, the assertion holds for $|\alpha|_1=m+1$.
 \end{proof}
 
 \begin{lemma}\label{post-parcet lemma} Let $F\in C^{1+\lfloor\frac{n+1}{2}\rfloor}[0,\infty)$ be a function supported on $[0,1].$ Then for any $1<p<\infty$, there is a constant $C_{n,p}>0$, such that
-$$\|\mathfrak{S}_{F\circ H}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}\leq C_{n,p}\|F\|_{C^{1+\lfloor\frac{n+1}{2}\rfloor}[0,1]}.$$
+$$\|\mathfrak{S}_{F\circ H}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}\leq C_{n,p}\|F\|_{C^{1+\lfloor\frac{n+1}{2}\rfloor}[0,1]}.$$
 \end{lemma}
-\begin{proof} The assertion follows from Lemma \ref{pre-parcet lemma} and Theorem \ref{Annalspaper}.
+\begin{proof} The assertion follows by combining Lemma \ref{pre-parcet lemma} and Theorem \ref{Annalspaper}.
 \end{proof}
-%\begin{definition}
-%For any $s\geq 0$, we define the $s$-order Wiener class norm {\color{red}(Or call Besov-type norm?)} $W^s(\mathbb{R})$ of $f$ by
-%$$\|f\|_{W^s(\mathbb{R})}:=\int_{\mathbb{R}}|\mathcal{F}(f)(\xi)|(1+|\xi|)^sd\xi.$$
-%\end{definition}
-\begin{lemma}\label{post-denis lemma} Assume that $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}).$ Then for any $1<p<\infty$, there is a constant $C_{n,p}>0$ such that
-$$\|\mathfrak{S}_{F\circ H}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}\leq C_{n,p}\|F\circ\exp\|_{W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R})}.$$
+
+\begin{lemma}\label{post-denis lemma} For every $n\in\mathbb{N}$ and for every $1<p<\infty,$ there is a constant $C_{n,p}>0$ such that
+$$\|\mathfrak{S}_{F\circ H}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}\leq C_{n,p}\|F\circ\exp\|_{W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R})}.$$
 \end{lemma}
 \begin{proof} By Fourier inversion formula,
 $$F(e^t)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal{F}(F\circ\exp)(s)e^{its}ds,\quad t\in\mathbb{R}.$$
 In other words,
 $$F(t)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal{F}(F\circ\exp)(s)t^{is}ds,\quad t>0.$$
 Thus,
-$$(F\circ H)(x,y)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal{F}(F\circ\exp)(s)|x-y|^{is}x_{n+1}^{-\frac12is}y_{n+1}^{-\frac12is}ds,\quad x,y\in\mathbb{R}^{n+1}_+.$$
+$$(F\circ H)(x,y)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal{F}(F\circ\exp)(s)|x-y|^{is}|x_{n+1}|^{-\frac12is}|y_{n+1}|^{-\frac12is}ds,\quad x,y\in\mathbb{R}^{n+1}.$$
 Denote
-$$m_s(x,y)=|x-y|^{is},\quad x,y\in\mathbb{R}^{n+1}_+,\quad s\in\mathbb{R}.$$
+$$m_s(x,y)=|x-y|^{is},\quad x,y\in\mathbb{R}^{n+1},\quad s\in\mathbb{R}.$$
 We have
-$$\mathfrak{S}_{F\circ H}=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal{F}(F\circ\exp)(s)M_{x_{n+1}^{-\frac12is}}\mathfrak{S}_{m_s}M_{x_{n+1}^{-\frac12is}}ds.$$
-It follows from \cite[Theorem 1]{MR1814106} that
-$$\|\Delta^{is}\|_{L_{p}(\mathbb{R}^{n+1})\rightarrow L_{p}(\mathbb{R}^{n+1})}\leq (1+|s|)^{\frac{n+1}{2}}.$$
-This, in combination with a standard transference argument (see e.g.  \cite{MR3378821,MR2866074}), yields
-\begin{align}
-\|\mathfrak{S}_{m_s}\|_{\mathcal{L}_p(L_2(\mathbb{R}_+^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}_+^{n+1}))}&\leq \|\mathfrak{S}_{m_s}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))} \nonumber\\
-&\leq\|{\rm id}\otimes \Delta^{is}\|_{L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))\rightarrow L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))}\nonumber\\
-&\leq C_{n,p}(1+|s|)^{\frac{n+1}{2}},\quad s\in\mathbb{R},
-\end{align}
-for some constant $C_{n,p}>0$. Here we used the notation $\bar{\otimes}$ to denote the von Neumann algebra tensor product and $L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))$ to denote the non-commutative $L_p$ space over von Neumann algebra $B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1})$ (see e.g. \cite{PX} for more details about non-commutative integration theory).
-Combining with the fact that $M_{x_{n+1}^{-\frac12is}}$ is a unitary operator on $L_2(\mathbb{R}_+^{n+1})$, we deduce that
+$$\mathfrak{S}_{F\circ H}=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal{F}(F\circ\exp)(s)M_{|x_{n+1}|^{-\frac12is}}\mathfrak{S}_{m_s}M_{|x_{n+1}|^{-\frac12is}}ds.$$
+A standard transference technique (see e.g.  \cite{MR3378821,MR2866074}), yields
+$$\|\mathfrak{S}_{m_s}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))} \leq\|{\rm id}\otimes \Delta^{is}\|_{L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))\rightarrow L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))},\quad s\in\mathbb{R}.$$
+Taking into account that the space $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))$ has UMD property (see Definition 4.14 in \cite{HNVWbook}) and using Corollary 5.70 in \cite{HNVWbook}, we conclude that
+$$\|{\rm id}\otimes \Delta^{is}\|_{L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))\rightarrow L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))}\leq C_{n,p}(1+|s|)^{\frac{n+1}{2}},\quad s\in\mathbb{R}.$$
+Thus,
+$$\|\mathfrak{S}_{m_s}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}\leq C_{n,p}(1+|s|)^{\frac{n+1}{2}},\quad s\in\mathbb{R}.$$
+Combining with the fact that $M_{|x_{n+1}|^{-\frac12is}}$ is a unitary operator on $L_2(\mathbb{R}^{n+1})$, we deduce that
 \begin{align*}
-&\|\mathfrak{S}_{F\circ H}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}\\
-&\leq\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}|\mathcal{F}(F\circ\exp)(s)|\Big\|M_{x_{n+1}^{-\frac12is}}\mathfrak{S}_{m_s}M_{x_{n+1}^{-\frac12is}}\Big\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}ds\\
+&\|\mathfrak{S}_{F\circ H}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}\\
+&\leq\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}|\mathcal{F}(F\circ\exp)(s)|\Big\|M_{x_{n+1}^{-\frac12is}}\mathfrak{S}_{m_s}M_{x_{n+1}^{-\frac12is}}\Big\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\to \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}ds\\
 &\leq C_{n,p}\int_{-\infty}^{\infty}|\mathcal{F}(F\circ\exp)(s)| (1+|s|)^{\frac{n+1}{2}}ds\\
-&\leq C_{n,p}\|F\circ\exp\|_{W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R})}.
+&\leq C_{n,p}\|F\circ\exp\|_{W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R})}.
 \end{align*}
-This finishes the proof of Lemma \ref{post-denis lemma}.
+Here, the last inequality follows from Lemma 7 in \cite{PS-crelle}. This completes the proof of Lemma \ref{post-denis lemma}.
 \end{proof}
 
-\begin{proof}[Proof of Theorem \ref{main schur theorem}] Let $\phi\in C^{\infty}[0,\infty)$ be supported on $[0,1]$ and such that $\phi(0)=1.$ It follows from Lemma \ref{post-parcet lemma} that $\mathfrak{S}_{\phi\circ H}$ is a bounded mapping from $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))$ to itself for every $1<p<\infty.$ By considering $F-F(0)\cdot\phi$ instead of $F,$ we may assume without loss of generality that $F(0)=0.$ By assumption, $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+)$ and $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-).$ Hence, $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R})$ and the assertion follows from Lemma \ref{post-denis lemma}.
+\begin{proof}[Proof of Theorem \ref{main schur theorem}] Let $\phi\in C^{\infty}[0,\infty)$ be supported on $[0,1]$ and such that $\phi(0)=1.$ It follows from Lemma \ref{post-parcet lemma} that $\mathfrak{S}_{\phi\circ H}$ is a bounded mapping from $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))$ to itself for every $1<p<\infty.$ By considering $F-F(0)\cdot\phi$ instead of $F,$ we may assume without loss of generality that $F(0)=0.$ By assumption, $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+)$ and $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-).$ Hence, $F\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R})$ and the assertion follows from Lemma \ref{post-denis lemma}.
 \end{proof}
 
 
@@ -386,13 +381,13 @@ $$K_{\Delta_{\lambda}^{-\frac12}}(x,y)=\kappa_{n,\lambda}^{[1]}\int_0^2Q_t^{-\la
 where $\kappa_{n,\lambda}^{[1]}:=\frac{2^n}{\sqrt{\pi}}\frac{\Gamma(\lambda+\frac{1}{2})}{\Gamma(\lambda)}$ and
 $$Q_t(x,y):=|x-y|^2+2tx_{n+1}y_{n+1},\quad x,y\in\mathbb{R}^{n+1}_+.$$
 \end{lemma}
-\begin{proof} Recall from \cite[formula (2.11)]{FLLXarxiv} that integral kernel of $e^{-t^2\Delta_{\lambda}}$ is of the shape {\color{red} this is copied from Fan-Lacey-Li-Xiong. I want to see the proof of this formula!}
+\begin{proof} Recall from \cite[formula (2.11)]{FLLXarxiv} that integral kernel of $e^{-t^2\Delta_{\lambda}}$ is of the shape
 $$K_{e^{-s^2\Delta_{\lambda}}}(x,y)=\kappa_{\lambda}s^{-2\lambda-1-n}\int_0^{\pi}\exp(-\frac{Q_{1-\cos(\theta)}(x,y)}{4s^2})\sin^{2\lambda-1}(\theta)d\theta,$$
 where $\kappa_\lambda:=\frac{1}{2^{2\lambda}\sqrt{\pi}}\frac{\Gamma(\lambda+\frac{1}{2})}{\Gamma(\lambda)}$. Clearly,
 $$\Delta_{\lambda}^{-\frac12}=\frac{2}{\sqrt{\pi}}\int_0^{\infty}e^{-s^2\Delta_{\lambda}}ds.$$
 Hence, integral kernel of $\Delta_{\lambda}^{-\frac12}$ is of the shape
 \begin{align*}
-K_{\Delta_{\lambda}^{-\frac12}}(x,y)&=\frac{2}{\sqrt{\pi}}\int_0^{\infty}\Big(c_{\lambda}s^{-2\lambda-1-n}\int_0^{\pi}\exp(-\frac{Q_{1-\cos(\theta)}(x,y)}{4s^2})\sin^{2\lambda-1}(\theta)d\theta\Big)ds\\
+K_{\Delta_{\lambda}^{-\frac12}}(x,y)&=\frac{2}{\sqrt{\pi}}\int_0^{\infty}\Big(\kappa_{\lambda}s^{-2\lambda-1-n}\int_0^{\pi}\exp(-\frac{Q_{1-\cos(\theta)}(x,y)}{4s^2})\sin^{2\lambda-1}(\theta)d\theta\Big)ds\\
 &=\frac{2}{\sqrt{\pi}}\kappa_{\lambda}\int_0^{\pi}\sin^{2\lambda-1}(\theta)\Big(\int_0^{\infty}s^{-2\lambda-1-n}\exp(-\frac{Q_{1-\cos(\theta)}(x,y)}{4s^2})ds\Big)d\theta\\
 &\stackrel{s=u^{-\frac12}}{=}\frac{2}{\sqrt{\pi}}\kappa_{\lambda}\int_0^{\pi}\sin^{2\lambda-1}(\theta)\Big(\int_0^{\infty}u^{\lambda+\frac{n+1}{2}}\exp(-\frac{Q_{1-\cos(\theta)}(x,y)}{4}u)\frac{du}{2u^{\frac32}}\Big)d\theta\\
 &=\frac1{\sqrt{\pi}}\kappa_{\lambda}\int_0^{\pi}\sin^{2\lambda-1}(\theta)\Big(\int_0^{\infty}u^{\lambda+\frac{n}{2}-1}\exp(-\frac{Q_{1-\cos(\theta)}(x,y)}{4}u)du\Big)d\theta\\
@@ -408,7 +403,7 @@ $$F_{k,l}(x):=x^{n+k}\int_0^2(x^2+2t)^{-\lambda-\frac{n}{2}-1}(2t-t^2)^{\lambda-
 $$G_{k,l}(x):=\frac{F_{k,l}(x)-F_{k,l}(+0)}{x},\quad x\in(0,\infty).$$	
 \end{nota}
 
-\begin{nota} Denote
+\begin{nota} For $1\leq k\leq n+1,$ denote
 $$K_k(x,y):=\frac{(x-y)_k}{|x-y|^{n+2}(x_{n+1}y_{n+1})^{\lambda}},\quad x,y\in\mathbb{R}^{n+1}_+,$$	
 $$h_k(x,y):=\frac{(x-y)_k}{|x-y|},\quad x,y\in\mathbb{R}^{n+1},$$
 $$a(x,y):=\bigg(\frac{\min\{y_{n+1},x_{n+1}\}}{\max\{y_{n+1},x_{n+1}\}}\bigg)^{\frac12},\quad x,y\in\mathbb{R}^{n+1}_+,$$
@@ -416,24 +411,20 @@ $$b(x,y):=\chi_{\{x_{n+1}<y_{n+1}\}},\quad x,y\in\mathbb{R}^{n+1}_+.$$
 \end{nota}
 
 \begin{lemma}\label{bessel-riesz kernel representation lemma} Integral kernel of $R_{\lambda,k},$ $1\leq k\leq n+1,$ is given by the formula
-\begin{align*}
-K_{R_{\lambda,k}}&=-\kappa^{[2]}_{n,\lambda}K_k\cdot (F_{2,0}\circ H)\\
-&\hspace{1.0cm}-\delta_{k,n+1}\kappa^{[2]}_{n,\lambda}\sum_{l=1}^{n+1}a\cdot h_l\cdot (F_{1,1}\circ H)\cdot K_l\\
-&\hspace{1.0cm}+\delta_{k,n+1}\kappa^{[2]}_{n,\lambda}\sum_{l=1}^{n+1}b\cdot h_{n+1}\cdot h_l\cdot (F_{2,1}\circ H)\cdot K_l,
-\end{align*}
-where $\kappa^{[2]}_{n,\lambda}:=(2n+\lambda)\kappa^{[1]}_{n,\lambda}$.
+$$K_{R_{\lambda,k}}=-\kappa^{[2]}_{n,\lambda}\cdot\Big(K_k\cdot (F_{2,0}\circ H)+\delta_{k,n+1}\sum_{l=1}^{n+1}a\cdot h_l\cdot (F_{1,1}\circ H)\cdot K_l-\delta_{k,n+1}\sum_{l=1}^{n+1}b\cdot h_{n+1}\cdot h_l\cdot (F_{2,1}\circ H)\cdot K_l\Big),$$
+where $\kappa^{[2]}_{n,\lambda}:=(2\lambda+n)\kappa^{[1]}_{n,\lambda}.$
 \end{lemma}
 \begin{proof} Differentiating the right hand side in Lemma \ref{kernel of sqrt delta} by $x_{k},$ we obtain
 \begin{align*}
-K_{R_{\lambda,k}}(x,y)&=-(2n+\lambda)\kappa^{[1]}_{n,\lambda}(x-y)_{k}\int_0^2Q_t^{-\lambda-\frac{n}{2}-1}(x,y)(2t-t^2)^{\lambda-1}dt\\
-&\hspace{1.0cm}-(2n+\lambda)\kappa^{[1]}_{n,\lambda}\delta_{k,n+1}y_{n+1}\int_0^2Q_t^{-\lambda-\frac{n}{2}-1}(x,y)(2t-t^2)^{\lambda-1}tdt.
+K_{R_{\lambda,k}}(x,y)&=-(2\lambda+n)\kappa^{[1]}_{n,\lambda}(x-y)_{k}\int_0^2Q_t^{-\lambda-\frac{n}{2}-1}(x,y)(2t-t^2)^{\lambda-1}dt\\
+&\hspace{1.0cm}-(2\lambda+n)\kappa^{[1]}_{n,\lambda}\delta_{k,n+1}y_{n+1}\int_0^2Q_t^{-\lambda-\frac{n}{2}-1}(x,y)(2t-t^2)^{\lambda-1}tdt.
 \end{align*}
 It follows from the definitions of $F_{2,0}$ and $F_{1,1}$ that
 $$\int_0^2Q_t^{-\lambda-\frac{n}{2}-1}(x,y)(2t-t^2)^{\lambda-1}dt=\frac1{|x-y|^{n+2}(x_{n+1}y_{n+1})^{\lambda}}\cdot F_{2,0}(\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}}),$$
 $$y_{n+1}\int_0^2Q_t^{-\lambda-\frac{n}{2}-1}(x,y)(2t-t^2)^{\lambda-1}tdt=\frac1{|x-y|^{n+1}(x_{n+1}y_{n+1})^{\lambda}}\cdot (\frac{y_{n+1}}{x_{n+1}})^{\frac12}F_{1,1}(\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}}).$$
 Clearly,
 $$(\frac{y_{n+1}}{x_{n+1}})^{\frac12}=a(x,y)-b(x,y)h_{n+1}(x,y)H(x,y).$$
-Write $\kappa^{[2]}_{n,\lambda}:=(2n+\lambda)\kappa^{[1]}_{n,\lambda}$. Then
+Thus,
 \begin{align*}
 K_{R_{\lambda,k}}(x,y)&=-\kappa^{[2]}_{n,\lambda}K_k(x,y)\cdot (F_{2,0}\circ H)(x,y)\\
 &\hspace{-1.0cm}-\delta_{k,n+1}\kappa^{[2]}_{n,\lambda}\frac1{|x-y|^{n+1}(x_{n+1}y_{n+1})^{\lambda}}\cdot a(x,y)\cdot (F_{1,1}\circ H)(x,y)\\
@@ -446,7 +437,7 @@ completes the proof of Lemma.
 
 
 \begin{lemma}\label{standard schur lemma}
-Let $1\leq k\leq n+1$ and $1<p<\infty.$ Then the Schur multipliers $\mathfrak{S}_a,$ $\mathfrak{S}_b$ and $\mathfrak{S}_{h_k}$ are bounded from $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))$ to itself. Consequently, those Schur multipliers are bounded from $\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+))$ to itself and from $(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0$ to itself.
+Let $1\leq k\leq n+1$ and $1<p<\infty.$ Schur multipliers $\mathfrak{S}_a,$ $\mathfrak{S}_b$ and $\mathfrak{S}_{h_k}$ are bounded from $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))$ to itself. Consequently, those Schur multipliers are bounded from $\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+))$ to itself and from $(\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0$ to itself.
 \end{lemma}
 \begin{proof} Let us start with $\mathfrak{S}_a.$ We have
 $$e^{-|t|}=\frac1{\pi}\int_{\mathbb{R}}\frac{e^{its}ds}{1+s^2},\quad t\in\mathbb{R}.$$
@@ -458,55 +449,47 @@ Consequently,
 $$\|\mathfrak{S}_a(V)\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}\leq\frac1{\pi}\int_{\mathbb{R}}\|M_{x_{n+1}^{is/2}}VM_{x_{n+1}^{-is/2}}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}\frac{ds}{1+s^2}=\|V\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))}.$$
 
 Next, $\mathfrak{S}_b$ is the triangular truncation operator on the semifinite von Neumann algebra $\mathcal{M}=B(L_2(\mathbb{R}^{n+1}_+))$ with respect to the spectral measure of the operator $M_{x_{n+1}}.$ Boundedness of triangular truncation operator on
-$\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))=L_p(\mathcal{M})$ follows from Macaev theorem. We refer the reader to McDonald-Sukochev-Zanin for a detailed proof of Macaev theorem.
-
-{\color{red}[To Dima: Fourier multiplier associated with $\chi_{\{x_{n+1}<0\}}$ is completely bounded on $L_p(\mathbb{R}^{n+1}),$ which can be deduced directly from the boundedness of Hilbert transform. Why don't we use this simpler proof?] }
-	
+$\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+))=L_p(\mathcal{M})$ follows from Macaev theorem. We refer the reader to \cite{MSZ-krein} for a detailed proof of Macaev theorem.
 
 Fourier multiplier $m_k(\nabla)$ associated with $m_k(x):=\frac{x_{k}}{|x|}$ is completely bounded on $L_p(\mathbb{R}^{n+1}).$ By the standard transference technique (see e.g.  \cite{MR3378821,MR2866074}), we conclude that
-\begin{align*}
-\|\mathfrak{S}_{h_k}\|_{\mathcal{L}_p(L_2(\mathbb{R}_+^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}_+^{n+1}))}
-&\leq \|\mathfrak{S}_{h_k}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}\\
-&\leq\|{\rm id}\otimes m(\nabla)\|_{L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))\rightarrow L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))}\\
-&<\infty.
-\end{align*}
-The second statement follows from real interpolation (see e.g. \cite{MR1188788}) {\color{blue}(Check whether this is a suitable reference)}. This ends the proof of Lemma \ref{standard schur lemma}.
+$$\|\mathfrak{S}_{h_k}\|_{\mathcal{L}_p(L_2(\mathbb{R}_+^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}_+^{n+1}))}\leq \|\mathfrak{S}_{h_k}\|_{\mathcal{L}_p(L_2(\mathbb{R}^{n+1}))\rightarrow \mathcal{L}_p(L_2(\mathbb{R}^{n+1}))}\leq\|{\rm id}\otimes m(\nabla)\|_{L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))\rightarrow L_p(B(L_2(\mathbb{R}^{n+1}))\bar{\otimes}L_{\infty}(\mathbb{R}^{n+1}))}<\infty.$$
+The second statement follows by interpolation.
 \end{proof}
 
 
 
 
-\begin{lemma}\label{fkl schur lemma} Let $(k,l)\in\{(2,0),(1,1),(2,1)\}.$ Then the Schur multipliers $\mathfrak{S}_{F_{k,l}\circ H}$ are bounded on $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$
+\begin{lemma}\label{fkl schur lemma} If $(k,l)\in\{(2,0),(1,1),(2,1)\},$ then the Schur multipliers $\mathfrak{S}_{F_{k,l}\circ H}$ are bounded on $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$
 \end{lemma}
 \begin{proof} By Theorem \ref{fkl are smooth theorem}, $F_{k,l}$ satisfies the conditions in Theorem \ref{main schur theorem}. By Theorem \ref{main schur theorem}, $\mathfrak{S}_{F_{k,l}\circ H}$ is bounded on $\mathcal{L}_p(L_2(\mathbb{R}^{n+1}_+)),$ $1<p<\infty.$ By interpolation,  $\mathfrak{S}_{F_{k,l}\circ H}$ is bounded on $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)).$ Hence, $\mathfrak{S}_{F_{k,l}\circ H}$ is bounded on $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$
 \end{proof}
 
-\begin{lemma}\label{commutator representation lemma} Let $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then there is a constant $\kappa_{n,\lambda}^{[3]}$ such that for $1\leq k\leq n+1,$
+\begin{lemma}\label{commutator representation lemma} There exists a constant $\kappa_{n,\lambda}^{[3]}$ such that for every $f\in C^{\infty}_c(\mathbb{R}^{n+1})$ and for every $1\leq k\leq n+1,$
 \begin{align*}
-[R_{\lambda,k},M_{R_+f}]&=\kappa_{n,\lambda}^{[3]}\mathfrak{S}_{F_{2,0}\circ H}\Big( M_{x_{n+1}^{-\lambda}} R_+[R_k,M_{f}]E_+ M_{x_{n+1}^{\lambda}}\Big)\\
-&\hspace{-1.0cm}+\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\circ\mathfrak{S}_{F_{1,1}\circ H}\Big)\Big(M_{x_{n+1}^{-\lambda}} R_+[R_l,M_{f}]E_+ M_{x_{n+1}^{\lambda}}\Big)\\
-&\hspace{-1.0cm}-\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\circ\mathfrak{S}_{F_{2,1}\circ H}\Big)\Big( M_{x_{n+1}^{-\lambda}} R_+[R_l,M_{f}]E_+ M_{x_{n+1}^{\lambda}}\Big).
+[R_{\lambda,k},M_{E^{\ast}f}]&=\kappa_{n,\lambda}^{[3]}\mathfrak{S}_{F_{2,0}\circ H}\Big( M_{x_{n+1}^{-\lambda}} E^{\ast}[R_k,M_{f}]E M_{x_{n+1}^{\lambda}}\Big)\\
+&\hspace{-1.0cm}+\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\circ\mathfrak{S}_{F_{1,1}\circ H}\Big)\Big(M_{x_{n+1}^{-\lambda}} E^{\ast}[R_l,M_{f}]E M_{x_{n+1}^{\lambda}}\Big)\\
+&\hspace{-1.0cm}-\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\circ\mathfrak{S}_{F_{2,1}\circ H}\Big)\Big( M_{x_{n+1}^{-\lambda}} E^{\ast}[R_l,M_{f}]E M_{x_{n+1}^{\lambda}}\Big).
 \end{align*}
 \end{lemma}
-\begin{proof} Note that for any function $g$ on $\mathbb{R}_+^{n+1}$ and $x\in\mathbb{R}_+^{n+1}$,
-$$R_+[R_l,M_f]E_+(g)(x)=\omega_{n}\int_{\mathbb{R}_+^{n+1}}(f(y)-f(x))\frac{(x-y)_l}{|x-y|^{n+2}}g(y)dm_\lambda(y),$$
-for some constant $\omega_{n}>0$. Write $\kappa_{n,\lambda}^{[3]}:=\omega_n^{-1}\kappa_{n,\lambda}^{[2]}$, then
-the assertion follows now from the Lemma \ref{bessel-riesz kernel representation lemma}.
+\begin{proof} Note that the integral kernel of the operator $R_l$ is
+$$(x,y)\to\omega_n\frac{(y-x)_l}{|x-y|^{n+2}},\quad x,y\in\mathbb{R}^{n+1},$$
+for some constant $\omega_{n}>0.$ Setting $\kappa_{n,\lambda}^{[3]}:=\omega_n^{-1}\kappa_{n,\lambda}^{[2]},$ we infer the assertion from
+Lemma \ref{bessel-riesz kernel representation lemma}.
 \end{proof}
 
 
-\begin{lemma}\label{mta final lemma} Let $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then there is a constant $C_{n,\lambda}>0$ such that for $1\leq k\leq n+1$,
-$$\|[R_{\lambda,k},M_{R_+f}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\leq C_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}.$$
+\begin{lemma}\label{mta final lemma} There exists a constant $C_{n,\lambda}$ such that for every $f\in C^{\infty}_c(\mathbb{R}^{n+1})$ and for every $1\leq k\leq n+1,$
+$$\|[R_{\lambda,k},M_{E^{\ast}f}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\leq C_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1})}.$$
 \end{lemma}
 \begin{proof} Lemma \ref{commutator representation lemma} yields
 \begin{align*}
-&\|[R_{\lambda,k},M_{R_+f}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
+&\|[R_{\lambda,k},M_{E^{\ast}f}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
 &\leq \kappa_{n,\lambda}^{[3]}\Big\|\mathfrak{S}_{F_{2,0}\circ H}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))\to \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\hspace{1.0cm}\times\Big\| M_{x_{n+1}^{-\lambda}} R_+[R_k,M_f]E_+ M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
+&\hspace{1.0cm}\times\Big\| M_{x_{n+1}^{-\lambda}} E^{\ast}[R_k,M_f]E M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
 &+\kappa_{n,\lambda}^{[3]}\sum_{l=1}^{n+1}\Big\|\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\circ\mathfrak{S}_{F_{1,1}\circ H}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))\to \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\hspace{1.0cm}\times\Big\|M_{x_{n+1}^{-\lambda}} R_+[R_l,M_f]E_+ M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
+&\hspace{1.0cm}\times\Big\|M_{x_{n+1}^{-\lambda}} E^{\ast}[R_l,M_f]E M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
 &+\kappa_{n,\lambda}^{[3]}\sum_{l=1}^{n+1}\Big\|\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\circ\mathfrak{S}_{F_{2,1}\circ H}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))\to \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\hspace{1.0cm}\times\Big\|M_{x_{n+1}^{-\lambda}} R_+[R_l,M_f]E_+ M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}.
+&\hspace{1.0cm}\times\Big\|M_{x_{n+1}^{-\lambda}} E^{\ast}[R_l,M_f]E M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}.
 \end{align*}
 It follows from Lemmas \ref{weight}, \ref{standard schur lemma} and \ref{fkl schur lemma} that there exists a constant $C_{n,\lambda}>0$ such that
 $$\Big\|\mathfrak{S}_{F_{2,0}\circ H}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))\to \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}=\Big\|\mathfrak{S}_{F_{2,0}\circ H}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))\to \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))}\stackrel{L.\ref{fkl schur lemma}}{\leq}{C_{n,\lambda}},$$
@@ -526,46 +509,37 @@ and that
 \end{align*}
 This, in combination with Lemma \ref{half}, yields
 \begin{align*}
-&\|[R_{\lambda,k},M_{R_+f}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\leq C_{n,\lambda}\sum_{l=1}^{n+1}\Big\|M_{x_{n+1}^{-\lambda}} R_+[R_l,M_f]E_+ M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&=C_{n,\lambda}\sum_{l=1}^{n+1}\Big\|R_+[R_l,M_f]E_+\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))}\\
-&=C_{n,\lambda} \sum_{l=1}^{n+1}\Big\|M_{\chi_{\mathbb{R}_+^{n+1}}}[R_l,M_f]M_{\chi_{\mathbb{R}_+^{n+1}}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\\
+&\|[R_{\lambda,k},M_{E^{\ast}f}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\leq C_{n,\lambda}\sum_{l=1}^{n+1}\Big\|M_{x_{n+1}^{-\lambda}} E^{\ast}[R_l,M_f]E M_{x_{n+1}^{\lambda}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
+&=C_{n,\lambda}\sum_{l=1}^{n+1}\Big\|E^{\ast}[R_l,M_f]E\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))}=C_{n,\lambda} \sum_{l=1}^{n+1}\Big\|M_{\chi_{\mathbb{R}_+^{n+1}}}[R_l,M_f]M_{\chi_{\mathbb{R}_+^{n+1}}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\\
 &\leq C_{n,\lambda} \sum_{l=1}^{n+1}\Big\|[R_l,M_f]\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}.
 \end{align*}
 The assertion follows now from the corresponding Euclidean assertion (see \cite[Theorem 1]{LMSZ}).
 \end{proof}
 
-\begin{lemma}\label{density lemma} Let $1<p<\infty.$ Then for any $f \in \dot{W}^{1,p}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1}),$ there exists a sequence $\{f_m\}_{m=1}^\infty \subset C^{\infty}_c(\mathbb{R}^{n+1})$ and a constant $c>0$ such that
+\begin{lemma}\label{density lemma} Let $1<p<\infty.$ For every $f \in \dot{W}^{1,p}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1}),$ there exists a sequence $\{f_m\}_{m=1}^\infty \subset C^{\infty}_c(\mathbb{R}^{n+1})$ and a constant $c>0$ such that
 \begin{enumerate}[{\rm (i)}]
-\item $f_m\to f$ in $\dot{W}^{1,p}(\mathbb{R}_+^{n+1});$
-\item $M_{R_+f_m}\rightarrow M_{f-c}$ in the strong operator topology on $B(L_2(\mathbb{R}^{n+1}_+))$.
+\item $f_m$ is even in the $(n+1)$-st argument;
+\item $\{f_m\}_{m=1}^\infty$ is Cauchy sequence in $\dot{W}^{1,p}(\mathbb{R}^{n+1});$
+\item $E^{\ast}f_m\to f$ in $\dot{W}^{1,p}(\mathbb{R}_+^{n+1});$
+\item $M_{E^{\ast}f_m}\rightarrow M_{f-c}$ in the strong operator topology on $B(L_2(\mathbb{R}^{n+1}_+))$.
 \end{enumerate}	
 \end{lemma}
 \begin{proof} Set
 $$F(x):=
 \begin{cases}
 f(x_1,\cdots,x_n,x_{n+1}),& x_{n+1}>0\\
-0,& x_{n+1}=0\\
 f(x_1,\cdots,x_n,-x_{n+1}),& x_{n+1}<0
 \end{cases},\quad x=(x_1,\cdots,x_{n+1})\in\mathbb{R}^{n+1}.
 $$
 It is immediate that $F\in\dot{W}^{1,p}(\mathbb{R}^{n+1})\cap L_{\infty}(\mathbb{R}^{n+1}).$ The assertion follows now from the corresponding assertion for $\mathbb{R}^{n+1}$ (see \cite[Theorem 3]{LMSZ}).
 \end{proof}
 
-\begin{proof}[Proof of Theorem \ref{main theorem} \eqref{mta}] If $f=R_+g$ for some $g\in C_c^\infty(\mathbb{R}^{n+1})$, then the assertion is established in Lemma \ref{mta final lemma}.
+\begin{proof}[Proof of Theorem \ref{main theorem} \eqref{mta}] If $f=E^{\ast}g$ for some $g\in C_c^\infty(\mathbb{R}^{n+1})$ which is even in the $(n+1)$-st argument, then the assertion follows from Lemma \ref{mta final lemma}.
 	
-We apply an approximation argument to remove the above assumption. To this end, we suppose $f\in  \dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1})$ and let $\{f_m\}_{m\geq 1}$ be the sequence chosen in Lemma \ref{density lemma}, then $f_m\in C_c^\infty(\mathbb{R}^{n+1})$ for $m\geq 1$ and $\{f_m\}_{m\geq 1}$ is a Cauchy sequence on $\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})$. Using Lemma \ref{mta final lemma}, we deduce that for $m_1,m_2\geq1$,
-\begin{align*}
-\|[R_{\lambda,k},M_{R_+f_{m_1}}]-[R_{\lambda,k},M_{R_+f_{m_2}}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}&=\|[R_{\lambda,k},M_{R_+(f_{m_1}-f_{m_2})}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\leq C_{n,\lambda}\|f_{m_1}-f_{m_2}\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}
-\end{align*}
-for some $C_{n,\lambda}>0$.
-Hence, $\{[R_{\lambda,k},M_{R_+f_{m}}]\}_{m\geq 1}$ is a Cauchy sequence on $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))$ which, therefore, converges to some $A\in \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$ In particular, $[R_{\lambda,k},M_{R_+f_{m}}]\rightarrow A$ in the strong operator topology. On the other hand, by Lemma \ref{density lemma}, $M_{R_+f_m}\rightarrow M_{f-c}$ for some constant $c>0$ in the strong operator topology. Therefore, $[R_{\lambda,k},M_{R_+f_m}]\rightarrow [R_{\lambda,k},M_f]$ in the strong operator topology. By uniqueness of the limit, $A=[R_{\lambda,k},M_f]$, which implies that  $[R_{\lambda,k},M_{R_+f_m}]\rightarrow [R_{\lambda,k},M_f]$ in $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$ Then
-\begin{align*}
-\|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}&=\lim_{m\rightarrow \infty}\|[R_{\lambda,k},M_{R_+f_m}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\leq C_{n,\lambda}\limsup_{m\rightarrow \infty}\|f_m\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}\\
-&=C_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}.
-\end{align*}
+We apply an approximation argument to remove the above assumption. To this end, we suppose $f\in  \dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1})$ and let $\{f_m\}_{m\geq 1}$ be the sequence given by Lemma \ref{density lemma}, so that $f_m\in C_c^\infty(\mathbb{R}^{n+1})$ for $m\geq 1$ and $\{f_m\}_{m\geq 1}$ is a Cauchy sequence on $\dot{W}^{1,n+1}(\mathbb{R}^{n+1})$. Using Lemma \ref{mta final lemma}, we deduce that for $m_1,m_2\geq1$,
+$$\|[R_{\lambda,k},M_{E^{\ast}f_{m_1}}]-[R_{\lambda,k},M_{E^{\ast}f_{m_2}}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}=\|[R_{\lambda,k},M_{E^{\ast}(f_{m_1}-f_{m_2})}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\leq C_{n,\lambda}\|f_{m_1}-f_{m_2}\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1})}.$$
+Hence, $\{[R_{\lambda,k},M_{E^{\ast}f_{m}}]\}_{m\geq 1}$ is a Cauchy sequence on $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))$ which, therefore, converges to some $A\in \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$ In particular, $[R_{\lambda,k},M_{E^{\ast}f_{m}}]\rightarrow A$ in the strong operator topology. On the other hand, by Lemma \ref{density lemma}, $M_{E^{\ast}f_m}\rightarrow M_{f-c}$ for some constant $c>0$ in the strong operator topology. Therefore, $[R_{\lambda,k},M_{E^{\ast}f_m}]\rightarrow [R_{\lambda,k},M_f]$ in the strong operator topology. By uniqueness of the limit, $A=[R_{\lambda,k},M_f]$, which implies that  $[R_{\lambda,k},M_{E^{\ast}f_m}]\rightarrow [R_{\lambda,k},M_f]$ in $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$ Thus
+$$\|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}=\lim_{m\rightarrow \infty}\|[R_{\lambda,k},M_{E^{\ast}f_m}]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\leq C_{n,\lambda}\limsup_{m\rightarrow \infty}\|f_m\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}=C_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}.$$
 This completes the proof.
 \end{proof}
 
@@ -605,7 +579,7 @@ Here, $\psi_{\lambda}:t\to t^{\lambda}\phi_{\lambda}(t)=t^{\frac12}J_{\lambda-\f
 This ends the proof of Lemma \ref{L2Cwikel}.
 \end{proof}
 
-Combining  Lemma \ref{L2Cwikel} with  the abstract Cwikel estimate established in \cite{LeSZ}, we obtain the Cwikel estimate for $M_fg(\sqrt{\Delta_{\lambda}})$ in the case of $p>2$ and $n\geq 2.$
+Combining  Lemma \ref{L2Cwikel} with the Abstract Cwikel Estimate established in \cite{LeSZ} (see Theorem 1.5.10 in \cite{LSZ2}), we obtain the Cwikel estimate for $M_fg(\sqrt{\Delta_{\lambda}})$ in the case of $p>2$ and $n\geq 2.$
 
 \begin{theorem}\label{cwikel estimate in bessel setting}
 Let $p>2$ and $n\geq 2.$
@@ -688,7 +662,13 @@ $$\|V_{K_2}\|_{\mathcal{L}_p(L_2(B(0,R)))}\leq\|V_{K_1}\|_{\mathcal{L}_p(L_2(B(0
 $$K(x,y)=|x-y|^{-\alpha(n+1)},\quad x,y\in B(0,R),$$
 and if $V_K$ is an integral operator with an integral kernel $K,$ then $V_K\in\mathcal{L}_{\frac{1}{1-\alpha},\infty}(L_2(B(0,R))).$
 \end{lemma}
-\begin{proof} Standard fact.
+\begin{proof} Conjugating with dilation operator, we can always assume $R<(n+1)^{-\frac12}$ so that $B(0,R)\subset [-1,1]^{n+1}.$ Let $\phi\in C^{\infty}_c(\mathbb{R}^{n+1})$ be compactly supported in $(-\pi,\pi)^{n+1}$ and such that $\phi=1$ on $[-2,2]^{n+1}.$ Let $\psi$ be the $2\pi$-periodic extension the function
+$$x\to |x|^{-\alpha(n+1)}\phi(x),\quad x\in[-\pi,\pi]^{n+1}.$$
+Integral kernel of our operator is
+$$(x,y)\to \chi_{B(0,R)}(x)\psi(x-y)\chi_{B(0,R)}(y),\quad x,y\in\mathbb{R}^{n+1}.$$
+Identifying $[-\pi,\pi]^{n+1}$ with $\mathbb{T}^{n+1},$ we write our operator as $M_{\chi_{B(0,R)}}\hat{\psi}(\nabla_{\mathbb{T}^{n+1}})M_{\chi_{B(0,R)}}.$ Thus,
+$$\|V_K\|_{\mathcal{L}_{\frac{1}{1-\alpha},\infty}(L_2(B(0,R)))}=\|M_{\chi_{B(0,R)}}\hat{\psi}(\nabla_{\mathbb{T}^{n+1}})M_{\chi_{B(0,R)}}\|_{\mathcal{L}_{\frac{1}{1-\alpha},\infty}(L_2(\mathbb{T}^{n+1}))}\leq\|\hat{\psi}(\nabla_{\mathbb{T}^{n+1}})\|_{\mathcal{L}_{\frac{1}{1-\alpha},\infty}(L_2(\mathbb{T}^{n+1}))}=\|\hat{\psi}\|_{l_{\frac1{1-\alpha},\infty}(\mathbb{Z}^{n+1})}.$$
+Since $\hat{\psi}\in l_{\frac1{1-\alpha},\infty}(\mathbb{Z}^{n+1}),$ the assertion follows.
 \end{proof}
 
 \begin{lemma}\label{rough estimate} Let $K\subset\mathbb{R}^{n+1}$ be a cube and let $L\in L_{\infty}(K\times K).$ If
@@ -718,8 +698,8 @@ $$[\partial_l^2,M_f]=\partial_lM_{\partial_lf}+M_{\partial_lf}\partial_l=2\parti
 Thus,
 $$[\frac{\partial_k}{\Delta},M_f]=M_{\partial_kf}\Delta^{-1}+2\sum_{l=1}^{n+1}\frac{\partial_k\partial_l}{\Delta}M_{\partial_lf}\Delta^{-1}+\frac{\partial_k}{\Delta}M_{\Delta f}\Delta^{-1}.$$
 Finally,
-$$M_{\chi_K}[\frac{\partial_k}{\Delta},M_f]M_{\chi_K}=M_{\partial_kf\chi_K}\Delta^{-1}M_{\chi_K}+2\sum_{l=1}^{n+1}M_{\chi_K}\frac{\partial_k\partial_l}{\Delta}\cdot M_{\partial_lf}\Delta^{-1}M_{\chi_K}+M_{\chi_K}\frac{\partial_k}{\Delta}\cdot M_{\Delta f}\Delta^{-1}M_{\chi_K}.$$
-By Lemma \ref{cwikel estimate in Euclidean setting} and $L_2$-boundedness of classical Riesz transform, for $g\in \{\partial_kf\chi_K,\partial_lf,\Delta f\}$,
+$$M_{\chi_K}[\frac{\partial_k}{\Delta},M_f]M_{\chi_K}=M_{\partial_kf\cdot \chi_K}\Delta^{-1}M_{\chi_K}+2\sum_{l=1}^{n+1}M_{\chi_K}\frac{\partial_k\partial_l}{\Delta}\cdot M_{\partial_lf}\Delta^{-1}M_{\chi_K}+M_{\chi_K}\frac{\partial_k}{\Delta}\cdot M_{\Delta f}\Delta^{-1}M_{\chi_K}.$$
+By Lemma \ref{cwikel estimate in Euclidean setting} and $L_2$-boundedness of classical Riesz transform, for $g\in \{\partial_kf\cdot\chi_K,\partial_lf,\Delta f\}$,
 $$M_{g}\Delta^{-1}M_{\chi_K}=M_{g}\Delta^{-\frac12}\cdot\Delta^{-\frac12}M_{\chi_K}\in \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))\cdot \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})),$$
 $$M_{\chi_K}\frac{\partial_k\partial_l}{\Delta}\in \mathcal{L}_{\infty}(L_2(\mathbb{R}^{n+1})),$$
 %$$M_{\partial_lf}\Delta^{-1}M_{\chi_K}=M_{\partial_lf}\Delta^{-\frac12}\cdot\Delta^{-\frac12}M_{\chi_K}\in \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))\cdot \mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})),$$
@@ -742,17 +722,13 @@ $$\|M_{\chi_K}[\frac{\partial_k}{\Delta},M_f]M_{\chi_K}-M_{\chi_K}[\frac{\partia
 Hence, the left hand side tends to $0$ as $m\to\infty.$ The assertion follows now from Steps 1 and 2.
 \end{proof}
 
-\begin{lemma}\label{first distance lemma} Let $K\subset\mathbb{R}^{n+1}$ be a cube. Then there exists a constant $C_n>0$ such that for any $f\in L_{\infty}(\mathbb{R}^{n+1})\cap W^{1,n+1}(\mathbb{R}^{n+1})$ such that
-$$\|f\|_{\dot{W}^{1,n+1}(K)}\leq C_n{\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\Big(M_{\chi_K}[R_k,M_f]M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0\Big).$$
+\begin{lemma}\label{first distance lemma} Let $K\subset\mathbb{R}^{n+1}$ be a cube. There exists a constant $C_n>0$ such that, for every $f\in L_{\infty}(\mathbb{R}^{n+1})\cap W^{1,n+1}(\mathbb{R}^{n+1}),$ we have
+$$\|f\|_{\dot{W}^{1,n+1}(K)}=C_n{\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\Big(M_{\chi_K}[R_k,M_f]M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0\Big).$$
 \end{lemma}
 \begin{proof}
-It follows from \cite[Proposition 8.6]{MR4549699} that there exists a constant $C_n>0$ such that for any $E\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0$,
-\begin{align*}
-\|f\|_{\dot{W}^{1,n+1}(K)}&=C_n \lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t,M_{\chi_K}[R_k,M_f]M_{\chi_K})\\
-&=C_n \lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t,M_{\chi_K}[R_k,M_f]M_{\chi_K}-E)\\
-&\leq C_n \sup_{t>0}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t,M_{\chi_K}[R_k,M_f]M_{\chi_K}-E).
-\end{align*}
-Taking the infimum over all $E\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0$, we deduce the assertion.
+It follows from \cite[Proposition 8.6]{FSZ} that
+$$\|f\|_{\dot{W}^{1,n+1}(K)}=C_n \lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t,M_{\chi_K}[R_k,M_f]M_{\chi_K}).$$
+As the right hand side is exactly the distance from the separable part, the assertion follows.
 \end{proof}
 
 \begin{lemma}\label{second distance lemma} Let $K\subset\mathbb{R}^{n+1}$ be a cube. If $f\in L_{\infty}(\mathbb{R}^{n+1})$ is such that
@@ -789,11 +765,10 @@ Passing $\epsilon\downarrow0,$ we complete the proof.
 %
 %In the following lemma, we view operators on the Hilbert space $L_2(\mathbb{R}^{n+1}_+)$ as operators on the bigger Hilbert space $L_2(\mathbb{R}^{n+1}).$
 
-\begin{lemma}\label{mtb main lemma} Let $f\in L_{\infty}(\mathbb{R}^{n+1})$ and let $K$ be a cube compactly supported in $\mathbb{R}^{n+1}_+.$ Then for $1\leq k\leq n+1,$ we have
-$$M_{\chi_K}M_{x_{n+1}^{\lambda}}E_+[R_{\lambda,k},M_{R_+f}]R_+M_{x_{n+1}^{-\lambda}}M_{\chi_K}-\kappa^{[3]}_{n,\lambda}F_{2,0}(0)M_{\chi_K}[R_k,M_f]M_{\chi_K}\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$$
-%In the first term, the commutator is an operator on $L_2(\mathbb{R}^{n+1}_+,m_{\lambda}),$ the commutator conjugated by $M_{x_{n+1}^{\lambda}}$ is an operator on $L_2(\mathbb{R}^{n+1}_+).$ In the second term, all the operators act on $L_2(\mathbb{R}^{n+1}).$
+\begin{lemma}\label{mtb main lemma} Let $f\in L_{\infty}(\mathbb{R}^{n+1})$ and let $K$ be a cube compactly supported in $\mathbb{R}^{n+1}_+.$ For $1\leq k\leq n+1,$ we have
+$$M_{\chi_K}M_{x_{n+1}^{\lambda}}E[R_{\lambda,k},M_{E^{\ast}f}]E^{\ast}M_{x_{n+1}^{-\lambda}}M_{\chi_K}-\kappa^{[3]}_{n,\lambda}F_{2,0}(0)M_{\chi_K}[R_k,M_f]M_{\chi_K}\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$$
 \end{lemma}
-\begin{proof} By Lemma \ref{bessel-riesz kernel representation lemma}, integral kernel of the operator $M_{x_{n+1}^{\lambda}}[R_{\lambda,k},M_f]M_{x_{n+1}^{-\lambda}}$ is given by the formula
+\begin{proof} By Lemma \ref{bessel-riesz kernel representation lemma}, integral kernel of the operator $M_{x_{n+1}^{\lambda}}[R_{\lambda,k},M_{E^{\ast}f}]M_{x_{n+1}^{-\lambda}}$ is given by the formula
 \begin{align*}
 (x,y)&\to\frac{\kappa^{[2]}_{n,\lambda}(y-x)_{k}(f(y)-f(x))}{|x-y|^{n+2}}\cdot F_{2,0}(\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}})\\
 &\hspace{-0.5cm}+\kappa^{[2]}_{n,\lambda}\delta_{k,n+1}\sum_{l=1}^{n+1} \frac{(x-y)_l}{|x-y|}(\frac{\min\{y_{n+1},x_{n+1}\}}{\max\{y_{n+1},x_{n+1}\}})^{\frac12} \frac{(y-x)_{n+1}(f(y)-f(x))}{|x-y|^{n+2}}\cdot F_{1,1}(\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}})\\
@@ -802,10 +777,10 @@ $$M_{\chi_K}M_{x_{n+1}^{\lambda}}E_+[R_{\lambda,k},M_{R_+f}]R_+M_{x_{n+1}^{-\lam
 
 As $K$ is compactly supported in $\mathbb{R}^{n+1}_+,$ we apply Taylor's formula to deduce that for any $(j,l)\in \{(2,0),(1,1),(2,1)\}$,
 $$F_{j,l}(\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}})=F_{j,l}(0)+F_{j,l}^{(1)}(0)\frac{|x-y|}{(x_{n+1}y_{n+1})^{\frac12}}+O(|x-y|^2),\quad x,y\in K.$$
-Taking into account that $F_{1,1}(0)=F_{2,1}(0)=0$, we conclude that integral kernel of the operator $M_{\chi_K} M_{x_{n+1}^{\lambda}}E_+[R_{\lambda,k},M_{R_+f}]R_+M_{x_{n+1}^{-\lambda}} M_{\chi_K}$ is given by the formula
+Taking into account that $F_{1,1}(0)=F_{2,1}(0)=0$, we conclude that integral kernel of the operator $M_{\chi_K} M_{x_{n+1}^{\lambda}}E[R_{\lambda,k},M_{E^{\ast}f}]E^{\ast}M_{x_{n+1}^{-\lambda}} M_{\chi_K}$ is given by the formula
 \begin{align*}
-(x,y)&\to\frac{\kappa^{[2]}_{n,\lambda}(y-x)_{n+1}(f(y)-f(x))}{|x-y|^{n+2}}\chi_K(x)\chi_K(y)\cdot F_{2,0}(0)\\
-&\hspace{-0.5cm}+\frac{\kappa^{[2]}_{n,\lambda}(y-x)_{n+1}(f(y)-f(x))}{|x-y|^{n+1}(x_{n+1}y_{n+1})^{\frac12}}\chi_K(x)\chi_K(y)\cdot F_{2,0}^{(1)}(0)\\
+(x,y)&\to\frac{\kappa^{[2]}_{n,\lambda}(y-x)_k(f(y)-f(x))}{|x-y|^{n+2}}\chi_K(x)\chi_K(y)\cdot F_{2,0}(0)\\
+&\hspace{-0.5cm}+\frac{\kappa^{[2]}_{n,\lambda}(y-x)_k(f(y)-f(x))}{|x-y|^{n+1}(x_{n+1}y_{n+1})^{\frac12}}\chi_K(x)\chi_K(y)\cdot F_{2,0}^{(1)}(0)\\
 &\hspace{-0.5cm}+\kappa^{[2]}_{n,\lambda}\delta_{k,n+1}\sum_{l=1}^{n+1} \frac{(x-y)_l}{|x-y|}(\frac{\min\{y_{n+1},x_{n+1}\}}{\max\{y_{n+1},x_{n+1}\}})^{\frac12} \frac{(y-x)_{n+1}(f(y)-f(x))}{|x-y|^{n+1}(x_{n+1}y_{n+1})^{\frac12}}\chi_K(x)\chi_K(y)\cdot F_{1,1}^{(1)}(0)\\
 &\hspace{-0.5cm}-\kappa^{[2]}_{n,\lambda}\delta_{k,n+1}\sum_{l=1}^{n+1} \frac{(x-y)_l}{|x-y|}\frac{(x-y)_{n+1}}{|x-y|}\chi_{\{x_{n+1}<y_{n+1}\}} \frac{(y-x)_{n+1}(f(y)-f(x))}{|x-y|^{n+1}(x_{n+1}y_{n+1})^{\frac12}}\chi_K(x)\chi_K(y)\cdot F_{2,1}^{(1)}(0)\\
 &\hspace{-0.5cm}+O(|x-y|^{1-n}),\quad x,y\in K.
@@ -813,32 +788,32 @@ Taking into account that $F_{1,1}(0)=F_{2,1}(0)=0$, we conclude that integral ke
 The first four summands on the right hand side are the integral kernels of
 $$\kappa^{[3]}_{n,\lambda}F_{2,0}(0)M_{\chi_K}[R_k,M_f]M_{\chi_K},$$
 $$C_{n,\lambda}F_{2,0}^{(1)}(0)M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_k}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K},$$
-$$C_{n,\lambda}F_{1,1}^{(1)}(0)\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_k}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big),$$
-$$C_{n,\lambda}F_{2,1}^{(1)}(0)\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_k}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big),$$
+$$C_{n,\lambda}F_{1,1}^{(1)}(0)\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_{n+1}}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big),$$
+$$C_{n,\lambda}F_{2,1}^{(1)}(0)\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_{n+1}}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big),$$
 respectively, for some constant $C_{n,\lambda}>0$. By Lemma \ref{rough estimate}, integral operator associated with the fifth summand belongs to  $\mathcal{L}_{n+1}(L_2(\mathbb{R}^{n+1}))\subset (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$
 
 Since $K$ is a cube in $\mathbb{R}^{n+1}_+,$ it follows from Lemma \ref{mtb separable part lemma} that
  $$M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_k}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$$
 This, in combination with Lemma \ref{standard schur lemma}, also implies that
-$$\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_k}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0,$$
-$$\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_k}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$$
+$$\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_{n+1}}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0,$$
+$$\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\Big)\Big(M_{\chi_K}M_{x_{n+1}^{-\frac12}}[\frac{\partial_{n+1}}{\Delta},M_f]M_{x_{n+1}^{-\frac12}}M_{\chi_K}\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$$
 This completes the proof.
 \end{proof}
 
 
-\begin{proof}[Proof of Theorem \ref{main theorem} \eqref{mtb}] It follows from Lemma \ref{weight} that for any $f\in L_{\infty}(\mathbb{R}^{n+1}_+),$
+\begin{proof}[Proof of Theorem \ref{main theorem} \eqref{mtb}] It follows from Lemma \ref{weight} that for $f\in L_{\infty}(\mathbb{R}^{n+1}_+),$
 \begin{align*}
 \|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}&\geq {\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}([R_{\lambda,k},M_f],(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})))_0)\\
 &\hspace{-2.0cm}={\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))}(M_{x_{n+1}^{\lambda}}[R_{\lambda,k},M_f]M_{x_{n+1}^{-\lambda}},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0)\\
 &\hspace{-2.0cm}\geq {\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))}(M_{\chi_K} M_{x_{n+1}^{\lambda}}[R_{\lambda,k},M_f]M_{x_{n+1}^{-\lambda}} M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0)\\
-&\hspace{-2.0cm}={\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}(M_{\chi_K} M_{x_{n+1}^{\lambda}}E_+[R_{\lambda,k},M_f]R_+M_{x_{n+1}^{-\lambda}} M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0)
+&\hspace{-2.0cm}={\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}(M_{\chi_K} M_{x_{n+1}^{\lambda}}E[R_{\lambda,k},M_f]E^{\ast}M_{x_{n+1}^{-\lambda}} M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0)
 \end{align*}
 for every cube $K$ compactly supported in $\mathbb{R}^{n+1}_+.$	
 
 Suppose $1\leq k\leq n+1.$ It follows from Lemma \ref{mtb main lemma} that
 \begin{align*}
 &\|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\\
-&\geq \kappa^{[3]}_{n,\lambda}F_{2,0}(0){\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}(M_{\chi_K} [R_k,M_{E_+f}] M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0).
+&\geq \kappa^{[3]}_{n,\lambda}F_{2,0}(0){\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}(M_{\chi_K} [R_k,M_{Ef}] M_{\chi_K},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0).
 \end{align*}
 Combining this with Lemma \ref{second distance lemma}, we conclude that there is a constant $C_{n,\lambda}>0$ such that
 $$\|[R_{\lambda,k},M_f]\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}\geq C_{n,\lambda} \|f\|_{\dot{W}^{1,n+1}(K)}.$$
@@ -848,7 +823,9 @@ Taking the supremum over all cubes $K$ compactly supported in $\mathbb{R}^{n+1}_
 
 \section{Proof of the spectral asymptotic estimate}
 \setcounter{equation}{0}
-{\color{blue}In this section, we will establish the spectral asymptotic estimate for the Bessel-Riesz commutator. The key tool is to establish a suitable approximation of the commutator. [Highlight the bridge later]}
+
+In this section, we will establish the spectral asymptotic estimate for the Bessel-Riesz commutator. The key tool is to establish a suitable approximation of the commutator.
+
 \begin{lemma}\label{abcde}
 Let $1<p<\infty$. Assume that $V\in \mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+))$ be compactly supported in $\mathbb{R}^{n+1}_+.$ If
 $[M_{x_l},V]\in (\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0$ for every $1\leq l\leq n,$ then $\mathfrak{S}_H(V)\in (\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0.$
@@ -896,32 +873,17 @@ $${\rm dist}_{\mathcal{L}_{p,\infty}(L_2(\mathbb{R}^{n+1}_+))}(F_{k,l}(0)\cdot V
 as $j\to\infty.$ The assertion follows now from \eqref{cla}.
 \end{proof}
 
+The following lemma is well known. We provide a short proof for convenience of the reader.
+
 \begin{lemma}\label{iii verification first lemma} If $1\leq k,l\leq n+1$ and $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then
 $$[(1+\Delta)^{-\frac12},M_f],[\partial_k\partial_l(1+\Delta)^{-\frac32},M_f]\in \mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1})).$$
 \end{lemma}
-\begin{proof} {\color{red} not sure if we need to prove such a standard statement.} {\color{blue}I write a short argument as follows:}
-
-The proof for the first commutator was given in \cite[Theorem 5.1 (iv)]{MR4628890}. Now we apply this conclusion to provide a proof for the second one. To begin with, we let $\psi\in C_c^\infty(\mathbb{R}^{n+1})$ such that $f=\psi f$. By Leibniz's rule,
-\begin{align*}
-[\partial_k\partial_l(1+\Delta)^{-\frac32},M_f]
-=[\partial_k\partial_l(1+\Delta)^{-\frac32},M_\psi]M_f+M_\psi[\partial_k\partial_l(1+\Delta)^{-\frac32},M_f].
-\end{align*}
-Using Leibniz's rule again, we see that
-\begin{align*}
-[\partial_k\partial_l(1+\Delta)^{-\frac32},M_\psi]M_f
-&=\partial_k\partial_l[(I+\Delta)^{-\frac32},M_\psi]M_f+M_{\partial_k\partial_l\psi}(I+\Delta)^{-\frac{3}{2}}M_f.
-\end{align*}
-It follows from \cite[Theorem 5.1 (iv)]{MR4628890} that
-\begin{align}\label{combinn1}
-(I+\Delta)[(I+\Delta)^{-\frac32},M_\psi]M_f\in\mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1})).
-\end{align}
-Moreover, it follows from \cite[Theorem 5.1 (iii)]{MR4628890} that
-\begin{align}\label{combinn2}
-M_{\partial_k\partial_l\psi}(I+\Delta)^{-\frac{3}{2}}M_f\in \mathcal{L}_{\frac{n+1}{3},\infty}(L_2(\mathbb{R}^{n+1}))\subset\mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1})).
-\end{align}
-Combining \eqref{combinn1} and \eqref{combinn2} with the $L_2$ boundedness of $\partial_k(I+\Delta)^{-\frac12}$, we conclude that
-$$[\partial_k\partial_l(1+\Delta)^{-\frac32},M_\psi]M_f\in \mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1})).$$
-Changing the roles of $\psi$ and $f$, we also have $M_\psi[\partial_k\partial_l(1+\Delta)^{-\frac32},M_f]\in \mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1})).$ This finishes the proof for the second commutator in the statement.
+\begin{proof} We write $f=f_1f_2$ with $f_1,f_2\in C^{\infty}_c(\mathbb{R}^{n+1}).$ Using Leibniz rule, we write
+$$[(1+\Delta)^{-\frac12},M_f]=[(1+\Delta)^{-\frac12},M_{f_1}]M_{f_2}+M_{f_1}[(1+\Delta)^{-\frac12},M_{f_2}]=$$
+$$=[(1+\Delta)^{-\frac12},M_{f_1}](1+\Delta)\cdot (1+\Delta)^{-1}M_{f_2}+M_{f_1}(1+\Delta)^{-1}\cdot (1+\Delta)[(1+\Delta)^{-\frac12},M_{f_2}].$$
+Since $(1+\Delta)^{-\frac12}$ is a pseudo-differential operator of order $-1$ and since $M_{f_k},$ $k=1,2,$ are pseudo-differential operators of order $0,$ it follows that $[(1+\Delta)^{-\frac12},M_{f_k}],$ $k=1,2,$ are pseudo-differential operators of order $-2.$ Thus,
+$$[(1+\Delta)^{-\frac12},M_{f_1}](1+\Delta)\mbox{ and }(1+\Delta)[(1+\Delta)^{-\frac12},M_{f_2}]$$
+are pseudo-differential operators of order $0$ and are, therefore, bounded. The first assertion follows now from {\color{red} ref!!!} Cwikel estimate. The proof of the second assertion follows {\it mutatis mutandi}.
 \end{proof}
 
 \begin{lemma}\label{iii verification second lemma} If $1\leq k,l\leq n+1$ and $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then
@@ -929,120 +891,125 @@ $$M_{\chi_K}[\Delta^{-\frac12},M_f]M_{\chi_K},M_{\chi_K}[\partial_k\partial_l\De
 for every compact set $K\subset\mathbb{R}^{n+1}.$
 \end{lemma}
 \begin{proof} We write
-$$M_{\chi_K}[\Delta^{-\frac12},M_f]M_{\chi_K}=M_{\chi_K}[(1+\Delta)^{-\frac12},M_f]M_{\chi_K}+[M_{\chi_K}g({\color{green}\sqrt{\Delta}
-})M_{\chi_K},M_f],$$
-$$M_{\chi_K}[\partial_k\partial_l\Delta^{-\frac32},M_f]M_{\chi_K}=M_{\chi_K}[\partial_k\partial_l(1+\Delta)^{-\frac32},M_f]M_{\chi_K}-[M_{\chi_K}g_{k,l}({\color{green}\sqrt{\Delta}})M_{\chi_K},M_f],$$		
+$$M_{\chi_K}[\Delta^{-\frac12},M_f]M_{\chi_K}=M_{\chi_K}[(1+\Delta)^{-\frac12},M_f]M_{\chi_K}+[M_{\chi_K}g(\sqrt{\Delta})M_{\chi_K},M_f],$$
+$$M_{\chi_K}[\partial_k\partial_l\Delta^{-\frac32},M_f]M_{\chi_K}=M_{\chi_K}[\partial_k\partial_l(1+\Delta)^{-\frac32},M_f]M_{\chi_K}-[M_{\chi_K}g_{k,l}(\sqrt{\Delta})M_{\chi_K},M_f],$$		
 where
 $$g(x):=|x|^{-1}-(1+|x|^2)^{-\frac12},\quad g_{k,l}(x):=x_kx_l(|x|^{-3}-(1+|x|^2)^{-\frac32}),\quad x\in\mathbb{R}^{n+1}.$$
-{\color{blue}By Abstract Cwikel Estimate in $\mathbb{R}^{n+1}$ we have
+Applying the Abstract Cwikel Estimate (see Theorem 1.5.10 in \cite{LSZ2}) in the standard setting of $\mathbb{R}^{n+1},$ we obtain
 $$M_{\chi_K}g(\nabla)M_{\chi_K}\prec\prec 160\chi_K\otimes g,\quad M_{\chi_K}g_{k,l}(\nabla)M_{\chi_K}\prec\prec 160\chi_K\otimes g_{k,l}.$$
-Since $\chi_K\otimes g,\chi_K\otimes g_{k,l}\in (L_1+L_{\frac{n+1}{2}})(\mathbb{R}^{n+1}\otimes\mathbb{R}^{n+1}),$ it follows that
-$$M_{\chi_K}g(\nabla)M_{\chi_K},M_{\chi_K}g_{k,l}(\nabla)M_{\chi_K}\in\mathcal{L}_{\frac{n+1}{2}}(L_2(\mathbb{R}^{n+1})).$$}
-{\color{red}To Dima: so sorry that I am not able to follow the blue part above. Instead, we can show the required inequality as follows (if you agree, then we may erase the blue part):
-
-By an elementary calculation, we deduce that
-$$g(x):=\frac{1}{|x|}\cdot\frac{1}{\sqrt{1+|x|^2}(\sqrt{1+|x|^2}+|x|)}=:g_1(x)\cdot g_2(x),$$
-$$g_{k,l}(x):=\frac{x_kx_l}{|x|^3}\cdot\frac{(1+|x|^2)^{\frac32}-|x|^3}{(1+|x|^2)^{\frac32}}=:g_{k,l,1}(x)\cdot g_{k,l,2}(x),$$
-where $g_1,g_{k,l,1}\in L_{n+1,\infty}(\mathbb{R}^{n+1})$ and $g_2,g_{k,l,2}\in L_{\frac{n+1}{2},\infty}(\mathbb{R}^{n+1})\subset L_{n+1,\infty}(\mathbb{R}^{n+1})$. This, together with H\"{o}lder's inequality and Lemma \ref{cwikel estimate in Euclidean setting}, implies that
-\begin{align*}
-&\|M_{\chi_K}g(\sqrt{\Delta})M_{\chi_K}\|_{\mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1}))}\\&\leq \|M_{\chi_K}g_1(\sqrt{\Delta})\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\|g_2(\sqrt{\Delta})M_{\chi_K}\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\\
-&<+\infty,
-\end{align*}
-Similarly, we have $M_{\chi_K}g_{k,l}(\sqrt{\Delta})M_{\chi_K}\in \mathcal{L}_{\frac{n+1}{2},\infty}(L_2(\mathbb{R}^{n+1}))$.
-}
+Since $\chi_K\otimes g,\chi_K\otimes g_{k,l}\in (L_1+L_{\frac{n+1}{2}})(\mathbb{R}^{n+1}\times\mathbb{R}^{n+1}),$ it follows that
+$$M_{\chi_K}g(\nabla)M_{\chi_K},M_{\chi_K}g_{k,l}(\nabla)M_{\chi_K}\in\mathcal{L}_{\frac{n+1}{2}}(L_2(\mathbb{R}^{n+1})).$$
 The assertion follows now from Lemma \ref{iii verification first lemma}.
 \end{proof}
 
-\begin{lemma}\label{ii verification lemma} Let $1\leq k\leq n+1$, $K_j=[0,j]^n\times[\frac1j,j]$ and $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then
+\begin{lemma}\label{ii pre-verification lemma} If $K_j=[0,j]^n\times[\frac1j,j]$ and $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then
+$$M_{f\cdot\chi_{K_j}}(1+\Delta)^{-\frac12}\to M_{f\cdot\chi_{\mathbb{R}^{n+1}_+}}(1+\Delta)^{-\frac12}$$
+in $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})).$
+\end{lemma}
+\begin{proof} If $n\geq 2,$ then Lemma \ref{cwikel estimate in Euclidean setting} yields
+$$\Big\|M_{f\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}(1+\Delta)^{-\frac12}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\leq c_n\|f\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}\|_{L_{n+1}(\mathbb{R}^{n+1})}\to0,\quad j\to\infty.$$
+
+From now on, let $n=1.$ Fix $\phi\in C^{\infty}_c(\mathbb{R}^2)$ such that $f=f\phi.$ We have
+$$M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac12}=M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac12}M_{\phi}+M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}\cdot[M_{\phi},(1+\Delta)^{-\frac12}].$$
+By triangle inequality,
+$$\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac12}\Big\|_{\mathcal{L}_{2,\infty}(L_2(\mathbb{R}^2))}\leq$$
+$$\leq 2\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac12}M_{\phi}\Big\|_{\mathcal{L}_{2,\infty}(L_2(\mathbb{R}^2))}+2\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}\cdot[M_{\phi},(1+\Delta)^{-\frac12}]\Big\|_{\mathcal{L}_{2,\infty}(L_2(\mathbb{R}^2))}\leq $$
+$$\leq 2\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac12}M_{\phi}\Big\|_{\mathcal{L}_{2,\infty}(L_2(\mathbb{R}^2))}+2\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}\cdot[M_{\phi},(1+\Delta)^{-\frac12}]\Big\|_{\mathcal{L}_2(L_2(\mathbb{R}^2))}\leq $$
+$$\leq 4\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac14}\Big\|_{\mathcal{L}_{4,\infty}(L_2(\mathbb{R}^2))}\cdot \Big\|(1+\Delta)^{-\frac14}M_{\phi}\Big\|_{\mathcal{L}_{4,\infty}(L_2(\mathbb{R}^2))}+$$
+$$+2\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-1}\Big\|_{\mathcal{L}_2(L_2(\mathbb{R}^2))}\cdot\Big\|(1+\Delta)[M_{\phi},(1+\Delta)^{-\frac12}]\Big\|_{\mathcal{L}_{\infty}(L_2(\mathbb{R}^2))}.$$
+Using Lemma \ref{cwikel estimate in Euclidean setting}, we obtain
+$$\Big\|M_{f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}}(1+\Delta)^{-\frac12}\Big\|_{\mathcal{L}_{2,\infty}(L_2(\mathbb{R}^2))}\leq c_{\phi}(\|f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}\|_{L_4(\mathbb{R}^2)}+\|f\cdot\chi_{\mathbb{R}^2_+\backslash K_j}\|_{L_2(\mathbb{R}^2)})\to0,\quad j\to\infty.$$
+\end{proof}
+
+\begin{lemma}\label{ii verification lemma} If $1\leq k\leq n+1$, $K_j=[0,j]^n\times[\frac1j,j]$ and $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then
 $$M_{\chi_{K_j}}[R_k,M_f]M_{\chi_{K_j}}\to M_{\chi_{\mathbb{R}^{n+1}_+}}[R_k,M_f]M_{\chi_{\mathbb{R}^{n+1}_+}}$$
 in the semi-norm ${\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}(\cdot,(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0).$
 \end{lemma}
-\begin{proof}
-We first apply \cite[Theorem 6.3.1]{MR4604115} to see that there is an $E\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0$ such that
+\begin{proof} Applying \cite[Theorem 6.3.1]{LSZ2}, we write
 \begin{align}\label{equ00}
-[R_k,M_f]=i\left(M_{\partial_k f}-R_k\sum_{m=1}^{n+1}R_mM_{\partial_m f}\right)(1+\Delta)^{-\frac12}+E.
+[R_k,M_f]=i\left(M_{\partial_k f}-R_k\sum_{m=1}^{n+1}R_mM_{\partial_m f}\right)(1+\Delta)^{-\frac12}+E,
 \end{align}
-By Lemma \ref{cwikel estimate in Euclidean setting},
-\begin{align}\label{lim2}
-&\|M_{\partial_k f}(M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}_+^{n+1}}})(1+\Delta)^{-\frac{1}{2}}\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\nonumber\\
-&\lesssim \|(\chi_{K_j}-\chi_{\mathbb{R}_+^{n+1}})\partial_k f\|_{L_{n+1}(\mathbb{R}^{n+1})}\rightarrow 0,\, {\rm as}\ j\rightarrow+\infty.
+with $E\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$ Fix $\psi\in C^{\infty}_c(\mathbb{R}^{n+1})$ such that $f=f\psi.$ Since
+$$[M_{\partial_mf},(1+\Delta)^{-\frac12}],[M_{\partial_mf},R_kR_m(1+\Delta)^{-\frac12}]\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0,$$
+it follows that
+\begin{align}\label{equ01}
+[R_k,M_f]=i\left(M_{\partial_k f}-\sum_{m=1}^{n+1}M_{\partial_m f}R_kR_m\right)(1+\Delta)^{-\frac12}M_{\psi}+E_0,
 \end{align}
-This also implies that
-\begin{align}\label{lim3}
-&\left\|R_k\sum_{m=1}^{n+1}R_mM_{\partial_m f}(M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}_+^{n+1}}})(1+\Delta)^{-\frac{1}{2}}\right\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\nonumber\\
-&\lesssim \sum_{m=1}^{n+1} \|M_{\partial_m f}(M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}_+^{n+1}}})(1+\Delta)^{-\frac{1}{2}}\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\nonumber\\
-&\rightarrow 0,\, {\rm as}\ j\rightarrow +\infty.
-\end{align}
-Now we combine the fact $(M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}_+^{n+1}}})E\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0$ with equation \eqref{equ00}, inequalities \eqref{lim2} and \eqref{lim3}  to deduce that
-\begin{align*}
-&{\rm dist}_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+))}(M_{\chi_{K_j}}[R_k,M_f]M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}^{n+1}_+}}[R_k,M_f]M_{\chi_{\mathbb{R}^{n+1}_+}},(\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0)\\
-&\leq \|M_{\partial_k f}(M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}_+^{n+1}}})(1+\Delta)^{-\frac{1}{2}}\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\\
-&\hspace{1.0cm}+\left\|R_k\sum_{m=1}^{n+1}R_mM_{\partial_m f}(M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}_+^{n+1}}})(1+\Delta)^{-\frac{1}{2}}\right\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\to 0,\, {\rm as}\ j\rightarrow+\infty.
-\end{align*}
-This ends the proof of Lemma \ref{ii verification lemma}.
+with $E_0\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1})))_0.$
+
+By triangle inequality,
+$$\Big\|M_{\chi_{K_j}}\cdot\left(M_{\partial_k f}-\sum_{m=1}^{n+1}M_{\partial_m f}R_kR_m\right)(1+\Delta)^{-\frac12}M_{\psi}\cdot M_{\chi_{K_j}}-M_{\chi_{\mathbb{R}^{n+1}_+}}\cdot\left(M_{\partial_k f}-\sum_{m=1}^{n+1}M_{\partial_m f}R_kR_m\right)(1+\Delta)^{-\frac12}M_{\psi}\cdot M_{\chi_{\mathbb{R}^{n+1}_+}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\leq$$
+$$\leq (1+\frac1n)\Big(\Big\|M_{\partial_kf\cdot\chi_{K_j}}(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{K_j}}-M_{\partial_kf\cdot\chi_{\mathbb{R}^{n+1}_+}}(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{\mathbb{R}^{n+1}_+}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}+$$
+$$+\sum_{m=1}^{n+1}\Big\|M_{\partial_mf\cdot\chi_{K_j}}R_kR_m(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{K_j}}-M_{\partial_mf\cdot\chi_{\mathbb{R}^{n+1}_+}}R_kR_m(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{\mathbb{R}^{n+1}_+}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\Big)\leq$$
+$$\leq (1+\frac1n)^2\Big(\Big\|M_{\partial_kf\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{K_j}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}+\Big\|M_{\partial_kf\cdot\chi_{\mathbb{R}^{n+1}_+}}(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}$$
+$$+\sum_{m=1}^{n+1}\Big\|M_{\partial_mf\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}R_kR_m(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{K_j}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}+\Big\|M_{\partial_mf\cdot\chi_{\mathbb{R}^{n+1}_+}}R_kR_m(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\Big)\leq$$
+$$\leq 2(1+\frac1n)^2\Big(\sum_{m=1}^{n+1}\Big\|M_{\partial_mf\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}(1+\Delta)^{-\frac12}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\cdot\|\psi\|_{\infty}+\|\partial_mf\|_{\infty}\cdot\Big\|(1+\Delta)^{-\frac12}M_{\psi\cdot\chi_{\mathbb{R}^{n+1}_+\backslash K_j}}\Big\|_{\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}))}\Big).$$
+The assertion follows now from Lemma \ref{ii pre-verification lemma}.
 \end{proof}
 
 
 \begin{lemma}\label{first approximate lemma} Let $1\leq k\leq n+1$ and $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then
-$$[R_{\lambda,k},M_{R_+f}]-\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\Big( M_{x_{n+1}^{-\lambda}} R_+[R_k,M_f]E_+ M_{x_{n+1}^{\lambda}}\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})))_0.$$
+$$[R_{\lambda,k},M_{E^{\ast}f}]-\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\Big( M_{x_{n+1}^{-\lambda}} E^{\ast}[R_k,M_f]E M_{x_{n+1}^{\lambda}}\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})))_0.$$
 \end{lemma}
 \begin{proof} Recall from Lemma \ref{commutator representation lemma} that
 \begin{align*}
-[R_{\lambda,k},M_{R_+f}]&=\kappa_{n,\lambda}^{[3]}\mathfrak{S}_{F_{2,0}\circ H}\Big( M_{x_{n+1}^{-\lambda}} R_+[R_k,M_{f}]E_+ M_{x_{n+1}^{\lambda}}\Big)\\
-&\hspace{-1.0cm}+\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\circ\mathfrak{S}_{F_{1,1}\circ H}\Big)\Big(M_{x_{n+1}^{-\lambda}} R_+[R_l,M_{f}]E_+ M_{x_{n+1}^{\lambda}}\Big)\\
-&\hspace{-1.0cm}-\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\circ\mathfrak{S}_{F_{2,1}\circ H}\Big)\Big( M_{x_{n+1}^{-\lambda}} R_+[R_l,M_{f}]E_+ M_{x_{n+1}^{\lambda}}\Big).
+[R_{\lambda,k},M_{E^{\ast}f}]&=\kappa_{n,\lambda}^{[3]}M_{x_{n+1}^{-\lambda}}\cdot\mathfrak{S}_{F_{2,0}\circ H}\Big(  E^{\ast}[R_k,M_{f}]E\Big)\cdot  M_{x_{n+1}^{\lambda}}\\
+&\hspace{-1.0cm}+\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1}M_{x_{n+1}^{-\lambda}} \cdot \Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_a\circ\mathfrak{S}_{F_{1,1}\circ H}\Big)\Big(E^{\ast}[R_l,M_{f}]E \Big)\cdot M_{x_{n+1}^{\lambda}}\\
+&\hspace{-1.0cm}-\kappa_{n,\lambda}^{[3]}\delta_{k,n+1}\sum_{l=1}^{n+1} M_{x_{n+1}^{-\lambda}}\cdot\Big(\mathfrak{S}_{h_l}\circ\mathfrak{S}_{h_{n+1}}\circ\mathfrak{S}_b\circ\mathfrak{S}_{F_{2,1}\circ H}\Big)\Big( E^{\ast}[R_l,M_{f}]E\Big)\cdot  M_{x_{n+1}^{\lambda}}.
 \end{align*}
-
 Let us verify the conditions in Lemma \ref{criterion lemma} for
-$$V=R_+[R_k,M_f]E_+,\quad V_j=M_{\chi_{K_j}}R_+[R_k,M_f]E_+M_{\chi_{K_j}},$$
+$$V=E^{\ast}[R_k,M_f]E,\quad V_j=M_{\chi_{K_j}}E^{\ast}[R_k,M_f]EM_{\chi_{K_j}},$$
 where $K_j=[0,j]^n\times[\frac1j,j].$
 
-{\color{blue}The condition \eqref{cla} in Lemma \ref{criterion lemma} follows from Lemma \ref{ii verification lemma}.}
+The condition \eqref{cla} in Lemma \ref{criterion lemma} is established in Lemma \ref{ii verification lemma}.
 
 Let us now verify the condition \eqref{clb} in Lemma \ref{criterion lemma}. Note that
 $$[M_{x_l},R_k]=-\delta_{k,l}\Delta^{-\frac12}+\partial_k[M_{x_l},\Delta^{-\frac12}].$$
-By taking Fourier transform on both side, we see that $\partial_k[M_{x_l},\Delta^{-\frac12}]=-\partial_k\partial_l\Delta^{-\frac32}$ {\color{blue}[Confirm the coefficient on the RHS, which should be minus sign instead of positive sign]}. Thus,
-$$[M_{x_l},R_k]=-\delta_{k,l}\Delta^{-\frac12}{\color{blue}-}\partial_k\partial_l\Delta^{-\frac32}.$$
+By taking Fourier transform on both side, we see that $\partial_k[M_{x_l},\Delta^{-\frac12}]=-\partial_k\partial_l\Delta^{-\frac32}.$ Thus,
+$$[M_{x_l},R_k]=-\delta_{k,l}\Delta^{-\frac12}-\partial_k\partial_l\Delta^{-\frac32}.$$
 Hence,
-$$[M_{x_l},V_j]=-\delta_{k,l}\cdot M_{\chi_{K_j}}R_+[\Delta^{-\frac12},M_f]E_+M_{\chi_{K_j}}{\color{blue}-}M_{\chi_{K_j}}R_+[\partial_k\partial_l\Delta^{-\frac32},M_f]E_+M_{\chi_{K_j}}.$$
+$$[M_{x_l},V_j]=-\delta_{k,l}\cdot E^{\ast}\cdot M_{\chi_{K_j}}[\Delta^{-\frac12},M_f]M_{\chi_{K_j}}\cdot E-E^{\ast}\cdot M_{\chi_{K_j}}[\partial_k\partial_l\Delta^{-\frac32},M_f]M_{\chi_{K_j}}\cdot E.$$
 The condition \eqref{clb} in Lemma \ref{criterion lemma} follows now from Lemma \ref{iii verification second lemma}.
 
 The condition \eqref{clc} in Lemma \ref{criterion lemma} trivially holds. Applying Lemma \ref{criterion lemma}
 and taking into account that $F_{1,1}(0)=F_{2,1}(0)=0$, we obtain
-$$\mathfrak{S}_{F_{2,0}\circ H}\Big(R_+[R_k,M_f]E_+\Big)-F_{2,0}(0) R_+[R_k,M_f]E_+\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0,$$
-$$\mathfrak{S}_{F_{1,1}\circ H}\Big(  R_+[R_k,M_f]E_+\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0,$$
-$$\mathfrak{S}_{F_{2,1}\circ H}\Big(  R_+[R_k,M_f]E_+\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0.$$
-These, in combination with Lemma \ref{standard schur lemma}, finishes the proof of Lemma \ref{first approximate lemma}.
+$$\mathfrak{S}_{F_{2,0}\circ H}\Big(E^{\ast}[R_k,M_f]E\Big)-F_{2,0}(0) E^{\ast}[R_k,M_f]E\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0,$$
+$$\mathfrak{S}_{F_{1,1}\circ H}\Big(  E^{\ast}[R_k,M_f]E\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0,$$
+$$\mathfrak{S}_{F_{2,1}\circ H}\Big(  E^{\ast}[R_k,M_f]E\Big)\in (\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+)))_0.$$
+These estimates, in combination with Lemma \ref{standard schur lemma}, yield the proof of Lemma \ref{first approximate lemma}.
 \end{proof}
 
+\begin{lemma}\label{from frank lemma} If $f\in C^{\infty}_c(\mathbb{R}^{n+1}),$ then, for every $1\leq k\leq n+1,$ there exists a limit
+$$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t, M_{\chi_{\mathbb{R}^{n+1}_+}}[R_k,M_f]M_{\chi_{\mathbb{R}^{n+1}_+}})=c_n|||E^{\ast}f|||_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1})}.$$
+\end{lemma}
+\begin{proof} The argument repeats that in Proposition 8.6 in \cite{FSZ} {\it mutatis mutandi}.
+\end{proof}
+
+The following is the well known approximation lemma due to Birman and Solomyak.
+
 \begin{lemma}\label{approlem}
-Let $0<p<\infty$, $H$ be a Hilbert space and $(A_k)_{k\geq 1}\subset \mathcal{L}_{p,\infty}(H)$ be such that
-\begin{enumerate}
-  \item $A_k\rightarrow A$,\, in $\mathcal{L}_{p,\infty}(H)$;
-  \item for every $k\geq 1$, the limit
-  $$\lim_{t\rightarrow \infty}t^{\frac{1}{p}}\mu_{B(H)}(t,A_k)=c_k \ \ \ {\rm exists},$$
+Let $0<p<\infty,$ $H$ be a Hilbert space and $(A_k)_{k\geq 1}\subset \mathcal{L}_{p,\infty}(H)$ be such that
+\begin{enumerate}[{\rm (i)}]
+\item $A_k\rightarrow A$ in $\mathcal{L}_{p,\infty}(H)$;
+\item for every $k\geq 1$, the limit
+$$\lim_{t\rightarrow \infty}t^{\frac{1}{p}}\mu_{B(H)}(t,A_k)=c_k,\quad {\rm exists},$$
 \end{enumerate}
-Then the following limits exist and are equal:
+The following limits exist and are equal:
 $$\lim_{t\rightarrow \infty}t^{\frac{1}{p}}\mu_{B(H)}(t,A)=\lim_{k\rightarrow \infty}c_k.$$
 \end{lemma}
 
 \begin{proof}[Proof of Theorem \ref{main theorem} \eqref{mtc}]
-We first show the assertion under an extra assumption that $E_+f\in C_c^\infty(\mathbb{R}^{n+1})$. To this end, it follows from Lemma \ref{first approximate lemma} that
+We first show the assertion under an extra assumption that $f=E^{\ast}h,$ $h\in C_c^\infty(\mathbb{R}^{n+1}).$ To this end, it follows from Lemma \ref{first approximate lemma} that
 \begin{align}\label{spectralasym1}
 &\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t,[R_{\lambda,k},M_f])\nonumber\\
-&\stackrel{L.\ref{first approximate lemma}}{=}\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t, M_{x_{n+1}^{-\lambda}} R_+[R_k,M_{E_+f}]E_+ M_{x_{n+1}^{\lambda}})\nonumber\\
-&\stackrel{L.\ref{weight}}{=}\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+))}(t, R_+[R_k,M_{E_+f}]E_+ )\nonumber\\
-&\stackrel{L.\ref{half}}{=}\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t, [R_k,M_{E_+f}] ).
+&\stackrel{L.\ref{first approximate lemma}}{=}\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t, M_{x_{n+1}^{-\lambda}} E^{\ast}[R_k,M_h]E M_{x_{n+1}^{\lambda}})\nonumber\\
+&\stackrel{L.\ref{weight}}{=}\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+))}(t, E^{\ast}[R_k,M_h]E )\nonumber\\
+&\stackrel{L.\ref{half}}{=}\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t, M_{\chi_{\mathbb{R}^{n+1}_+}}[R_k,M_h]M_{\chi_{\mathbb{R}^{n+1}_+}}).
 \end{align}
-It follows from \cite[Theorem 1.2]{MR4549699} that there is a constant $\sigma_n>0$ such that {\color{blue}[Do we point out this constant more explicitly?]\cite[Theorem 1.2]{MR4549699} is just stated for quantum derivative, not for Riesz transform, which means that the constant here is not exactly the constant in the Riesz transform setting, though there is no essential difference in the proof.} $$\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}))}(t, [R_k,M_{E_+f}] )=\sigma_n\|E_+f\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1})}=\sigma_n\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})}.$$
-Substituting the above equality into \eqref{spectralasym1} and then letting $c_{n,\lambda}=\kappa_{n,\lambda}^{[3]}F_{2,0}(0)\sigma_n$ {\color{blue}[Do we compute this constant more explicitly?]} yields
-\begin{align}\label{classicalspectral}
-\lim_{t\to\infty}t^{\frac1{n+1}}\mu_{B(L_2(\mathbb{R}^{n+1}_+,m_{\lambda}))}(t,[R_{\lambda,k},M_f])=c_{n,\lambda}\|f\|_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+)}.
-\end{align}
+This should be understood as follows: if one of the limits above exists, then so do the others and the equality holds. It follows from Lemma \ref{from frank lemma} that the latter limit actually exists and equals $c_n|||f|||_{\dot{W}^{1,n+1}(\mathbb{R}^{n+1})}.$ This completes the proof under the extra assumption made above.
 
-
-Next we apply an approximation argument to remove the extra assumption. To this end, we suppose $f\in  \dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1})$ and let $\{f_m\}_{m\geq 1}$ be the sequence chosen in Lemma \ref{density lemma}, then from the proof of Theorem \ref{main theorem} \eqref{mta} we see that $[R_{\lambda,k},M_{R_+f_m}]\rightarrow [R_{\lambda,k},M_f]$ in $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$
-This, together with Lemma \ref{approlem}, implies that \eqref{classicalspectral} also holds for $f\in  \dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1})$. This completes the proof of Theorem \ref{main theorem} \eqref{mtc}.
+Next we apply an approximation argument to remove the extra assumption. To this end, we suppose $f\in  \dot{W}^{1,n+1}(\mathbb{R}_+^{n+1})\cap L_{\infty}(\mathbb{R}_+^{n+1})$ and let $\{f_m\}_{m\geq 1}$ be the sequence chosen in Lemma \ref{density lemma}. Since $E^{\ast}f_m\to f$ in $\dot{W}^{1,n+1}(\mathbb{R}^{n+1}_+),$ it follows from Theorem \ref{main theorem} \eqref{mta} that
+$[R_{\lambda,k},M_{E^{\ast}f_m}]\rightarrow [R_{\lambda,k},M_f]$ in $\mathcal{L}_{n+1,\infty}(L_2(\mathbb{R}^{n+1}_+,m_{\lambda})).$ The assertion follows now from the preceding paragraph and Lemma \ref{approlem}.
 \end{proof}
 
 \appendix
@@ -1129,16 +1096,13 @@ This implies the assertion.
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{fkl are smooth theorem}]
-It is obvious that each $F_{k,l}$ and $G_{k,l}$ are smooth on $(0,\infty).$ It follows from Lemma \ref{fourth fkl lemma} that $F_{k,l}\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+).$ Thus, also $G_{k,l}\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+).$
+It is obvious that each $F_{k,l}$ and $G_{k,l}$ are smooth on $(0,\infty).$ It follows from Lemma \ref{fourth fkl lemma} that $F_{k,l}\circ\exp\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+).$ Thus, also $G_{k,l}\circ\exp\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+).$
 
-It suffices to prove that $F_{k,l}$ and $G_{k,l}$ are right continuous at $0$ and $(F_{k,l}-F_{k,l}(0))\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-),$ $(G_{k,l}-G_{k,l}(0))\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-).$ The former assertion trivially follows from the latter one. The proof of the latter one will occupy the rest of the proof.
+It suffices to prove that $F_{k,l}$ and $G_{k,l}$ are right continuous at $0$ and $(F_{k,l}-F_{k,l}(0))\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-),$ $(G_{k,l}-G_{k,l}(0))\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_-).$ The former assertion trivially follows from the latter one. In what follows, we are concerned with the proof of the latter one.
 
 We write
-\begin{align*}
-F_{k,l}(x)&=x^{n+k}A_l(x)+x^kB_l(x)+x^{k+2l-2}\sum_{j=0}^{n+2}\frac{(-1)^j}{2^{l+2j+1}}\binom{\lambda-1}{j}C_{l,j}(x)
-\\&=:\tilde{A}_{k,l}(x)+\tilde{B}_{k,l}(x)+\tilde{C}_{k,l}(x).
-\end{align*}
-as the decomposition given in Lemma \ref{second fkl lemma}.
+$$F_{k,l}(x)=x^{n+k}A_l(x)+x^kB_l(x)+x^{k+2l-2}\sum_{j=0}^{n+2}\frac{(-1)^j}{2^{l+2j+1}}\binom{\lambda-1}{j}C_{l,j}(x)\stackrel{def}{=}\tilde{A}_{k,l}(x)+\tilde{B}_{k,l}(x)+\tilde{C}_{k,l}(x)$$
+as per the decomposition given in Lemma \ref{second fkl lemma}.
 
 It is obvious that $A_l\in C^{\infty}[0,1],$ which means that $\tilde{A}_{k,l}$ is right continuous at $0$ with $\tilde{A}_{k,l}(0)=0$. Next, we write
 $$B_l(x)=x^n\int_0^1(x^2+t)^{-\lambda-\frac{n}{2}-1}t^{\lambda+n+2}\psi_l(t)dt,$$
@@ -1146,61 +1110,19 @@ where
 $$\psi_l(t):=2^{-l-1}t^{l-n-3}\Big((1-\frac{t}{4})^{\lambda-1}-\sum_{j=0}^{n+2}\binom{\lambda-1}{j}(-\frac{t}{4})^j\Big),\quad t\in(0,1).$$
 Since $\psi_l\in L_{\infty}(0,1),$ it follows from Lemma \ref{first fkl lemma} that $B_l^{(j)}\in L_{\infty}(0,1)$ for $0\leq j\leq n+2.$ In particular, $\tilde{B}_{k,l}$ is right continuous at $0$ with $\tilde{B}_{k,l}(0)=0$. Moreover, it follows from Lemma \ref{third fkl lemma} that $\tilde{C}_{k,l}$ is right continuous at $0$ with $\tilde{C}_{k,l}(0)=0$ if $(k,l)\in\{(1,1),(2,1)\},$ and with $$\tilde{C}_{2,0}(0)=\Big( \int_{\frac12}^{\infty}(s+1)^{-\lambda-\frac{n}{2}-1}s^{\frac{n}{2}}ds+\sum_{m\geq0}\binom{-\lambda-\frac{n}{2}-1}{m}\frac{2^{-m-\frac{n}{2}-1}}{\frac{n}{2}+m+1}\Big).$$
 
-To continue, we apply Leibniz rule, in combination with the facts $A_l\in C^{\infty}[0,1],$ $B_l^{(j)}\in L_{\infty}(0,1)$ and Lemma \ref{third fkl lemma}, to deduce that for $j\leq 2+\lceil\frac{n+1}{2}\rceil$,
+To continue, we apply Leibniz rule, in combination with the facts $A_l\in C^{\infty}[0,1],$ $B_l^{(j)}\in L_{\infty}(0,1)$ and Lemma \ref{third fkl lemma}, to deduce that for $j\leq 1+\lceil\frac{n+1}{2}\rceil$,
 \begin{align*}
 \Big|\frac{d^j}{dx^j}\tilde{A}_{k,l}(e^x)\Big|+\Big|\frac{d^j}{dx^j}\tilde{B}_{k,l}(e^x)\Big|+\Big|\frac{d^j}{dx^j}((\tilde{C}_{k,l}-\tilde{C}_{k,l}(0))\circ \exp (x))\Big|\lesssim e^{x},\,\quad
   x\in \mathbb{R}_{-}.
 \end{align*}
-This implies that $F_{k,l}\circ\exp\in W^{2+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+)$, and thus ends the proof of Theorem \ref{fkl are smooth theorem}.
+This implies that $G_{k,l}\circ\exp\in W^{1+\lceil\frac{n+1}{2}\rceil,2}(\mathbb{R}_+)$, and thus ends the proof of Theorem \ref{fkl are smooth theorem}.
 \end{proof}
 
 
-
-%\begin{thebibliography}{10}
-%	
-%\bibitem{MR167642} Abramowitz M., Stegun I.	{\it Handbook of mathematical functions with formulas, graphs, and mathematical tables.} National Bureau of Standards Applied Mathematics Series, No. 55. US. Government Printing Office, Washington, DC, 1964.
-%	
-%
-%	
-%
-%	
-%	\bibitem{MR4654013}
-%	Z.~Fan, J.~Li, E.~McDonald, F.~Sukochev, and D.~Zanin.
-%	\newblock Endpoint weak {S}chatten class estimates and trace formula for
-%	commutators of {R}iesz transforms with multipliers on {H}eisenberg groups.
-%	\newblock {\em J. Funct. Anal.}, 286(1):Paper No. 110188, 72, 2024.
-%	
-%
-%	
-%	\bibitem{MR64284}
-%	A.~Huber.
-%	\newblock On the uniqueness of generalized axially symmetric potentials.
-%	\newblock {\em Ann. of Math. (2)}, 60:351--358, 1954.
-%	
-%
-%	
-%	\bibitem{LeSZ}
-%	G.~Levitina, F.~Sukochev, and D.~Zanin.
-%	\newblock Cwikel estimates revisited.
-%	\newblock {\em Proc. Lond. Math. Soc. (3)}, 120(2):265--304, 2020.
-%	
-%	\bibitem{MS}
-%	B.~Muckenhoupt and E.~M. Stein.
-%	\newblock Classical expansions and their relation to conjugate harmonic
-%	functions.
-%	\newblock {\em Trans. Amer. Math. Soc.}, 118:17--92, 1965.
-%	
-%
-%	
-%
-%	
-%
-%	
-%\end{thebibliography}
- {\bf Acknowledgements:}
+{\bf Acknowledgements:}
 
 
-Z. Fan is Supported by the China Postdoctoral Science Foundation (No. 2023M740799), Postdoctoral Fellowship Program of CPSF (No. GZB20230175) and by the Guangdong Basic and Applied Basic Research Foundation (No. 2023A1515110879). J. Li is supported by the Australian Research Council (ARC) through the research grant DP220100285. {\color{red}To Dima: Add Fedor's and your funding here.} Z. Fan would like to thank Prof. Dongyong Yang for his talk about harmonic analysis associated with Bessel operator.
+Z. Fan is Supported by the China Postdoctoral Science Foundation (No. 2023M740799), Postdoctoral Fellowship Program of CPSF (No. GZB20230175) and by the Guangdong Basic and Applied Basic Research Foundation (No. 2023A1515110879). J. Li is supported by the Australian Research Council (ARC) through the research grant DP220100285. F. Sukochev and D. Zanin are supported by the Australian Research Council through the research grant DP230100434. F. Sukochev is supported by the Australian Research Council Laureate Fellowship FL170100052. Z. Fan would like to thank Prof. Dongyong Yang for discussions about harmonic analysis associated with Bessel operator.
 
 \bibliographystyle{plain}
 \bibliography{references}
