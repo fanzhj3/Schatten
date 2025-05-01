@@ -1,0 +1,22 @@
+# 所有文本文件统一使用 LF 结尾（跨平台兼容）
+* text=auto eol=lf
+
+# 明确指定 LaTeX 文件使用 LF 换行
+*.tex text eol=lf
+*.sty text eol=lf
+*.cls text eol=lf
+*.bib text eol=lf
+
+# 一些常见脚本或配置文件也用 LF
+*.sh text eol=lf
+*.py text eol=lf
+*.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+
+# 二进制文件禁止 Git 修改行尾（不做任何处理）
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.exe binary
